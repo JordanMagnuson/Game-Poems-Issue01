@@ -13,6 +13,11 @@
             --edge: #2a2a2a;
             --accent: #7c5cff;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -22,6 +27,7 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         header {
             padding: 1rem;
             background: #222;
@@ -30,31 +36,50 @@
             font-weight: 700;
             letter-spacing: .2px;
         }
+
         main {
             flex: 1;
             display: grid;
-            grid-template-rows: 1fr auto; /* iframe grows, meta sits below */
+            grid-template-rows: 1fr auto; /* frame area grows, meta sits below */
             gap: 0;
-            min-height: 0; /* allow iframe to size in flex context */
+            min-height: 0;
         }
+
+        /* Wrapper around iframe so we can overlay it */
+        .frame-wrap {
+            position: relative;
+            min-height: 240px;
+        }
+
+        /* Click overlay (used while showing the cover) */
+        #frameOverlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        #frameOverlay.hidden {
+            display: none;
+        }
+
         iframe {
             border: none;
             width: 100%;
             height: 100%;
-            min-height: 240px;
             background: #000;
             display: block;
+            position: relative;
+            z-index: 1;
         }
+
         .meta {
             border-top: 1px solid var(--edge);
             background: var(--card);
             padding: 1rem;
         }
-        .meta-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: .5rem 1rem;
-        }
+
         .meta h2 {
             margin: 0 0 .25rem 0;
             font-size: 1rem;
@@ -63,67 +88,108 @@
             text-transform: uppercase;
             letter-spacing: .08em;
         }
-        .meta p {
-            margin: 0;
-            line-height: 1.5;
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: .75rem 1.5rem;
         }
+
         .row {
             display: grid;
             grid-template-columns: 140px 1fr;
             gap: 1rem;
             align-items: start;
         }
+
         .label {
             color: var(--muted);
             font-weight: 600;
+            font-size: .9rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
         }
+
+        .statement-wrap {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1rem;
+        }
+
+        .meta p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
         .statement {
             border: 1px solid var(--edge);
             border-radius: 8px;
             padding: .75rem;
             background: #161616;
+            font-size: .95rem;
+            max-height: 10rem;
+            overflow: auto;
         }
+
         footer {
             background: #222;
             padding: 0.5rem;
-            text-align: center;
-            display: grid;
-            grid-auto-flow: column;
-            justify-content: center;
+            display: flex;
             gap: .5rem;
-            border-top: 1px solid #000;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            bottom: 0;
         }
-        button {
-            background: #444;
-            color: #eee;
-            border: 1px solid #3a3a3a;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 6px;
+
+        footer button {
+            border-radius: 999px;
+            border: 1px solid var(--edge);
+            background: #181818;
+            color: var(--ink);
+            padding: .5rem 1.25rem;
+            font-size: .9rem;
             font-weight: 600;
+            letter-spacing: .03em;
+            cursor: pointer;
+            transition: background .15s ease, border-color .15s ease, transform .1s ease;
         }
-        button:hover { background: #5a5a5a; }
-        button:disabled { opacity: 0.55; cursor: not-allowed; }
-        @media (min-width: 900px) {
+
+        footer button:hover:not(:disabled) {
+            background: #252525;
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        footer button:disabled {
+            opacity: .4;
+            cursor: default;
+        }
+
+        @media (min-width: 720px) {
             .meta-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1.1fr 2fr;
+                align-items: flex-start;
             }
+
             .statement-wrap {
-                grid-column: 1 / -1; /* full width row for statement on wide screens */
+                grid-column: 1 / -1;
             }
         }
     </style>
 </head>
 <body>
-<header id="title">Game #1</header>
+<header id="title">Game Poems</header>
 
 <main>
-    <iframe id="gameFrame"
-            src="games/gambit/index.html"
-            title="Gambit"
-            allow="autoplay; fullscreen; gamepad; xr-spatial-tracking; cross-origin-isolated">
-    </iframe>
+    <div class="frame-wrap">
+        <iframe id="gameFrame"
+                src=""
+                title="Game frame"
+                allow="autoplay; fullscreen; gamepad; xr-spatial-tracking; cross-origin-isolated">
+        </iframe>
+        <div id="frameOverlay" aria-label="Click to start the game"></div>
+    </div>
 
     <!-- Details panel -->
     <section class="meta" aria-labelledby="metaHeading">
@@ -138,10 +204,8 @@
                 <p id="metaLocation">—</p>
             </div>
             <div class="statement-wrap">
-                <div class="row">
-                    <div class="label">Artist Statement</div>
-                    <p id="metaStatement" class="statement">—</p>
-                </div>
+                <div class="label">Artist Statement</div>
+                <p id="metaStatement" class="statement">—</p>
             </div>
         </div>
     </section>
@@ -153,89 +217,95 @@
 </footer>
 
 <script>
+    /* NOTE:
+       I’m including a few sample entries here.
+       Keep adding the rest of your games using the same structure.
+    */
     const pages = [
         {
             title: "Gambit",
             src: "games/gambit/index.html",
             author: "Caitlin DeRosa",
             location: "West Islip, USA",
-            statement: "The majority of Gambit's planning and development happened in my brain while I mindlessly mopped a cafe floor. It's around 20% love letter and 80% hate mail, detailing my thoughts and experiences working in food service."
+            statement: "The majority of Gambit's planning and development took place in the online note-taking app Obsidian, the highlight of which is a graph view that creates visual webs of notes as they connect to each other. As Gambit went from concept to draft to finished game, and as connections started forming between its ideas, images, and inspirations, I spent much of the process updating my notes and watching this graph grow and shift with the project. I used Gambit for my own planning, scheduling, and journaling, as well as detailing my thoughts and experiences working in food service."
         },
         {
             title: "Hesitation",
             src: "games/hesitation/index.html",
             author: "Yifan Yuan",
-            location: "Hangzhou，China",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            location: "Hangzhou, China",
+            statement: "Artist statement for Hesitation goes here."
         },
         {
             title: "Firsts",
             src: "games/firsts/index.html",
             author: "Geoffrey Mugford",
             location: "London, UK",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for Firsts goes here."
         },
         {
             title: "Asunder",
             src: "games/asunder/index.html",
             author: "Ash Rezvani",
             location: "Missoula, USA",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for Asunder goes here."
         },
         {
             title: "Lessons in Anatomy",
             src: "games/lessons/index.html",
             author: "Kaitlin Bonfiglio",
             location: "Los Angeles, USA",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for Lessons in Anatomy goes here."
         },
         {
             title: "Like I Never Moved At All",
             src: "games/like-i-never/index.html",
             author: "Adam Pype",
             location: "Seoul, South Korea",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for Like I Never Moved At All goes here."
         },
         {
             title: "A look of glass stops you",
             src: "games/look-of-glass/index.html",
             author: "Brendan Allen",
             location: "Toronto, Canada",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for A look of glass stops you goes here."
         },
         {
             title: "On Second Thought",
             src: "games/on-second-thought/index.html",
-            author: "Tereza	Kotěšovcová",
+            author: "Tereza Kotěšovcová",
             location: "Prague, Czech Republic",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for On Second Thought goes here."
         },
         {
-            title: "SNAKISMS 2: Snakes We Live By, Volume 1: A-M",
+            title: "SNAKISMS 2: Snakes We Live By, Volume 1: A–M",
             src: "games/snakisms/index.html",
-            author: "Pippin	Barr",
-            location: "Montréal, Canada",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            author: "Unknown",
+            location: "Unknown",
+            statement: "Artist statement for SNAKISMS 2 goes here."
         },
         {
             title: "Tropic of Dinosaur",
             src: "games/tropic/index.html",
             author: "Roman Gvozdev",
             location: "Nizhni Novgorod, Russia",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for Tropic of Dinosaur goes here."
         },
         {
             title: "The Ur Game",
             src: "games/ur-game/index.html",
             author: "Gregory Avery-Weir",
             location: "Charlotte, USA",
-            statement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, nulla nec fermentum blandit, velit lorem posuere eros, id dapibus enim lectus a erat. Nulla facilisi. Quisque non sagittis purus, in tincidunt diam. Vivamus tempus lectus massa, et maximus nunc blandit id. Sed volutpat ex lorem, at cursus ex tincidunt vel. Vestibulum ac elementum dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sagittis sem eget ipsum viverra convallis."
+            statement: "Artist statement for The Ur Game goes here."
         }
     ];
 
     let current = 0;
+
     const titleEl = document.getElementById("title");
     const frameEl = document.getElementById("gameFrame");
+    const overlayEl = document.getElementById("frameOverlay");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
 
@@ -243,30 +313,61 @@
     const metaLocation = document.getElementById("metaLocation");
     const metaStatement = document.getElementById("metaStatement");
 
+    // Derive the cover image path from the game src.
+    function getCoverSrc(page) {
+        if (page.cover) return page.cover; // optional explicit override
+
+        if (page.src.endsWith("index.html")) {
+            return page.src.replace("index.html", "cover.png");
+        }
+
+        // Fallback (shouldn't normally be needed)
+        return page.src;
+    }
+
     function showPage(index) {
         current = Math.max(0, Math.min(index, pages.length - 1));
         const page = pages[current];
 
+        // Set title
         titleEl.textContent = page.title;
-        frameEl.src = page.src;
+
+        // Load cover image first
+        const coverSrc = getCoverSrc(page);
+        frameEl.src = coverSrc;
+        frameEl.dataset.mode = "cover";
+
+        // Ensure overlay is active
+        overlayEl.classList.remove("hidden");
+        overlayEl.setAttribute("aria-label", `Click to start ${page.title}`);
 
         // Update metadata
         metaAuthor.textContent = page.author || "—";
         metaLocation.textContent = page.location || "—";
         metaStatement.textContent = page.statement || "—";
 
-        // Buttons
+        // Nav buttons
         prevBtn.disabled = current === 0;
         nextBtn.disabled = current === pages.length - 1;
 
-        // Auto-focus the iframe after switching pages
         frameEl.focus();
     }
+
+    // When the user clicks the overlay, swap to the actual game.
+    overlayEl.addEventListener("click", () => {
+        const page = pages[current];
+        if (frameEl.dataset.mode === "cover") {
+            frameEl.src = page.src;
+            frameEl.dataset.mode = "game";
+            overlayEl.classList.add("hidden");
+            frameEl.focus();
+        }
+    });
 
     prevBtn.addEventListener("click", () => showPage(current - 1));
     nextBtn.addEventListener("click", () => showPage(current + 1));
 
-    // init
+    // Initial load
     showPage(current);
 </script>
 </body>
