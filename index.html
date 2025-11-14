@@ -11,7 +11,6 @@
 
             --bg-page: #524f9f;
             --bg-panel: #f0eefc;
-            --bg-panel-strong: #ffffff;
             --bg-button: #1e1b4b;
 
             --ink-main: #111322;
@@ -134,20 +133,20 @@
             padding: 2.5rem 1.5rem;
         }
 
+        /* Just a layout container, no frame here */
         .cover-inner {
             max-width: 1120px;
             margin: 0 auto;
-            background: rgba(80, 76, 143, 0.65);
-            box-shadow: 0 18px 55px rgba(5, 5, 39, 0.35);
-            padding: 1.5rem;
         }
 
+        /* Single main panel: cover on left, meta on right */
         .cover-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr);
-            gap: 1.75rem;
+            gap: 2rem;
             background: var(--bg-panel);
-            padding: 1.75rem;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 18px 55px rgba(5, 5, 39, 0.45);
         }
 
         @media (min-width: 880px) {
@@ -160,7 +159,7 @@
 
         .cover-image-frame {
             background: #1b193f;
-            padding: 1rem;
+            padding: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -175,13 +174,9 @@
             box-shadow: 0 10px 24px rgba(5, 5, 39, 0.75);
         }
 
-        /* Right: metadata card */
+        /* Right: metadata column (no extra card layer) */
 
-        .meta-card {
-            background: var(--bg-panel-strong);
-            border-radius: 4px;
-            border: 1px solid var(--border-soft);
-            padding: 1.5rem 1.75rem;
+        .meta-column {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -194,7 +189,7 @@
         }
 
         .meta-title {
-            font-size: 2rem;
+            font-size: 2.1rem;
             line-height: 1.1;
             font-weight: 700;
             margin: 0;
@@ -213,7 +208,7 @@
         }
 
         .play-button-row {
-            margin-top: 0.25rem;
+            margin-top: 0.4rem;
         }
 
         .btn-primary {
@@ -252,10 +247,6 @@
 
         .section-block {
             font-size: 0.95rem;
-        }
-
-        .section-block + .section-block {
-            margin-top: 0.5rem;
         }
 
         .section-title {
@@ -326,7 +317,7 @@
                 <div class="cover-image-frame">
                     <img id="coverImage" src="" alt="Game cover">
                 </div>
-                <article class="meta-card">
+                <article class="meta-column">
                     <header class="meta-header">
                         <h1 id="metaTitle" class="meta-title">Game Title</h1>
                         <div id="metaArtist" class="meta-artist">Artist Name</div>
@@ -455,11 +446,9 @@
     // --- Helpers for asset paths ------------------------------------------
 
     function getCoverSrc(page) {
-        // If you ever want to override, you can add page.cover
         if (page.cover) return page.cover;
         if (page.slug) return `games/${page.slug}/cover.png`;
 
-        // Fallback: derive from src by replacing index.html
         if (page.src && page.src.endsWith("index.html")) {
             return page.src.replace("index.html", "cover.png");
         }
@@ -528,10 +517,8 @@
         const page = pages[currentIndex];
         currentView = "play";
 
-        // Load the game
         gameFrameEl.src = page.src || "";
 
-        // Switch views
         coverViewEl.classList.add("hidden");
         playViewEl.classList.remove("hidden");
 
