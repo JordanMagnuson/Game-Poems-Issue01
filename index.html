@@ -136,12 +136,14 @@
             background-position: center;
             background-repeat: no-repeat;
             padding: 3rem 4vw; /* breathing room at sides */
+            background-color: rgba(255, 255, 255, 0.6); /* Adjust background image lightness/opacity/transparency */
+            background-blend-mode: lighten;
         }
 
         .cover-inner {
-            max-width: 1120px;   /* controls block width */
             margin: 0 auto;      /* centers block in viewport */
             width: 100%;
+            max-width: 1920px;
         }
 
         .cover-grid {
@@ -152,27 +154,28 @@
 
         @media (min-width: 880px) {
             .cover-grid {
-                grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+                grid-template-columns: minmax(0, 50%) minmax(0, 50%);
             }
         }
 
         /* Left: cover image */
 
         .cover-image-frame {
-            background: #1b193f;
-            padding: 1.1rem;
+            padding: 0;     /* Change padding if you want a frame around the cover image. */
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 12px 28px rgba(5, 5, 39, 0.7);
         }
 
         .cover-image-frame img {
             width: 100%;
-            max-width: 540px;
+            max-width: 5000px;
             aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
+            margin-left: auto;
+            margin-bottom: auto;
+            box-shadow: 0 12px 28px rgba(5, 5, 39, 0.7);
         }
 
         /* Right: metadata column */
@@ -182,8 +185,8 @@
             flex-direction: column;
             gap: 1.5rem;
             padding: 1.25rem 1.75rem;
-            background: #f7f6ff;
-            box-shadow: 0 8px 22px rgba(5, 5, 39, 0.45);
+            /*background: rgba(255,255,255,0.5);*/
+            /*box-shadow: 0 8px 22px rgba(5, 5, 39, 0.45);*/
         }
 
         .meta-header {
@@ -238,7 +241,7 @@
         }
 
         .sections {
-            display: grid;
+            display: block; /* Can change this to 'grid' if we want to show this info in multiple columns */
             grid-template-columns: minmax(0, 1fr);
             gap: 1rem 2rem;
         }
