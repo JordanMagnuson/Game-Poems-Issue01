@@ -9,8 +9,8 @@
         :root {
             --nav-height: 56px;
 
-            --bg-page: #000b7a;           /* fallback behind background.png */
-            --bg-panel: #f0eefc;          /* used only for small accents now */
+            --bg-page: #000b7a;
+            --bg-panel: #f0eefc;
             --bg-button: #1e1b4b;
 
             --ink-main: #111322;
@@ -37,7 +37,7 @@
             flex-direction: column;
         }
 
-        /* ---------- Top navigation bar ---------- */
+        /* ---------- Top navigation bar (centered title) ---------- */
 
         header.topbar {
             position: sticky;
@@ -46,27 +46,31 @@
             height: var(--nav-height);
             background: #050567;
             color: var(--ink-on-dark);
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; /* left / center / right */
             align-items: center;
-            justify-content: space-between;
             padding: 0 1.5rem;
             font-size: 0.95rem;
             letter-spacing: 0.03em;
         }
 
-        .nav-left,
-        .nav-right {
-            flex: 0 0 auto;
+        .nav-left {
+            justify-self: start;
             white-space: nowrap;
         }
 
         .nav-center {
-            flex: 1 1 auto;
+            justify-self: center;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1.5rem;
             min-width: 0;
+        }
+
+        .nav-right {
+            justify-self: end;
+            white-space: nowrap;
+            text-align: right;
         }
 
         .brand {
@@ -124,19 +128,19 @@
             display: none !important;
         }
 
-        /* Cover view: background image, content laid directly on top */
+        /* Cover view: background image, centered two-column block */
 
         #coverView {
             min-height: calc(100vh - var(--nav-height));
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 3rem 4vw;   /* outer margin from window edge */
-            display: flex;
-            align-items: flex-start;
+            padding: 3rem 4vw; /* breathing room at sides */
         }
 
         .cover-inner {
+            max-width: 1120px;   /* controls block width */
+            margin: 0 auto;      /* centers block in viewport */
             width: 100%;
         }
 
@@ -144,8 +148,6 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr);
             gap: 2rem;
-            /* no background panel, no box shadow:
-               cover + metadata sit directly on the page background */
         }
 
         @media (min-width: 880px) {
@@ -168,7 +170,7 @@
         .cover-image-frame img {
             width: 100%;
             max-width: 540px;
-            aspect-ratio: 1 / 1; /* square */
+            aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
         }
@@ -180,7 +182,7 @@
             flex-direction: column;
             gap: 1.5rem;
             padding: 1.25rem 1.75rem;
-            background: #f7f6ff;              /* subtle backing for text only */
+            background: #f7f6ff;
             box-shadow: 0 8px 22px rgba(5, 5, 39, 0.45);
         }
 
@@ -375,11 +377,6 @@
 
 <script>
     // --- Game data ---------------------------------------------------------
-    // Paths assume:
-    //   games/<slug>/index.html
-    //   games/<slug>/cover.png
-    //   games/<slug>/background.png
-
     const pages = [
         {
             title: "Gambit",
@@ -414,7 +411,6 @@
             overWhen: "You’ve experienced all the first memories presented.",
             statement: "Artist statement for Firsts goes here."
         }
-        // Add more entries here...
     ];
 
     // --- DOM references ----------------------------------------------------
@@ -443,14 +439,12 @@
     // --- State -------------------------------------------------------------
 
     let currentIndex = 0;
-    let currentView = "cover"; // "cover" | "play"
 
     // --- Helpers for asset paths ------------------------------------------
 
     function getCoverSrc(page) {
         if (page.cover) return page.cover;
         if (page.slug) return `games/${page.slug}/cover.png`;
-
         if (page.src && page.src.endsWith("index.html")) {
             return page.src.replace("index.html", "cover.png");
         }
@@ -460,7 +454,6 @@
     function getBackgroundSrc(page) {
         if (page.background) return page.background;
         if (page.slug) return `games/${page.slug}/background.png`;
-
         if (page.src && page.src.endsWith("index.html")) {
             return page.src.replace("index.html", "background.png");
         }
@@ -472,9 +465,7 @@
     function updateNav() {
         const page = pages[currentIndex];
         navTitleEl.textContent = page.title || "Game";
-        pageIndicatorEl.textContent =
-            `Page ${currentIndex + 1} of ${pages.length}`;
-
+        pageIndicatorEl.textContent = `Page ${currentIndex + 1} of ${pages.length}`;
         prevBtnEl.disabled = currentIndex === 0;
         nextBtnEl.disabled = currentIndex === pages.length - 1;
     }
@@ -483,7 +474,6 @@
         if (typeof index === "number") {
             currentIndex = Math.max(0, Math.min(index, pages.length - 1));
         }
-        currentView = "cover";
 
         const page = pages[currentIndex];
 
@@ -517,35 +507,21 @@
 
     function showPlay() {
         const page = pages[currentIndex];
-        currentView = "play";
-
         gameFrameEl.src = page.src || "";
-
         coverViewEl.classList.add("hidden");
         playViewEl.classList.remove("hidden");
-
         updateNav();
     }
 
     // --- Event wiring ------------------------------------------------------
 
-    playButtonEl.addEventListener("click", () => {
-        showPlay();
-    });
-
-    prevBtnEl.addEventListener("click", () => {
-        showCover(currentIndex - 1);
-    });
-
-    nextBtnEl.addEventListener("click", () => {
-        showCover(currentIndex + 1);
-    });
+    playButtonEl.addEventListener("click", showPlay);
+    prevBtnEl.addEventListener("click", () => showCover(currentIndex - 1));
+    nextBtnEl.addEventListener("click", () => showCover(currentIndex + 1));
 
     // --- Init --------------------------------------------------------------
 
-    if (pages.length === 0) {
-        console.warn("No pages defined.");
-    } else {
+    if (pages.length > 0) {
         showCover(0);
     }
 </script>
