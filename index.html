@@ -128,7 +128,7 @@
             display: none !important;
         }
 
-        /* Cover view: background image, centered two-column block */
+        /* Cover view: background image, centered blocks */
 
         #coverView {
             min-height: calc(100vh - var(--nav-height));
@@ -145,6 +145,8 @@
             width: 100%;
             max-width: 1920px;
         }
+
+        /* ---------- GAME LAYOUT ---------- */
 
         .cover-grid {
             display: grid;
@@ -280,6 +282,46 @@
             color: var(--ink-main);
         }
 
+        /* ---------- TEXT LAYOUT ---------- */
+
+        .text-layout {
+            /* same outer width as game layout */
+            max-width: 1400px;
+            margin: 0 auto;
+            color: var(--ink-main);
+        }
+
+        .text-title {
+            margin: 0 0 1.5rem 0;
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+
+        .text-columns {
+            column-count: 4;
+            column-gap: 2rem;
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1200px) {
+            .text-columns {
+                column-count: 3;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .text-columns {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .text-columns {
+                column-count: 1;
+            }
+        }
+
         /* ---------- Play view ---------- */
 
         #playView {
@@ -317,10 +359,12 @@
 </header>
 
 <main>
-    <!-- Cover view -->
+    <!-- Cover / content view -->
     <section id="coverView">
         <div class="cover-inner">
-            <div class="cover-grid">
+
+            <!-- GAME PAGE LAYOUT -->
+            <div id="gameLayout" class="cover-grid">
                 <div class="cover-image-frame">
                     <img id="coverImage" src="" alt="Game cover">
                 </div>
@@ -366,6 +410,15 @@
                     </div>
                 </article>
             </div>
+
+            <!-- TEXT PAGE LAYOUT -->
+            <div id="textLayout" class="text-layout hidden">
+                <h1 id="textTitle" class="text-title">Page Title</h1>
+                <div id="textContent" class="text-columns">
+                    <!-- pageContent will be injected here -->
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -379,9 +432,22 @@
 </main>
 
 <script>
-    // --- Game data ---------------------------------------------------------
+    // --- Page data ---------------------------------------------------------
     const pages = [
         {
+            typeOfPage: "text",
+            title: "Forward",
+            pageContent: `
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, ex id suscipit finibus, tortor libero commodo purus, quis tempor est mi non libero. Phasellus viverra ac nisi at interdum. Phasellus accumsan rhoncus felis. Mauris blandit commodo risus, lacinia sollicitudin ligula tincidunt id. Mauris rhoncus arcu in sapien pulvinar commodo. Quisque nec odio ac risus varius rutrum. Sed hendrerit auctor risus sit amet volutpat. Vivamus sed tortor nibh. Duis in iaculis velit. Proin sit amet auctor dui.</p>
+                <p>Pellentesque eu ornare nulla, a bibendum neque. Mauris pretium dolor et augue mollis tincidunt. Proin sem risus, semper in tellus eget, tincidunt semper risus. Ut quis lorem vel felis pretium dictum non in massa. Nullam vel porta velit. Sed varius sapien diam, vitae tincidunt magna fermentum a. Ut pulvinar quam ac neque vulputate, ac posuere nibh tempor. Quisque aliquam velit eget laoreet sagittis.</p>
+                <p>Vestibulum eu diam metus. In hac habitasse platea dictumst. Praesent consectetur metus nec augue vehicula, in accumsan ipsum aliquet. Aenean tristique consequat metus eget tincidunt. Curabitur ac egestas odio. Integer ut sollicitudin lectus. Etiam iaculis est libero, id bibendum ex rhoncus ac. Aliquam luctus enim at magna convallis vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam egestas, ante scelerisque volutpat luctus, augue dui ornare nunc, in lacinia quam justo eu libero. Pellentesque varius augue eget magna elementum rhoncus. Aenean aliquam lobortis augue, a tempus lacus lobortis eu. In et pulvinar risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sodales metus nec orci auctor tincidunt.</p>
+                <p>Vestibulum tincidunt ex mi, feugiat suscipit risus molestie pretium. Cras dignissim massa vitae augue dictum luctus. Cras dignissim sem a lobortis fermentum. Proin ipsum urna, sodales venenatis pretium et, convallis nec nunc. Ut quis eros ut metus dignissim hendrerit porta ut purus. Donec sodales nisl in sapien tempus rhoncus. Sed at mi sed arcu posuere dapibus vel in eros. Donec placerat mauris sed urna dictum hendrerit. Proin ac lacinia magna. Etiam elit urna, ultricies pretium tempor eget, tincidunt eget tortor. Fusce ullamcorper aliquam augue sed dictum.</p>
+                <p>Integer rutrum iaculis est ac ultricies. Integer a vestibulum purus. Phasellus bibendum tempus purus. Morbi malesuada sodales velit sed ultrices. Phasellus efficitur massa in massa posuere, id aliquam magna gravida. Ut dolor ipsum, laoreet sed tortor at, hendrerit fringilla leo. Aliquam ornare efficitur massa ut congue. Cras bibendum est volutpat nibh interdum sollicitudin eget non lorem. Curabitur tortor magna, faucibus semper est nec, mollis ultricies leo. Sed rutrum, lectus eu semper finibus, est justo consectetur eros, a lobortis mi ex sit amet elit. In hac habitasse platea dictumst. Nulla porttitor eu enim et cursus. Nullam nulla neque, accumsan nec dui vel, maximus auctor tortor. Cras faucibus consequat turpis, at dapibus risus iaculis in. Maecenas eros tellus, placerat id tristique tristique, tempor et ex.</p>
+                <p>Jordan Magnuson<br/>Founding Editor, <em>Game Poems</em></p>
+            `
+        },
+        {
+            typeOfPage: "game",
             title: "Gambit",
             slug: "gambit",
             src: "games/gambit/index.html",
@@ -393,6 +459,7 @@
             statement: "The majority of Gambit's planning and development took place in the online note-taking app Obsidian..."
         },
         {
+            typeOfPage: "game",
             title: "Hesitation",
             slug: "hesitation",
             src: "games/hesitation/index.html",
@@ -404,6 +471,7 @@
             statement: "Artist statement for Hesitation goes here."
         },
         {
+            typeOfPage: "game",
             title: "Firsts",
             slug: "firsts",
             src: "games/firsts/index.html",
@@ -421,6 +489,9 @@
     const coverViewEl = document.getElementById("coverView");
     const playViewEl = document.getElementById("playView");
 
+    const gameLayoutEl = document.getElementById("gameLayout");
+    const textLayoutEl = document.getElementById("textLayout");
+
     const coverImgEl = document.getElementById("coverImage");
 
     const metaTitleEl = document.getElementById("metaTitle");
@@ -430,6 +501,9 @@
     const metaInstructionsEl = document.getElementById("metaInstructions");
     const metaOverWhenEl = document.getElementById("metaOverWhen");
     const metaStatementEl = document.getElementById("metaStatement");
+
+    const textTitleEl = document.getElementById("textTitle");
+    const textContentEl = document.getElementById("textContent");
 
     const playButtonEl = document.getElementById("playButton");
     const gameFrameEl = document.getElementById("gameFrame");
@@ -467,7 +541,7 @@
 
     function updateNav() {
         const page = pages[currentIndex];
-        navTitleEl.textContent = page.title || "Game";
+        navTitleEl.textContent = page.title || "Page";
         pageIndicatorEl.textContent = `Page ${currentIndex + 1} of ${pages.length}`;
         prevBtnEl.disabled = currentIndex === 0;
         nextBtnEl.disabled = currentIndex === pages.length - 1;
@@ -480,24 +554,40 @@
 
         const page = pages[currentIndex];
 
-        // Background + cover image
+        // Background image (for both page types)
         const bgSrc = getBackgroundSrc(page);
         coverViewEl.style.backgroundImage = bgSrc ? `url("${bgSrc}")` : "none";
 
-        const coverSrc = getCoverSrc(page);
-        coverImgEl.src = coverSrc || "";
-        coverImgEl.alt = page.title ? `${page.title} cover art` : "Game cover";
+        // Decide layout by typeOfPage
+        if (page.typeOfPage === "text") {
+            // Hide game layout, show text layout
+            gameLayoutEl.classList.add("hidden");
+            textLayoutEl.classList.remove("hidden");
 
-        // Metadata
-        metaTitleEl.textContent = page.title || "";
-        metaArtistEl.textContent = page.author || "";
-        metaLocationEl.textContent = page.location || "";
-        metaPlayTimeEl.textContent = page.estimatedPlayTime || "—";
-        metaInstructionsEl.textContent = page.instructions || "—";
-        metaOverWhenEl.textContent = page.overWhen || "—";
-        metaStatementEl.textContent = page.statement || "—";
+            // Title + content
+            textTitleEl.textContent = page.title || "";
+            textContentEl.innerHTML = page.pageContent || "";
 
-        // Switch views
+        } else {
+            // Default to game layout
+            textLayoutEl.classList.add("hidden");
+            gameLayoutEl.classList.remove("hidden");
+
+            const coverSrc = getCoverSrc(page);
+            coverImgEl.src = coverSrc || "";
+            coverImgEl.alt = page.title ? `${page.title} cover art` : "Game cover";
+
+            // Metadata
+            metaTitleEl.textContent = page.title || "";
+            metaArtistEl.textContent = page.author || "";
+            metaLocationEl.textContent = page.location || "";
+            metaPlayTimeEl.textContent = page.estimatedPlayTime || "—";
+            metaInstructionsEl.textContent = page.instructions || "—";
+            metaOverWhenEl.textContent = page.overWhen || "—";
+            metaStatementEl.textContent = page.statement || "—";
+        }
+
+        // Switch views: always show cover/content view
         coverViewEl.classList.remove("hidden");
         playViewEl.classList.add("hidden");
 
@@ -510,6 +600,10 @@
 
     function showPlay() {
         const page = pages[currentIndex];
+
+        // Only makes sense for game pages; text pages won't show the button
+        if (page.typeOfPage !== "game") return;
+
         gameFrameEl.src = page.src || "";
         coverViewEl.classList.add("hidden");
         playViewEl.classList.remove("hidden");
