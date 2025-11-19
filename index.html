@@ -9,8 +9,8 @@
         :root {
             --nav-height: 56px;
 
-            --bg-page: #524f9f;
-            --bg-panel: #f0eefc;
+            --bg-page: #000b7a;           /* fallback behind background.png */
+            --bg-panel: #f0eefc;          /* used only for small accents now */
             --bg-button: #1e1b4b;
 
             --ink-main: #111322;
@@ -18,7 +18,7 @@
             --ink-on-dark: #f7f7ff;
 
             --accent: #1e1b4b;
-            --accent-soft: rgba(30,27,75,0.08);
+            --accent-soft: rgba(30,27,75,0.12);
             --border-soft: rgba(0,0,0,0.18);
         }
 
@@ -124,29 +124,28 @@
             display: none !important;
         }
 
-        /* Cover view fills remaining viewport height, supports scrolling */
+        /* Cover view: background image, content laid directly on top */
+
         #coverView {
             min-height: calc(100vh - var(--nav-height));
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 2.5rem 1.5rem;
+            padding: 3rem 4vw;   /* outer margin from window edge */
+            display: flex;
+            align-items: flex-start;
         }
 
-        /* Just a layout container, no frame here */
         .cover-inner {
-            max-width: 1120px;
-            margin: 0 auto;
+            width: 100%;
         }
 
-        /* Single main panel: cover on left, meta on right */
         .cover-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr);
             gap: 2rem;
-            background: var(--bg-panel);
-            padding: 2rem 2.5rem;
-            box-shadow: 0 18px 55px rgba(5, 5, 39, 0.45);
+            /* no background panel, no box shadow:
+               cover + metadata sit directly on the page background */
         }
 
         @media (min-width: 880px) {
@@ -163,6 +162,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 12px 28px rgba(5, 5, 39, 0.7);
         }
 
         .cover-image-frame img {
@@ -171,15 +171,17 @@
             aspect-ratio: 1 / 1; /* square */
             object-fit: cover;
             display: block;
-            box-shadow: 0 10px 24px rgba(5, 5, 39, 0.75);
         }
 
-        /* Right: metadata column (no extra card layer) */
+        /* Right: metadata column */
 
         .meta-column {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            padding: 1.25rem 1.75rem;
+            background: #f7f6ff;              /* subtle backing for text only */
+            box-shadow: 0 8px 22px rgba(5, 5, 39, 0.45);
         }
 
         .meta-header {
