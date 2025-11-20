@@ -274,12 +274,6 @@
         }
 
         .statement-body {
-            border-radius: 3px;
-            background: var(--accent-soft);
-            padding: 0.75rem 0.9rem;
-            max-height: 9rem;
-            overflow: auto;
-            color: var(--ink-main);
         }
 
         /* ---------- TEXT LAYOUT ---------- */
@@ -320,6 +314,53 @@
             .text-columns {
                 column-count: 1;
             }
+        }
+
+        /* TEAM PAGE: manual 4-column layout using CSS Grid */
+        #textLayoutTeam #textContent {
+            /* turn off auto-flow columns on this page */
+            column-count: 1;
+
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            column-gap: 2rem;   /* horizontal gap between columns */
+            row-gap: 0;         /* vertical gap if you want it */
+        }
+
+        #textLayoutTeam ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        /* Optional: basic column styling */
+        #textLayoutTeam #textContent > div {
+            /* ensures each of your column1/2/3/4 blocks stays together */
+            break-inside: avoid;
+        }
+
+        /* Responsive tweaks so it doesn’t crush on narrow screens */
+        @media (max-width: 1200px) {
+            #textLayoutTeam #textContent {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            #textLayoutTeam #textContent {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            #textLayoutTeam #textContent {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* FORWARD PAGE */
+        #textLayoutForward #textContent p {
+            text-align: justify;
+            margin-top: 0;
         }
 
         /* ---------- Play view ---------- */
@@ -436,7 +477,94 @@
     const pages = [
         {
             typeOfPage: "text",
+            title: "Team",
+            background: "background.png",
+            pageContent: `
+                <div class="column">[Magazine cover here]</div>
+                <div class="column">
+                    <h2>Founding Editor & Publisher</h2>
+                    <ul><li>Jordan Magnuson</li></ul>
+                    <h2>Editorial Collective</h2>
+                    <ul>
+                        <li>Gregory Avery-Weir</li>
+                        <li>Jarory de Jesus</li>
+                        <li>Farhanaz "Joy" Kassee-Elahee</li>
+                        <li>Jordan Magnuson</li>
+                        <li>Jon Stone</li>
+                        <li>Agata Waszkiewicz</li>
+                    </ul>
+                    <h2>Production Team</h2>
+                    <ul>
+                        <li>John Domenico Calvelli</li>
+                        <li>Matt Griffin</li>
+                        <li>Jordan Magnuson</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h2>First Readers</h2>
+                    <ul>
+                        <li>June Audirac</li>
+                        <li>Tex Barnes</li>
+                        <li>Art Baum</li>
+                        <li>Stanley Baxton</li>
+                        <li>Torien Cafferata</li>
+                        <li>Alex Calderwood</li>
+                        <li>Pedro Cardoso</li>
+                        <li>Jerram Carr</li>
+                        <li>Vania Castagnino</li>
+                        <li>Gary Chadwick</li>
+                        <li>Eva Chang</li>
+                        <li>Wei Ting Chia</li>
+                        <li>Drice Ducongé Dos Santos</li>
+                        <li>Kavi Duvvoori</li>
+                        <li>Anna Eyler</li>
+                        <li>Rafael Fajardo</li>
+                        <li>Cyril Focht</li>
+                        <li>Melanie Fussenegger</li>
+                        <li>Claudia Garza</li>
+                        <li>Drew Genel</li>
+                        <li>Vidya Giri</li>
+                        <li>Matt Griffin</li>
+                        <li>Aren Guralp</li>
+                        <li>Haochen Han</li>
+                        <li>Farfama Hargaaya</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h2 style="visibility:hidden">First Readers</h2>
+                    <ul>
+                        <li>Anna Kucerova</li>
+                        <li>Zihan Liu</li>
+                        <li>Shanel Locke</li>
+                        <li>Christoffer Lundberg</li>
+                        <li>Hélène Lupa</li>
+                        <li>Tanel Marran</li>
+                        <li>Thomas Martin</li>
+                        <li>Terhi Marttila</li>
+                        <li>Nat Mesnard</li>
+                        <li>Leon Noel Micheel</li>
+                        <li>Zeynab Mirzadeh</li>
+                        <li>Alex Mitchell</li>
+                        <li>Óscar A. Montiel</li>
+                        <li>Devinne Moses</li>
+                        <li>Ignacio Puccini</li>
+                        <li>Yvens Rebouças Serpa</li>
+                        <li>Tim Samoff</li>
+                        <li>Zhang Sicheng</li>
+                        <li>Dawn Sueoka</li>
+                        <li>Alexander Swords</li>
+                        <li>Semkan Uragan</li>
+                        <li>Yohanna Waliya</li>
+                        <li>Afra Willems</li>
+                        <li>Khalil Zeigler</li>
+                    </ul>
+                </div>
+            `
+        },
+        {
+            typeOfPage: "text",
             title: "Forward",
+            background: "background.png",
             pageContent: `
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, ex id suscipit finibus, tortor libero commodo purus, quis tempor est mi non libero. Phasellus viverra ac nisi at interdum. Phasellus accumsan rhoncus felis. Mauris blandit commodo risus, lacinia sollicitudin ligula tincidunt id. Mauris rhoncus arcu in sapien pulvinar commodo. Quisque nec odio ac risus varius rutrum. Sed hendrerit auctor risus sit amet volutpat. Vivamus sed tortor nibh. Duis in iaculis velit. Proin sit amet auctor dui.</p>
                 <p>Pellentesque eu ornare nulla, a bibendum neque. Mauris pretium dolor et augue mollis tincidunt. Proin sem risus, semper in tellus eget, tincidunt semper risus. Ut quis lorem vel felis pretium dictum non in massa. Nullam vel porta velit. Sed varius sapien diam, vitae tincidunt magna fermentum a. Ut pulvinar quam ac neque vulputate, ac posuere nibh tempor. Quisque aliquam velit eget laoreet sagittis.</p>
