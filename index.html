@@ -891,6 +891,12 @@
         gameFrameEl.src = "about:blank";
 
         updateNav();
+
+        // Keep ?page=<1-based> in the URL without adding history entries
+        const url = new URL(window.location);
+        url.searchParams.set("page", String(currentIndex + 1));
+        window.history.replaceState({}, "", url);
+
         window.scrollTo({ top: 0, behavior: "instant" });
     }
 
@@ -919,8 +925,18 @@
 
     // --- Init --------------------------------------------------------------
 
+    // Grab current page from url param (?page=N)
     if (pages.length > 0) {
-        showCover(0);
+        const params = new URLSearchParams(window.location.search);
+        const pageParam = parseInt(params.get("page"), 10);
+
+        let initialIndex = 0;
+        if (!Number.isNaN(pageParam)) {
+            // convert 1-based ?page=N into 0-based index
+            initialIndex = Math.min(Math.max(pageParam - 1, 0), pages.length - 1);
+        }
+
+        showCover(initialIndex);
     }
 </script>
 </body>
