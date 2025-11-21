@@ -61,10 +61,12 @@
 
         .nav-center {
             justify-self: center;
+            /* NEW: make it a positioning context and a fixed-ish width strip */
+            position: relative;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            min-width: 0;
+            justify-content: center;  /* centers the title */
+            min-width: 450px;         /* adjust as needed */
         }
 
         .nav-right {
@@ -84,6 +86,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            padding: 0 1rem; /* Padding at edges for Prev/Next arrows */
         }
 
         .page-indicator {
@@ -105,6 +108,7 @@
             gap: 0.2rem;
             white-space: nowrap;
             transition: opacity 0.15s ease, transform 0.12s ease;
+            position: absolute;
         }
 
         .nav-arrow:hover:not(:disabled) {
@@ -116,6 +120,14 @@
             opacity: 0.35;
             cursor: default;
             transform: none;
+        }
+
+        #prevBtn {
+            left: 0;
+        }
+
+        #nextBtn {
+            right: 0;
         }
 
         /* ---------- Views ---------- */
@@ -136,7 +148,7 @@
             background-position: center;
             background-repeat: no-repeat;
             padding: 3rem 4vw; /* breathing room at sides */
-            background-color: rgba(255, 255, 255, 0.6); /* Adjust background image lightness/opacity/transparency */
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust background image lightness/opacity/transparency. Because this is an overlay, higher value = more transparent background. */
             background-blend-mode: lighten;
         }
 
