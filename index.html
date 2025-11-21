@@ -466,6 +466,7 @@
     <!-- Play view -->
     <section id="playView" class="hidden" aria-label="Game play area">
         <iframe id="gameFrame"
+                tabindex="0"
                 src=""
                 allow="autoplay; fullscreen; gamepad; xr-spatial-tracking; cross-origin-isolated">
         </iframe>
@@ -891,6 +892,11 @@
         coverViewEl.classList.add("hidden");
         playViewEl.classList.remove("hidden");
         updateNav();
+
+        // Focus once iframe is rendered
+        setTimeout(() => {
+            gameFrameEl.focus();
+        }, 50);
     }
 
     // --- Event wiring ------------------------------------------------------
