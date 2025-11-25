@@ -303,6 +303,14 @@
             color: var(--ink-muted);
         }
 
+        .meta-contrib-type {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-muted);
+            margin-top: 0.2rem;
+        }
+
         .meta-location {
             color: var(--ink-muted);
         }
@@ -588,6 +596,7 @@
                         <h1 id="metaTitle" class="meta-title">Game Title</h1>
                         <div id="metaArtist" class="meta-artist">Artist Name</div>
                         <div id="metaLocation" class="meta-location">Location</div>
+                        <div id="metaContribType" class="meta-contrib-type" style="display:none;"></div>
                     </header>
 
                     <div class="play-button-row">
@@ -833,6 +842,7 @@
             background: "games/lessons/background.jpg",
             madeWith: "Bitsy",
             author: "Kaitlin Bonfiglio",
+            invited: true,
             location: "Los Angeles, USA",
             estimatedPlayTime: "Less than 5 minutes",
             instructions: "Arrow keys only to interact.",
@@ -874,6 +884,7 @@
             src: "games/snakisms/index.html",
             madeWith: "Phaser",
             author: "Pippin Barr",
+            invited: true,
             location: "Montréal, Canada",
             estimatedPlayTime: "Less than 5 minutes",
             instructions: "Arrow keys only to interact.",
@@ -928,6 +939,7 @@
             background: "games/ur-game/background.jpg",
             madeWith: "Godot",
             author: "Gregory Avery-Weir",
+            editor: true,
             location: "Charlotte, USA",
             estimatedPlayTime: "10-20 minutes",
             instructions: "Click or tap to interact. The game may seem inscrutable at first, but there is an ending.",
@@ -973,7 +985,7 @@
                 </div>
                 <div class="column">
                     <h2>License</h2>
-                    <p><em>Game Poems</em> is an open access publication, distributed under a CC&nbsp;BY&nbsp;4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">here</a>.</p>
+                    <p><em>Game Poems</em> is an open access publication, distributed under a CC&nbsp;BY&nbsp;4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found at creativecommons.org/licenses/by/4.0/.</p>
                 </div>
             `
         }
@@ -991,6 +1003,7 @@
 
     const metaTitleEl = document.getElementById("metaTitle");
     const metaArtistEl = document.getElementById("metaArtist");
+    const metaContribTypeEl = document.getElementById("metaContribType");
     const metaLocationEl = document.getElementById("metaLocation");
     const metaPlayTimeEl = document.getElementById("metaPlayTime");
     const metaInstructionsEl = document.getElementById("metaInstructions");
@@ -1101,6 +1114,18 @@
             metaInstructionsEl.textContent = page.instructions || "—";
             metaOverWhenEl.textContent = page.overWhen || "—";
             metaStatementEl.innerHTML = page.statement || "—";
+
+            // Contribution type (invited or editor)
+            if (page.invited) {
+                metaContribTypeEl.textContent = "Invited contribution";
+                metaContribTypeEl.style.display = "block";
+            } else if (page.editor) {
+                metaContribTypeEl.textContent = "Editor contribution";
+                metaContribTypeEl.style.display = "block";
+            } else {
+                metaContribTypeEl.textContent = "";
+                metaContribTypeEl.style.display = "none";
+            }
         }
 
         // Switch views: always show cover/content view
