@@ -223,7 +223,6 @@
         }
 
         /* Cover view: background image, centered blocks */
-
         #coverView {
             min-height: calc(100vh - var(--nav-height));
             background-size: cover;
@@ -370,6 +369,43 @@
         }
 
         .statement-body {
+        }
+
+        /* Page/Game-specific adjustments */
+        .page-lessons #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-vincent #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-asunder #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-snakisms #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-snakisms h1#metaTitle {
+            font-size: 1.9em;
+        }
+
+        .page-gambit #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-look-of-glass #coverView {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .page-tropic #coverView {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .page-terminadas #coverView {
+            background-color: rgba(255, 255, 255, 0.6);
         }
 
         /* ---------- TEXT LAYOUT ---------- */
@@ -1022,6 +1058,11 @@
         }
 
         const page = pages[currentIndex];
+
+        // Add page-specific class to <body> for easy css targeting.
+        const id = page.slug || makeIdFromTitle(page.title || "");
+        document.body.className = "";          // clear previous classes
+        document.body.classList.add(`page-${id}`);
 
         // Background image (for both page types)
         const bgSrc = getBackgroundSrc(page);
