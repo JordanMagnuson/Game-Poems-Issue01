@@ -328,8 +328,8 @@
             }
         }
 
-        /* TEAM PAGE: manual 4-column layout using CSS Grid */
-        #textLayoutTeam #textContent {
+        /* ABOUT PAGE: manual 4-column layout using CSS Grid */
+        #textLayoutAbout #textContent {
             /* turn off auto-flow columns on this page */
             column-count: 1;
 
@@ -339,32 +339,62 @@
             row-gap: 0;         /* vertical gap if you want it */
         }
 
-        #textLayoutTeam ul {
+        #textLayoutAbout ul {
             padding: 0;
             list-style-type: none;
         }
 
         /* Optional: basic column styling */
-        #textLayoutTeam #textContent > div {
+        #textLayoutAbout #textContent > div {
             /* ensures each of your column1/2/3/4 blocks stays together */
             break-inside: avoid;
         }
 
         /* Responsive tweaks so it doesn’t crush on narrow screens */
         @media (max-width: 1200px) {
-            #textLayoutTeam #textContent {
+            #textLayoutAbout #textContent {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 900px) {
-            #textLayoutTeam #textContent {
+            #textLayoutAbout #textContent {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 600px) {
-            #textLayoutTeam #textContent {
+            #textLayoutAbout #textContent {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Colophon PAGE: manual 4-column layout using CSS Grid */
+        #textLayoutCreditsColophon #textContent {
+            /* turn off auto-flow columns on this page */
+            column-count: 1;
+
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            column-gap: 2rem;   /* horizontal gap between columns */
+            row-gap: 0;         /* vertical gap if you want it */
+        }
+
+        /* Responsive tweaks so it doesn’t crush on narrow screens */
+        @media (max-width: 1200px) {
+            #textLayoutCreditsColophon #textContent {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 900px) {
+            #textLayoutCreditsColophon #textContent {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            #textLayoutCreditsColophon #textContent {
                 grid-template-columns: 1fr;
             }
         }
@@ -490,10 +520,21 @@
     const pages = [
         {
             typeOfPage: "text",
-            title: "Team",
+            title: "Contents",
             background: "background.png",
             pageContent: `
-                <div class="column">[Magazine cover here]</div>
+                <p>[Table of Contents]</p>
+            `
+        },
+        {
+            typeOfPage: "text",
+            title: "About",
+            background: "background.png",
+            pageContent: `
+                <div class="column">
+                    <h2>Mission</h2>
+                    <p><em>Game Poems</em> is an interactive magazine dedicated to exploring the artistic and poetic potential of short-form videogames by publishing new work directly in a playable format. The magazine foregrounds the convergences that exist between game making and poetry, highlights "born-videogame" poetics, and champions videogame creation as a legitimate and accessible form of poetic practice.</p>
+                </div>
                 <div class="column">
                     <h2>Founding Editor & Publisher</h2>
                     <ul><li>Jordan Magnuson</li></ul>
@@ -584,7 +625,7 @@
                 <p>Vestibulum eu diam metus. In hac habitasse platea dictumst. Praesent consectetur metus nec augue vehicula, in accumsan ipsum aliquet. Aenean tristique consequat metus eget tincidunt. Curabitur ac egestas odio. Integer ut sollicitudin lectus. Etiam iaculis est libero, id bibendum ex rhoncus ac. Aliquam luctus enim at magna convallis vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam egestas, ante scelerisque volutpat luctus, augue dui ornare nunc, in lacinia quam justo eu libero. Pellentesque varius augue eget magna elementum rhoncus. Aenean aliquam lobortis augue, a tempus lacus lobortis eu. In et pulvinar risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sodales metus nec orci auctor tincidunt.</p>
                 <p>Vestibulum tincidunt ex mi, feugiat suscipit risus molestie pretium. Cras dignissim massa vitae augue dictum luctus. Cras dignissim sem a lobortis fermentum. Proin ipsum urna, sodales venenatis pretium et, convallis nec nunc. Ut quis eros ut metus dignissim hendrerit porta ut purus. Donec sodales nisl in sapien tempus rhoncus. Sed at mi sed arcu posuere dapibus vel in eros. Donec placerat mauris sed urna dictum hendrerit. Proin ac lacinia magna. Etiam elit urna, ultricies pretium tempor eget, tincidunt eget tortor. Fusce ullamcorper aliquam augue sed dictum.</p>
                 <p>Integer rutrum iaculis est ac ultricies. Integer a vestibulum purus. Phasellus bibendum tempus purus. Morbi malesuada sodales velit sed ultrices. Phasellus efficitur massa in massa posuere, id aliquam magna gravida. Ut dolor ipsum, laoreet sed tortor at, hendrerit fringilla leo. Aliquam ornare efficitur massa ut congue. Cras bibendum est volutpat nibh interdum sollicitudin eget non lorem. Curabitur tortor magna, faucibus semper est nec, mollis ultricies leo. Sed rutrum, lectus eu semper finibus, est justo consectetur eros, a lobortis mi ex sit amet elit. In hac habitasse platea dictumst. Nulla porttitor eu enim et cursus. Nullam nulla neque, accumsan nec dui vel, maximus auctor tortor. Cras faucibus consequat turpis, at dapibus risus iaculis in. Maecenas eros tellus, placerat id tristique tristique, tempor et ex.</p>
-                <p>Jordan Magnuson<br/>Founding Editor, <em>Game Poems</em></p>
+                <p>Jordan Magnuson</p>
             `
         },
         {
@@ -597,7 +638,7 @@
             location: "Hangzhou, China",
             estimatedPlayTime: "5-10 minutes",
             instructions: "Click your mouse to select petals/buds. Long press to pluck them. Hold still to summon the wind, and observe its effect.",
-            overWhen: "You see 'Game Over.'",
+            overWhen: "You see 'Game Over,' of you decide to leave.",
             statement: `<p>Whether in games or in life, making choices is always key to action. In this game, I want players to simply experience the feeling of difficult decisions, without pressure from story or resource management.</p><p>地上的缝隙<br/>触及几片花瓣<br/>夏天的风</p><p>(Gaps in the ground<br/>a few petals touched<br/>summer wind)</p>`
         },
         {
@@ -675,7 +716,7 @@
             slug: "asunder",
             src: "games/asunder/index.html",
             madeWith: "Unity",
-            author: "Ash Rezvani",
+            author: "Ash Rezvani, Brittany Westlund, Kate Lloyd",
             location: "Missoula, USA",
             estimatedPlayTime: "5-10 minutes",
             instructions: "Use your mouse to drag objects to their correct locations. Look for a sparkling animation that shows you where each object belongs. Try holding still as well.",
@@ -761,6 +802,36 @@
             instructions: "Arrow keys only to interact.",
             overWhen: "",
             statement: `<p>My father's death had a huge impact on me; but regardless, I think the impact on my younger brother was much more profound. We both miss him, but in different ways.</p><p>Sometimes when I drive alone in the old, narrow, empty countryside roads of Portugal, I am reminded of the car crash that took him, and usually, right after, I am reminded of my brother's face, as a four year old, contorted by pain, full of tears.</p><p>I made this game for him. I wanted to capture the liminal sense of peaceful dread before the final moments of someone's life. That dread that overpowers someone and mesmerizes them when they sense and know that the end is near.</p>`
+        },
+        {
+            typeOfPage: "text",
+            title: "Credits & Colophon",
+            background: "background.png",
+            pageContent: `
+                <div class="column">
+                    [Cover image here]
+                </div>
+                <div class="column">
+                    <h2>Cover</h2>
+                    <p>Cover art by Yifan Yuan.</p>
+                    <h2>Type</h2>
+                    <p>Casual Encounter font by Anna Anthropy</br>Source Sans font by Paul D. Hunt</p>
+                    <h2>Honoraria</h2>
+                    <p>Honoraria are offered with support from Winchester School of Art, University of Southampton.</p>
+               </div>
+               <div class="column">
+                    <h2>Accessibility</h2>
+                    <p>We use WAVE and other standard HTML5 accessibility tools to test for accessibility issues. If you have any concerns or suggestions, please contact us.</p>
+                    <h2>Independence</h2>
+                    <p><em>Game Poems</em> is an independent publication.</p>
+                    <h2>Contact</h2>
+                    <p>Web: GamePoems.com<br/>Email: info@gamepoems.com</p>
+                </div>
+                <div class="column">
+                    <h2>License</h2>
+                    <p>Game Poems is an open access publication, distributed under a CC BY 4.0 license. You are free to copy and redistribute it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">here</a>.</p>
+                </div>
+            `
         }
     ];
 
