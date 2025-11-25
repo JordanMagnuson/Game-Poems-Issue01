@@ -92,7 +92,9 @@
 
             --bg-page: #000b7a;
             --bg-panel: #f0eefc;
-            --bg-button: #1e1b4b;
+
+            --topbar-bg: black;
+            --bg-button: black;
 
             --ink-main: #111322;
             --ink-muted: #323654;
@@ -127,7 +129,7 @@
             top: 0;
             z-index: 100;
             height: var(--nav-height);
-            background: #050567;
+            background: var(--topbar-bg);
             color: var(--ink-on-dark);
             display: grid;
             grid-template-columns: 1fr auto 1fr; /* left / center / right */
@@ -338,7 +340,6 @@
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow: 0 10px 24px rgba(5, 5, 39, 0.6);
-            background: #161347;
         }
 
         .sections {
@@ -668,6 +669,7 @@
             typeOfPage: "text",
             title: "Contents",
             background: "background.png",
+            themeColor: "0000bf",
             pageContent: `
                 <p>[Table of Contents]</p>
             `
@@ -676,6 +678,7 @@
             typeOfPage: "text",
             title: "About",
             background: "background.png",
+            themeColor: "0000bf",
             pageContent: `
                 <div class="column">
                     <h2>Mission</h2>
@@ -776,6 +779,7 @@
         {
             typeOfPage: "text",
             title: "Forward",
+            themeColor: "0000bf",
             background: "background.png",
             pageContent: `
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, ex id suscipit finibus, tortor libero commodo purus, quis tempor est mi non libero. Phasellus viverra ac nisi at interdum. Phasellus accumsan rhoncus felis. Mauris blandit commodo risus, lacinia sollicitudin ligula tincidunt id. Mauris rhoncus arcu in sapien pulvinar commodo. Quisque nec odio ac risus varius rutrum. Sed hendrerit auctor risus sit amet volutpat. Vivamus sed tortor nibh. Duis in iaculis velit. Proin sit amet auctor dui.</p>
@@ -804,6 +808,7 @@
             title: "On Second Thought",
             slug: "on-second-thought",
             src: "games/on-second-thought/index.html",
+            themeColor: "#204988",
             madeWith: "Unity",
             author: "Tereza Kotěšovcová",
             location: "Prague, Czech Republic",
@@ -817,6 +822,7 @@
             title: "Firsts",
             slug: "firsts",
             src: "games/firsts/index.html",
+            themeColor: "#2E2622",
             madeWith: "Unity",
             author: "Geoffrey Mugford",
             location: "London, UK",
@@ -830,6 +836,7 @@
             title: "Like I Never Moved at All",
             slug: "like-i-never",
             src: "games/like-i-never/index.html",
+            themeColor: "#0D0D19",
             madeWith: "Unity",
             author: "Adam Pype",
             location: "Seoul, South Korea",
@@ -844,6 +851,7 @@
             title: "Lessons In Anatomy",
             slug: "lessons",
             src: "games/lessons/index.html",
+            themeColor: "#000000",
             cover: "games/lessons/cover.jpg",
             background: "games/lessons/background.jpg",
             madeWith: "Bitsy",
@@ -861,6 +869,7 @@
             title: "Vincent",
             slug: "vincent",
             src: "games/vincent/index.html",
+            themeColor: "#3C4E62",
             cover: "games/vincent/cover.avif",
             background: "games/vincent/background.avif",
             madeWith: "Unity",
@@ -876,11 +885,12 @@
             title: "Asunder",
             slug: "asunder",
             src: "games/asunder/index.html",
+            themeColor: "#4F1521",
             madeWith: "Unity",
             author: "Ash Rezvani, Brittany Westlund, Kate Lloyd",
             location: "Missoula, USA",
             estimatedPlayTime: "5-10 minutes",
-            contentWarning: "Intense soundscape. May be triggering for those who struggle with auditory hallucinations.",
+            contentWarning: "Soundscape may be triggering for those who struggle with auditory hallucinations.",
             instructions: "Use your mouse to drag objects to their correct locations. Look for a sparkling animation that shows you where each object belongs. Try holding still as well.",
             overWhen: "You escape the chaos.",
             statement: `<p>We think chaos can be beautiful and generative, but sometimes, internal chaos feels like a spreading wound. The hardest part of healing is taking the first step, making the first move, starting the process of calming the mind.</p><p>It's a daily, Sisyphean task: clearing your head so that you can enjoy the music life has to offer.</p>`
@@ -904,6 +914,7 @@
             title: "Gambit",
             slug: "gambit",
             src: "games/gambit/index.html",
+            themeColor: "#071821",
             madeWith: "GB Studio",
             author: "Caitlin DeRosa",
             location: "West Islip, USA",
@@ -930,6 +941,7 @@
             title: "Tropic of Dinosaur",
             slug: "tropic",
             src: "games/tropic/index.html",
+            themeColor: "#6E2923",
             madeWith: "Unity",
             author: "Roman Gvozdev",
             location: "Nizhni Novgorod, Russia",
@@ -972,6 +984,7 @@
             typeOfPage: "text",
             title: "Credits & Colophon",
             background: "background.png",
+            themeColor: "0000bf",
             pageContent: `
                 <div class="column">
                     [Cover image here]
@@ -1066,6 +1079,20 @@
         return "";
     }
 
+    function applyThemeColor(page) {
+        const themeColor = page.themeColor;
+
+        if (themeColor) {
+            // Use the per-page color for both the top bar and the primary button
+            document.documentElement.style.setProperty("--topbar-bg", themeColor);
+            document.documentElement.style.setProperty("--bg-button", themeColor);
+        } else {
+            // Reset to defaults when no page-specific color is provided
+            document.documentElement.style.setProperty("--topbar-bg", "#000000");
+            document.documentElement.style.setProperty("--bg-button", "#000000");
+        }
+    }
+
     // --- Rendering functions ----------------------------------------------
 
     function updateNav() {
@@ -1082,6 +1109,9 @@
         }
 
         const page = pages[currentIndex];
+
+        // Apply theme color (topbar + primary button)
+        // applyThemeColor(page);
 
         // Add page-specific class to <body> for easy css targeting.
         const id = page.slug || makeIdFromTitle(page.title || "");
