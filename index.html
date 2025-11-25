@@ -6,37 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-        /* source-sans-3-regular - latin_latin-ext */
+        /* inter-300 - latin_latin-ext */
         @font-face {
             font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-            font-family: 'Source Sans 3';
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            src: url('fonts/inter-v20-latin_latin-ext-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-300italic - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
+            font-style: italic;
+            font-weight: 300;
+            src: url('fonts/inter-v20-latin_latin-ext-300italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-regular - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
-            src: url('fonts/source-sans-3-v19-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+            src: url('fonts/inter-v20-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
         }
-        /* source-sans-3-italic - latin_latin-ext */
+        /* inter-italic - latin_latin-ext */
         @font-face {
             font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-            font-family: 'Source Sans 3';
+            font-family: 'Inter';
             font-style: italic;
             font-weight: 400;
-            src: url('fonts/source-sans-3-v19-latin_latin-ext-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+            src: url('fonts/inter-v20-latin_latin-ext-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
         }
-        /* source-sans-3-700 - latin_latin-ext */
+        /* inter-500 - latin_latin-ext */
         @font-face {
             font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-            font-family: 'Source Sans 3';
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            src: url('fonts/inter-v20-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-500italic - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
+            font-style: italic;
+            font-weight: 500;
+            src: url('fonts/inter-v20-latin_latin-ext-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-600 - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            src: url('fonts/inter-v20-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-600italic - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
+            font-style: italic;
+            font-weight: 600;
+            src: url('fonts/inter-v20-latin_latin-ext-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* inter-700 - latin_latin-ext */
+        @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Inter';
             font-style: normal;
             font-weight: 700;
-            src: url('fonts/source-sans-3-v19-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+            src: url('fonts/inter-v20-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
         }
-        /* source-sans-3-700italic - latin_latin-ext */
+        /* inter-700italic - latin_latin-ext */
         @font-face {
             font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-            font-family: 'Source Sans 3';
+            font-family: 'Inter';
             font-style: italic;
             font-weight: 700;
-            src: url('fonts/source-sans-3-v19-latin_latin-ext-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+            src: url('fonts/inter-v20-latin_latin-ext-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
         }
 
         :root {
@@ -61,7 +109,7 @@
 
         body {
             margin: 0;
-            font-family: "Source Sans 3", sans-serif;
+            font-family: "Inter", sans-serif;
             font-weight: 400;
             font-style: normal;
             font-size: 1.2rem;
@@ -101,7 +149,7 @@
             display: flex;
             align-items: center;
             justify-content: center;  /* centers the title */
-            min-width: 450px;         /* adjust as needed */
+            min-width: 600px;         /* adjust as needed */
         }
 
         .nav-right {
@@ -111,13 +159,13 @@
         }
 
         .brand {
-            font-weight: 600;
+            font-weight: inherit;
         }
 
         .nav-title {
             font-weight: 600;
             text-align: center;
-            max-width: 260px;
+            max-width: 350px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -125,7 +173,6 @@
         }
 
         .page-indicator {
-            font-weight: 500;
             opacity: 0.85;
         }
 
@@ -336,7 +383,7 @@
 
         .text-layout h2 {
             font-size: 1em;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0;
         }
 
         .text-layout p {
@@ -686,7 +733,7 @@
                 <p>Vestibulum eu diam metus. In hac habitasse platea dictumst. Praesent consectetur metus nec augue vehicula, in accumsan ipsum aliquet. Aenean tristique consequat metus eget tincidunt. Curabitur ac egestas odio. Integer ut sollicitudin lectus. Etiam iaculis est libero, id bibendum ex rhoncus ac. Aliquam luctus enim at magna convallis vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam egestas, ante scelerisque volutpat luctus, augue dui ornare nunc, in lacinia quam justo eu libero. Pellentesque varius augue eget magna elementum rhoncus. Aenean aliquam lobortis augue, a tempus lacus lobortis eu. In et pulvinar risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sodales metus nec orci auctor tincidunt.</p>
                 <p>Vestibulum tincidunt ex mi, feugiat suscipit risus molestie pretium. Cras dignissim massa vitae augue dictum luctus. Cras dignissim sem a lobortis fermentum. Proin ipsum urna, sodales venenatis pretium et, convallis nec nunc. Ut quis eros ut metus dignissim hendrerit porta ut purus. Donec sodales nisl in sapien tempus rhoncus. Sed at mi sed arcu posuere dapibus vel in eros. Donec placerat mauris sed urna dictum hendrerit. Proin ac lacinia magna. Etiam elit urna, ultricies pretium tempor eget, tincidunt eget tortor. Fusce ullamcorper aliquam augue sed dictum.</p>
                 <p>Integer rutrum iaculis est ac ultricies. Integer a vestibulum purus. Phasellus bibendum tempus purus. Morbi malesuada sodales velit sed ultrices. Phasellus efficitur massa in massa posuere, id aliquam magna gravida. Ut dolor ipsum, laoreet sed tortor at, hendrerit fringilla leo. Aliquam ornare efficitur massa ut congue. Cras bibendum est volutpat nibh interdum sollicitudin eget non lorem. Curabitur tortor magna, faucibus semper est nec, mollis ultricies leo. Sed rutrum, lectus eu semper finibus, est justo consectetur eros, a lobortis mi ex sit amet elit. In hac habitasse platea dictumst. Nulla porttitor eu enim et cursus. Nullam nulla neque, accumsan nec dui vel, maximus auctor tortor. Cras faucibus consequat turpis, at dapibus risus iaculis in. Maecenas eros tellus, placerat id tristique tristique, tempor et ex.</p>
-                <p>Jordan Magnuson</p>
+                <p>—Jordan Magnuson</p>
             `
         },
         {
@@ -700,7 +747,7 @@
             estimatedPlayTime: "5-10 minutes",
             instructions: "Click your mouse to select petals/buds. Long press to pluck them. Hold still to summon the wind, and observe its effect.",
             overWhen: "You see 'Game Over,' of you decide to leave.",
-            statement: `<p>Whether in games or in life, making choices is always key to action. In this game, I want players to simply experience the feeling of difficult decisions, without pressure from story or resource management.</p><p>地上的缝隙<br/>触及几片花瓣<br/>夏天的风</p><p>(Gaps in the ground<br/>a few petals touched<br/>summer wind)</p>`
+            statement: `<p>地上的缝隙<br/>触及几片花瓣<br/>夏天的风</p><p>Gaps in the ground<br/>a few petals touched<br/>summer wind</p><p>Whether in games or in life, making choices is always key to action. In this game, I want players to simply experience the feeling of difficult decisions, without pressure from story or resource management.</p>`
         },
         {
             typeOfPage: "game",
@@ -876,7 +923,7 @@
                     <h2>Cover</h2>
                     <p>Cover art by Yifan Yuan.</p>
                     <h2>Type</h2>
-                    <p>Casual Encounter font by Anna Anthropy</br>Source Sans font by Paul D. Hunt</p>
+                    <p><em>Casual Encounter</em> font by Anna Anthropy. <em>Inter</em> font by Rasmus Andersson.</p>
                     <h2>Honoraria</h2>
                     <p>Honoraria are offered with support from Winchester School of Art, University of Southampton.</p>
                </div>
@@ -890,7 +937,7 @@
                 </div>
                 <div class="column">
                     <h2>License</h2>
-                    <p>Game Poems is an open access publication, distributed under a CC BY 4.0 license. You are free to copy and redistribute it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">here</a>.</p>
+                    <p><em>Game Poems</em> is an open access publication, distributed under a CC&nbsp;BY&nbsp;4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">here</a>.</p>
                 </div>
             `
         }
