@@ -800,7 +800,7 @@
             location: "Hangzhou, China",
             estimatedPlayTime: "5-10 minutes",
             instructions: "Click your mouse to select petals/buds. Long press to pluck them. Hold still to summon the wind, and observe its effect.",
-            overWhen: "You see 'Game Over,' of you decide to leave.",
+            overWhen: "You see 'Game Over,' or you decide to leave.",
             statement: `<p>地上的缝隙<br/>触及几片花瓣<br/>夏天的风</p><p>Gaps in the ground<br/>a few petals touched<br/>summer wind</p><p>Whether in games or in life, making choices is always key to action. In this game, I want players to simply experience the feeling of difficult decisions, without pressure from story or resource management.</p>`
         },
         {
@@ -852,7 +852,6 @@
             slug: "lessons",
             src: "games/lessons/index.html",
             themeColor: "#000000",
-            cover: "games/lessons/cover.jpg",
             background: "games/lessons/background.jpg",
             madeWith: "Bitsy",
             author: "Kaitlin Bonfiglio",
@@ -1045,6 +1044,25 @@
     const navTitleEl = document.getElementById("navTitle");
     const pageIndicatorEl = document.getElementById("pageIndicator");
 
+    // --- Preload cover + background images for all pages ---------------------
+    function preloadImages() {
+        if (!Array.isArray(pages)) return;
+
+        pages.forEach(page => {
+            const coverSrc = getCoverSrc(page);
+            if (coverSrc) {
+                const img = new Image();
+                img.src = coverSrc;
+            }
+
+            const bgSrc = getBackgroundSrc(page);
+            if (bgSrc) {
+                const img = new Image();
+                img.src = bgSrc;
+            }
+        });
+    }
+
     // --- State -------------------------------------------------------------
 
     let currentIndex = 0;
@@ -1217,6 +1235,11 @@
     playButtonEl.addEventListener("click", showPlay);
     prevBtnEl.addEventListener("click", () => showCover(currentIndex - 1));
     nextBtnEl.addEventListener("click", () => showCover(currentIndex + 1));
+
+    // Preload all cover + background images in the background
+    window.addEventListener("load", () => {
+        preloadImages();
+    });
 
     // --- Init --------------------------------------------------------------
 
