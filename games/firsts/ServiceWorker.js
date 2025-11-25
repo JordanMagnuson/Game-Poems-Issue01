@@ -1,9 +1,9 @@
-const cacheName = "TimeVeil-Firsts-1.0.0";
+const cacheName = "TimeVeil-Firsts-1.1.0";
 const contentToCache = [
-    "Build/v1_0_0.loader.js",
-    "Build/v1_0_0.framework.js.gz",
-    "Build/v1_0_0.data.gz",
-    "Build/v1_0_0.wasm.gz",
+    "Build/v1_1_0.loader.js",
+    "Build/v1_1_0.framework.js.br",
+    "Build/v1_1_0.data.br",
+    "Build/v1_1_0.wasm.br",
     "TemplateData/style.css"
 
 ];
