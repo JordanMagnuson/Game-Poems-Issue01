@@ -1076,29 +1076,6 @@
         nextBtnEl.disabled = currentIndex === pages.length - 1;
     }
 
-    // --- Smart quotes ------------------------------------------------------
-    function smartenText(text) {
-        return text
-            .replace(/(\W|^)"(\S)/g, '$1“$2')   // opening double
-            .replace(/(\S)"(\W|$)/g, '$1”$2')   // closing double
-            .replace(/(\W|^)'(\S)/g, '$1‘$2')   // opening single
-            .replace(/(\S)'(\W|$)/g, '$1’$2');  // closing single
-    }
-
-    function applySmartQuotes(root) {
-        const walker = document.createTreeWalker(
-            root,
-            NodeFilter.SHOW_TEXT,
-            null
-        );
-        let node;
-        while ((node = walker.nextNode())) {
-            node.nodeValue = smartenText(node.nodeValue);
-        }
-    }
-
-    // ----------------------------------------------------------------------
-
     function showCover(index) {
         if (typeof index === "number") {
             currentIndex = Math.max(0, Math.min(index, pages.length - 1));
@@ -1179,9 +1156,6 @@
         gameFrameEl.src = "about:blank";
 
         updateNav();
-
-        // Apply smart quotes to visible text in cover view
-        applySmartQuotes(coverViewEl);
 
         // Keep ?page=<1-based> in the URL without adding history entries
         const url = new URL(window.location);
