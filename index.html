@@ -611,6 +611,11 @@
                             </div>
                         </div>
 
+                        <div class="section-block" id="cwBlock" style="display:none;">
+                            <div class="section-title">Content Warning:</div>
+                            <div id="metaContentWarning" class="section-body"></div>
+                        </div>
+
                         <div class="section-block">
                             <div class="section-title">Gameplay Instructions:</div>
                             <div id="metaInstructions" class="section-body">
@@ -829,6 +834,7 @@
             author: "Adam Pype",
             location: "Seoul, South Korea",
             estimatedPlayTime: "Less than 5 minutes",
+            contentWarning: "Rotational movement that could be uncomfortable for players sensitive to motion sickness.",
             instructions: "Use the left and right arrow keys to turn the diorama. It's recommended to read the poem by cycling with the right arrow, but the poem is written to work in both directions and even loops around, so you can't interact with it in a \"wrong\" way.",
             overWhen: "",
             statement: `<p>I wanted to make a short piece about my feelings around moving, having lived in different places and the weird disconnect I feel between them. I'm from Belgium, but I moved to South Korea a couple years ago, and I find myself drifting back and forth between the life I left behind and the new life I built for myself.</p><p>It's an attempt at trying to capture a very specific feeling of having only yourself to rely on as a home, when the places you cycle through are constantly fleeting and you can't process them all existing at once.</p>`
@@ -845,6 +851,7 @@
             invited: true,
             location: "Los Angeles, USA",
             estimatedPlayTime: "Less than 5 minutes",
+            contentWarning: "Mentions of blood, especially pain with sex, medical gaslighting. No graphic visual content.",
             instructions: "Arrow keys only to interact.",
             overWhen: "",
             statement: `<p>We are constantly rethinking and renegotiating and relearning and reexploring our bodies. I thought about the first time I had sex, and the first time I had sex that was pleasurable to me. Both were first moves that, though tentative, influenced the trajectory of my life.</p><p>As someone with chronic pelvic pain, pain and pleasure have always danced too close for comfort in my own sexual journey. I can't seem to have one without the other. I wanted to explore that intersection, or bond, or duality.</p><p>It was a challenge to represent, especially in the constrained environment of Bitsy as a game-making tool. I loved how much it reminded me of writing poetry, capturing a deep emotional moment in just a handful of words and lines. Each decision demanded thoughtfulness and care. This is not unlike the process of negotiating consent and pleasure in intimacy.</p>`
@@ -873,6 +880,7 @@
             author: "Ash Rezvani, Brittany Westlund, Kate Lloyd",
             location: "Missoula, USA",
             estimatedPlayTime: "5-10 minutes",
+            contentWarning: "Intense soundscape. May be triggering for those who struggle with auditory hallucinations.",
             instructions: "Use your mouse to drag objects to their correct locations. Look for a sparkling animation that shows you where each object belongs. Try holding still as well.",
             overWhen: "You escape the chaos.",
             statement: `<p>We think chaos can be beautiful and generative, but sometimes, internal chaos feels like a spreading wound. The hardest part of healing is taking the first step, making the first move, starting the process of calming the mind.</p><p>It's a daily, Sisyphean task: clearing your head so that you can enjoy the music life has to offer.</p>`
@@ -926,6 +934,7 @@
             author: "Roman Gvozdev",
             location: "Nizhni Novgorod, Russia",
             estimatedPlayTime: "10-20 minutes",
+            contentWarning: "Intense visual landscape with elements that some players may view as grotesque.",
             instructions: "Move your mouse to drag. Sometimes you might need to navigate a difficult passage.",
             overWhen: "The game fades to black.",
             statement: `<p>This game poem is a reflection of my own aging, excitement about the past, about life, the world around me, my anxiety about how I've been living my life, and if I ever was a master of my own being or always have been dragged by somebody or something.</p>`
@@ -1006,6 +1015,8 @@
     const metaContribTypeEl = document.getElementById("metaContribType");
     const metaLocationEl = document.getElementById("metaLocation");
     const metaPlayTimeEl = document.getElementById("metaPlayTime");
+    const metaContentWarningEl = document.getElementById("metaContentWarning");
+    const cwBlockEl = document.getElementById("cwBlock");
     const metaInstructionsEl = document.getElementById("metaInstructions");
     const metaOverWhenEl = document.getElementById("metaOverWhen");
     const metaStatementEl = document.getElementById("metaStatement");
@@ -1114,6 +1125,15 @@
             metaInstructionsEl.textContent = page.instructions || "—";
             metaOverWhenEl.textContent = page.overWhen || "—";
             metaStatementEl.innerHTML = page.statement || "—";
+
+            // Content Warning
+            if (page.contentWarning) {
+                metaContentWarningEl.textContent = page.contentWarning;
+                cwBlockEl.style.display = "block";
+            } else {
+                metaContentWarningEl.textContent = "";
+                cwBlockEl.style.display = "none";
+            }
 
             // Contribution type (invited or editor)
             if (page.invited) {
