@@ -1,4 +1,5 @@
-// --- DOM references ----------------------------------------------------
+// --- DOM references ----------------------------------------------------\
+const topbarEl = document.querySelector("header.topbar");
 
 const coverViewEl = document.getElementById("coverView");
 const playViewEl = document.getElementById("playView");
@@ -121,6 +122,11 @@ function showLanding() {
     coverViewEl.classList.add("hidden");
     playViewEl.classList.add("hidden");
 
+    // Hide top bar
+    if (topbarEl) {
+        topbarEl.classList.add("hidden");
+    }
+
     // Stop any running game
     gameFrameEl.src = "about:blank";
 
@@ -131,11 +137,15 @@ function showLanding() {
 }
 
 function showCover(index) {
-    // NEW: hide landing and clear landing state whenever we show an interior page
+    // hide landing and clear landing state whenever we show an interior page
     if (landingCoverEl) {
         landingCoverEl.classList.add("hidden");
     }
     document.body.classList.remove("landing-active");
+
+    if (topbarEl) {
+        topbarEl.classList.remove("hidden");
+    }
 
     if (typeof index === "number") {
         currentIndex = Math.max(0, Math.min(index, pages.length - 1));

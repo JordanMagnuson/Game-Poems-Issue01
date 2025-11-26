@@ -585,7 +585,3 @@ main {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
 }
-
-body.landing-active header.topbar {
-    display: none;
-}
