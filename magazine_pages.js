@@ -323,7 +323,7 @@ const pages = [
         themeColor: "0000bf",
         pageContent: `
                 <div class="column">
-                    [Cover image here]
+                    <img src="magazine_cover.png" alt="Magazine cover image"/>
                 </div>
                 <div class="column">
                     <h2>Cover</h2>

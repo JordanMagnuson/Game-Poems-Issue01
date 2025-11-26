@@ -421,7 +421,7 @@ main {
 
 .text-layout h2 {
     font-size: 1em;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .text-layout p {
@@ -504,7 +504,7 @@ main {
 }
 
 /* Colophon PAGE: manual 4-column layout using CSS Grid */
-#textLayoutCreditsColophon #textContent {
+.page-CreditsColophon #textContent {
     /* turn off auto-flow columns on this page */
     column-count: 1;
 
@@ -514,21 +514,26 @@ main {
     row-gap: 0;         /* vertical gap if you want it */
 }
 
+.page-CreditsColophon img {
+    width: 95%;
+    margin-top: 0.3em;
+}
+
 /* Responsive tweaks so it doesn’t crush on narrow screens */
 @media (max-width: 1200px) {
-    #textLayoutCreditsColophon #textContent {
+    .page-CreditsColophon #textContent {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 900px) {
-    #textLayoutCreditsColophon #textContent {
+    .page-CreditsColophon #textContent {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 600px) {
-    #textLayoutCreditsColophon #textContent {
+    .page-CreditsColophon #textContent {
         grid-template-columns: 1fr;
     }
 }
