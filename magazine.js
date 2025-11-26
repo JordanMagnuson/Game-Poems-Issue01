@@ -30,7 +30,6 @@ const nextBtnEl = document.getElementById("nextBtn");
 const navTitleEl = document.getElementById("navTitle");
 const pageIndicatorEl = document.getElementById("pageIndicator");
 
-// NEW: landing cover references
 const landingCoverEl = document.getElementById("landingCover");
 const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
 
@@ -131,7 +130,7 @@ function showLanding() {
 }
 
 function showCover(index) {
-    // NEW: hide landing and clear landing state whenever we show an interior page
+    // Hide landing and clear landing state whenever we show an interior page
     if (landingCoverEl) {
         landingCoverEl.classList.add("hidden");
     }
@@ -258,16 +257,27 @@ prevBtnEl.addEventListener("click", () => {
     }
 });
 
-// NEW: landing cover "Play"/"Enter" button
 if (enterMagazineBtnEl) {
     enterMagazineBtnEl.addEventListener("click", () => {
-        // Hide landing and show the first magazine page
-        showCover(0);
+        // Prevent double-trigger if user clicks twice quickly
+        if (document.body.classList.contains("landing-opening")) return;
 
-        // Update ?page=1 in the URL for consistency
-        const url = new URL(window.location);
-        url.searchParams.set("page", "1");
-        window.history.replaceState({}, "", url);
+        // Add class to start the CSS "book opening" animation
+        document.body.classList.add("landing-opening");
+
+        // Wait for the animation to finish (0.6s matches the CSS duration)
+        setTimeout(() => {
+            // Now actually enter the magazine on page 1
+            showCover(0);
+
+            // Update ?page=1 in the URL for consistency
+            const url = new URL(window.location);
+            url.searchParams.set("page", "1");
+            window.history.replaceState({}, "", url);
+
+            // Clear the opening state
+            document.body.classList.remove("landing-opening");
+        }, 600);
     });
 }
 

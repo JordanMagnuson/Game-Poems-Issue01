@@ -226,6 +226,15 @@ main {
     padding: 60px; /* breathing room at sides */
     background-color: rgba(255, 255, 255, 0.8); /* Adjust background image lightness/opacity/transparency. Because this is an overlay, higher value = more transparent background. */
     background-blend-mode: lighten;
+
+    /* Cover/content view starts transparent and fades in when visible */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Once we're no longer on the landing screen, the interior can be visible */
+body:not(.landing-active) #coverView {
+    opacity: 1;
 }
 
 .cover-inner {
@@ -562,6 +571,7 @@ main {
     align-items: center;
     justify-content: center;
     background: var(--bg-page);
+    perspective: 1400px; /* makes rotateY feel like real depth */
 }
 
 .landing-cover-button {
@@ -572,16 +582,32 @@ main {
 }
 
 .landing-cover-image {
-    max-height: 75vh;      /* or whatever looks right */
+    max-height: 60vh;      /* or whatever looks right */
     max-width: 75vw;
     width: auto;           /* scales on small screens */
     height: auto;
     box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    transition:
+            transform 0.6s ease,
+            opacity 0.6s ease,
+            box-shadow 0.6s ease;
+    transform-origin: left center;
 }
 
-.landing-cover-button:hover .landing-cover-image,
-.landing-cover-button:focus-visible .landing-cover-image {
+/* When we're transitioning from landing cover into the magazine interior */
+body.landing-opening .landing-cover-image {
+    /* 3D-ish tilt like opening a book */
+    transform:
+            translateY(-5vh)
+            translateX(5vw)
+            scale(1.3)
+            rotateY(-50deg);
+    opacity: 0;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.landing-opening) .landing-cover-button:hover .landing-cover-image,
+body:not(.landing-opening) .landing-cover-button:focus-visible .landing-cover-image {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
 }
