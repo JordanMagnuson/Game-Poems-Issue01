@@ -268,7 +268,7 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
-        statement: `<p>Meeting strangers is hard.<br/>Perceiving them is harder.<br/>Try, and try again.</p><p>—<br/>Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy." Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>`
+        statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><div class="section-title">Acknowledgments:</div><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in Self-Portrait in a Convex Mirror, Viking Press, 1975). Line art adapted from reference key to The Old Club by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p><p>Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Max Bradbury's "Pixsy", Sean S. LeBlanc's "dialog pause" hack, and David Mowatt's "bitsymuse" hack. </p>`
     },
     {
         typeOfPage: "game",
