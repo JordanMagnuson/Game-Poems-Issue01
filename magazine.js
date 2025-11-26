@@ -30,7 +30,12 @@ const nextBtnEl = document.getElementById("nextBtn");
 const navTitleEl = document.getElementById("navTitle");
 const pageIndicatorEl = document.getElementById("pageIndicator");
 
+// NEW: landing cover references
+const landingCoverEl = document.getElementById("landingCover");
+const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
+
 // --- Preload cover + background images for all pages ---------------------
+
 function preloadImages() {
     if (!Array.isArray(pages)) return;
 
@@ -108,6 +113,12 @@ function updateNav() {
 }
 
 function showCover(index) {
+    // NEW: hide landing and clear landing state whenever we show an interior page
+    if (landingCoverEl) {
+        landingCoverEl.classList.add("hidden");
+    }
+    document.body.classList.remove("landing-active");
+
     if (typeof index === "number") {
         currentIndex = Math.max(0, Math.min(index, pages.length - 1));
     }
@@ -222,6 +233,19 @@ playButtonEl.addEventListener("click", showPlay);
 prevBtnEl.addEventListener("click", () => showCover(currentIndex - 1));
 nextBtnEl.addEventListener("click", () => showCover(currentIndex + 1));
 
+// NEW: landing cover "Play"/"Enter" button
+if (enterMagazineBtnEl) {
+    enterMagazineBtnEl.addEventListener("click", () => {
+        // Hide landing and show the first magazine page
+        showCover(0);
+
+        // Update ?page=1 in the URL for consistency
+        const url = new URL(window.location);
+        url.searchParams.set("page", "1");
+        window.history.replaceState({}, "", url);
+    });
+}
+
 // Preload all cover + background images in the background
 window.addEventListener("load", () => {
     preloadImages();
@@ -234,11 +258,22 @@ if (pages.length > 0) {
     const params = new URLSearchParams(window.location.search);
     const pageParam = parseInt(params.get("page"), 10);
 
-    let initialIndex = 0;
-    if (!Number.isNaN(pageParam)) {
-        // convert 1-based ?page=N into 0-based index
-        initialIndex = Math.min(Math.max(pageParam - 1, 0), pages.length - 1);
+    if (Number.isNaN(pageParam)) {
+        // No ?page param: show landing screen (if present), otherwise fall back to first page
+        if (landingCoverEl) {
+            document.body.classList.add("landing-active");
+            landingCoverEl.classList.remove("hidden");
+            coverViewEl.classList.add("hidden");
+            playViewEl.classList.add("hidden");
+        } else {
+            showCover(0);
+        }
+    } else {
+        // ?page=N present: skip landing and go straight to that page
+        const initialIndex = Math.min(
+            Math.max(pageParam - 1, 0),
+            pages.length - 1
+        );
+        showCover(initialIndex);
     }
-
-    showCover(initialIndex);
 }
