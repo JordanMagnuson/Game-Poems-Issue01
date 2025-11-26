@@ -556,128 +556,36 @@ main {
 
 /* ---------- Landing cover ---------- */
 
-body.landing-active header.topbar {
-    display: none;
-}
-
 #landingCover {
     min-height: 100vh;
-    /* Swap this out for your actual cover art: */
-    background:
-            radial-gradient(circle at 20% 20%, rgba(255, 0, 184, 0.15), transparent 60%),
-            radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.4), transparent 60%),
-            var(--bg-page);
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 60px;
-    color: #ffcdfc;
+    background: var(--bg-page);
 }
 
-.landing-inner {
-    max-width: 900px;
-    width: 100%;
-}
-
-.landing-title-block {
-    /* This shrink-wraps the width to the title text, then centers it */
-    max-width: fit-content;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.landing-title {
-    font-family: "Inter", system-ui, sans-serif;
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #ff34c8; /* bright pink */
-    margin: 0 0 0.2em;
-}
-
-/* 3-column subtitle that lines up with the title width */
-.landing-subtitle-row {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    width: 100%;
-    font-size: 1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.8rem;
-}
-
-.landing-subtitle-row .left {
-    text-align: left;
-}
-
-.landing-subtitle-row .center {
-    text-align: center;
-}
-
-.landing-subtitle-row .right {
-    text-align: right;
-}
-
-/* Big circular play button, centered with the title */
-.landing-play-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.8rem auto;
-
-    border-radius: 50%;
+.landing-cover-button {
     border: none;
-    background: #ff34c8;
-    color: #050617;
-    font-size: 2.4rem;
-    cursor: pointer;
-
-    box-shadow: 0 12px 32px rgba(5, 5, 39, 0.7);
-    transition:
-            transform 0.12s ease,
-            box-shadow 0.12s ease,
-            background 0.15s ease;
-}
-
-.landing-play-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(5, 5, 39, 0.85);
-    background: #ff5cd4;
-}
-
-/* Contributor list aligned with left edge of the title text */
-.landing-contributors {
-    list-style: none;
     padding: 0;
-    margin: 0;
-    text-align: left; /* aligns with left edge of title-block */
-    font-size: 0.95rem;
-    line-height: 1.4;
+    background: none;
+    cursor: pointer;
 }
 
-.landing-contributors li + li {
-    margin-top: 0.05rem;
+.landing-cover-image {
+    max-height: 75vh;      /* or whatever looks right */
+    max-width: 75vw;
+    width: auto;           /* scales on small screens */
+    height: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-/* Small-screen tweaks */
-@media (max-width: 600px) {
-    #landingCover {
-        padding: 24px;
-    }
-
-    .landing-title {
-        font-size: clamp(2.4rem, 10vw, 3rem);
-    }
-
-    .landing-play-button {
-        width: 96px;
-        height: 96px;
-        font-size: 2rem;
-    }
+.landing-cover-button:hover .landing-cover-image,
+.landing-cover-button:focus-visible .landing-cover-image {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.9);
 }
 
+body.landing-active header.topbar {
+    display: none;
+}
