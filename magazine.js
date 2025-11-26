@@ -106,10 +106,28 @@ function applyThemeColor(page) {
 
 function updateNav() {
     const page = pages[currentIndex];
+    const atFirstPage = currentIndex === 0;
     navTitleEl.textContent = page.title || "Page";
     pageIndicatorEl.textContent = `Page ${currentIndex + 1} of ${pages.length}`;
-    prevBtnEl.disabled = currentIndex === 0;
+    prevBtnEl.disabled = atFirstPage && !landingCoverEl;
     nextBtnEl.disabled = currentIndex === pages.length - 1;
+}
+
+function showLanding() {
+    if (!landingCoverEl) return;
+
+    document.body.classList.add("landing-active");
+    landingCoverEl.classList.remove("hidden");
+    coverViewEl.classList.add("hidden");
+    playViewEl.classList.add("hidden");
+
+    // Stop any running game
+    gameFrameEl.src = "about:blank";
+
+    // Remove ?page from the URL
+    const url = new URL(window.location);
+    url.searchParams.delete("page");
+    window.history.replaceState({}, "", url);
 }
 
 function showCover(index) {
@@ -230,8 +248,15 @@ function showPlay() {
 // --- Event wiring ------------------------------------------------------
 
 playButtonEl.addEventListener("click", showPlay);
-prevBtnEl.addEventListener("click", () => showCover(currentIndex - 1));
 nextBtnEl.addEventListener("click", () => showCover(currentIndex + 1));
+prevBtnEl.addEventListener("click", () => {
+    // If we're on the first page and have a landing cover, go back to landing
+    if (currentIndex === 0 && landingCoverEl) {
+        showLanding();
+    } else {
+        showCover(currentIndex - 1);
+    }
+});
 
 // NEW: landing cover "Play"/"Enter" button
 if (enterMagazineBtnEl) {
@@ -261,10 +286,7 @@ if (pages.length > 0) {
     if (Number.isNaN(pageParam)) {
         // No ?page param: show landing screen (if present), otherwise fall back to first page
         if (landingCoverEl) {
-            document.body.classList.add("landing-active");
-            landingCoverEl.classList.remove("hidden");
-            coverViewEl.classList.add("hidden");
-            playViewEl.classList.add("hidden");
+            showLanding();
         } else {
             showCover(0);
         }
