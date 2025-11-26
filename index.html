@@ -87,6 +87,23 @@
             src: url('fonts/inter-v20-latin_latin-ext-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
         }
 
+        /* --- Cover fonts (TTF) --- */
+        @font-face {
+            font-display: swap;
+            font-family: 'CasualEncounter';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/CasualEncounter.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: 'Font04B03';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/04B_03__.TTF') format('truetype');
+        }
+
         :root {
             --nav-height: 60px;
 
@@ -240,6 +257,150 @@
             margin: 0 auto;      /* centers block in viewport */
             width: 100%;
             max-width: 1920px;
+        }
+
+        /* ---------- ISSUE COVER LAYOUT ---------- */
+
+        .is-cover-page #coverView {
+            min-height: 100vh;
+            padding: 40px;
+            background-color: transparent;
+            background-blend-mode: normal;
+        }
+
+        #issueCover {
+            min-height: calc(100vh - var(--nav-height));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .issue-cover-inner {
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(2rem, 4vh, 3.5rem);
+            color: #ff45ff;
+        }
+
+        .issue-title-block {
+            text-align: center;
+        }
+
+        .issue-title-main {
+            font-family: 'CasualEncounter', 'Inter', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .issue-subtitles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            font-family: 'Font04B03', 'Inter', sans-serif;
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
+        }
+
+        .issue-subtitles span {
+            white-space: nowrap;
+        }
+
+        .issue-middle-row {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(2rem, 8vw, 4rem);
+        }
+
+        .issue-contributors {
+            flex: 1 1 0;
+            max-width: 360px;
+            font-family: "Inter", sans-serif;
+            font-size: clamp(1rem, 1.4vw, 1.25rem);
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .issue-contributors-title {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .issue-contributors-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .issue-contributors-list li {
+            margin: 0.05rem 0;
+        }
+
+        .issue-play-wrapper {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-play-button {
+            width: min(180px, 36vw);
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            border: none;
+            background: #ff00ff;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+            color: #00004b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(3rem, 5vw, 4rem);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+        }
+
+        .cover-play-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+            background: #ff33ff;
+        }
+
+        .cover-play-button:active {
+            transform: translateY(0);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+        }
+
+        .cover-play-icon {
+            display: inline-block;
+            margin-left: 0.1em;
+        }
+
+        @media (max-width: 900px) {
+            .issue-middle-row {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .issue-contributors {
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .is-cover-page #coverView {
+                padding: 24px;
+            }
+
+            .issue-subtitles {
+                gap: 0.75rem;
+                flex-direction: column;
+            }
         }
 
         /* ---------- GAME LAYOUT ---------- */
@@ -588,6 +749,46 @@
     <section id="coverView">
         <div class="cover-inner">
 
+            <!-- ISSUE COVER (FRONT COVER) -->
+            <section id="issueCover" class="hidden">
+                <div class="issue-cover-inner">
+                    <div class="issue-title-block">
+                        <div class="issue-title-main">Game Poems</div>
+                        <div class="issue-subtitles">
+                            <span>Issue #1</span>
+                            <span>"First Moves"</span>
+                            <span>Fall 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="issue-middle-row">
+                        <div class="issue-contributors">
+                            <ul class="issue-contributors-list">
+                                <li>Brendan Allen</li>
+                                <li>Gregory Avery-Weir</li>
+                                <li>Pippin Barr</li>
+                                <li>Kaitlin Bonfiglio</li>
+                                <li>Sanches Bucharest</li>
+                                <li>Caitlin DeRosa</li>
+                                <li>Roman Gvozdev</li>
+                                <li>Tereza Kotěšovcová</li>
+                                <li>Geoffrey Mugford</li>
+                                <li>Adam Pype</li>
+                                <li>A. Rezvani, B. Westlund, K. Lloyd</li>
+                                <li>Melanie Wigger</li>
+                                <li>Yifan Yuan</li>
+                            </ul>
+                        </div>
+
+                        <div class="issue-play-wrapper">
+                            <button id="coverEnterButton" class="cover-play-button" aria-label="Enter the magazine">
+                                <span class="cover-play-icon">▶</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- GAME PAGE LAYOUT -->
             <div id="gameLayout" class="cover-grid">
                 <div class="cover-image-frame">
@@ -666,6 +867,12 @@
 <script>
     // --- Page data ---------------------------------------------------------
     const pages = [
+        {
+            typeOfPage: "cover",
+            title: "Cover",
+            background: "background.png",
+            themeColor: "#0000bf"
+        },
         {
             typeOfPage: "text",
             title: "Contents",
@@ -1021,6 +1228,8 @@
     const coverViewEl = document.getElementById("coverView");
     const playViewEl = document.getElementById("playView");
 
+    const issueCoverEl = document.getElementById("issueCover");
+
     const gameLayoutEl = document.getElementById("gameLayout");
     const textLayoutEl = document.getElementById("textLayout");
 
@@ -1047,6 +1256,9 @@
     const nextBtnEl = document.getElementById("nextBtn");
     const navTitleEl = document.getElementById("navTitle");
     const pageIndicatorEl = document.getElementById("pageIndicator");
+
+    const coverEnterButtonEl = document.getElementById("coverEnterButton");
+    const topbarEl = document.querySelector("header.topbar");
 
     // --- Preload cover + background images for all pages ---------------------
     function preloadImages() {
@@ -1131,21 +1343,40 @@
         }
 
         const page = pages[currentIndex];
+        const isCoverPage = page.typeOfPage === "cover";
 
         // Apply theme color (topbar + primary button)
         // applyThemeColor(page);
 
         // Add page-specific class to <body> for easy css targeting.
         const id = page.slug || makeIdFromTitle(page.title || "");
-        document.body.className = "";          // clear previous classes
-        document.body.classList.add(`page-${id}`);
+        document.body.className = "";
+        if (id) {
+            document.body.classList.add(`page-${id}`);
+        }
+        if (isCoverPage) {
+            document.body.classList.add("is-cover-page");
+        }
 
-        // Background image (for both page types)
+        // Background image (for all page types)
         const bgSrc = getBackgroundSrc(page);
         coverViewEl.style.backgroundImage = bgSrc ? `url("${bgSrc}")` : "none";
 
+        // Hide/show topbar on cover
+        if (isCoverPage) {
+            topbarEl.classList.add("hidden");
+        } else {
+            topbarEl.classList.remove("hidden");
+        }
+
         // Decide layout by typeOfPage
-        if (page.typeOfPage === "text") {
+        if (page.typeOfPage === "cover") {
+            issueCoverEl.classList.remove("hidden");
+            gameLayoutEl.classList.add("hidden");
+            textLayoutEl.classList.add("hidden");
+        } else if (page.typeOfPage === "text") {
+            issueCoverEl.classList.add("hidden");
+
             // Hide game layout, show text layout
             gameLayoutEl.classList.add("hidden");
             textLayoutEl.classList.remove("hidden");
@@ -1160,6 +1391,8 @@
             textContentEl.innerHTML = page.pageContent || "";
 
         } else {
+            issueCoverEl.classList.add("hidden");
+
             // Default to game layout
             textLayoutEl.classList.add("hidden");
             textLayoutEl.id = "textLayout"; // reset base id when not on a text page
@@ -1239,6 +1472,13 @@
     playButtonEl.addEventListener("click", showPlay);
     prevBtnEl.addEventListener("click", () => showCover(currentIndex - 1));
     nextBtnEl.addEventListener("click", () => showCover(currentIndex + 1));
+
+    if (coverEnterButtonEl) {
+        coverEnterButtonEl.addEventListener("click", () => {
+            // Jump from cover to Contents (index 1)
+            showCover(1);
+        });
+    }
 
     // Preload all cover + background images in the background
     window.addEventListener("load", () => {

@@ -1,0 +1,7 @@
+Author found at: http://www.04.jp.org/
+ 
+Author: Yuji Oshimoto (04@DSG4.com)
+
+License: "Freeware: you may use them as you like."
+
+See also discussion at https://github.com/tstriker/apx/issues/4
