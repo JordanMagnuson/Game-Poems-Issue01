@@ -1,13 +1,13 @@
 const pages = [
-    {
-        title: "Contents",
-        typeOfPage: "text",
-        background: "background.png",
-        themeColor: "0000bf",
-        pageContent: `
-                <p>[Table of Contents - coming soon!]</p>
-            `
-    },
+    // {
+    //     title: "Contents",
+    //     typeOfPage: "text",
+    //     background: "background.png",
+    //     themeColor: "0000bf",
+    //     pageContent: `
+    //             <p>[Table of Contents - coming soon!]</p>
+    //         `
+    // },
     {
         title: "About",
         typeOfPage: "text",
@@ -110,20 +110,20 @@ const pages = [
                 </div>
             `
     },
-    {
-        title: "Forward",
-        typeOfPage: "text",
-        themeColor: "0000bf",
-        background: "background.png",
-        pageContent: `
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, ex id suscipit finibus, tortor libero commodo purus, quis tempor est mi non libero. Phasellus viverra ac nisi at interdum. Phasellus accumsan rhoncus felis. Mauris blandit commodo risus, lacinia sollicitudin ligula tincidunt id. Mauris rhoncus arcu in sapien pulvinar commodo. Quisque nec odio ac risus varius rutrum. Sed hendrerit auctor risus sit amet volutpat. Vivamus sed tortor nibh. Duis in iaculis velit. Proin sit amet auctor dui.</p>
-                <p>Pellentesque eu ornare nulla, a bibendum neque. Mauris pretium dolor et augue mollis tincidunt. Proin sem risus, semper in tellus eget, tincidunt semper risus. Ut quis lorem vel felis pretium dictum non in massa. Nullam vel porta velit. Sed varius sapien diam, vitae tincidunt magna fermentum a. Ut pulvinar quam ac neque vulputate, ac posuere nibh tempor. Quisque aliquam velit eget laoreet sagittis.</p>
-                <p>Vestibulum eu diam metus. In hac habitasse platea dictumst. Praesent consectetur metus nec augue vehicula, in accumsan ipsum aliquet. Aenean tristique consequat metus eget tincidunt. Curabitur ac egestas odio. Integer ut sollicitudin lectus. Etiam iaculis est libero, id bibendum ex rhoncus ac. Aliquam luctus enim at magna convallis vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam egestas, ante scelerisque volutpat luctus, augue dui ornare nunc, in lacinia quam justo eu libero. Pellentesque varius augue eget magna elementum rhoncus. Aenean aliquam lobortis augue, a tempus lacus lobortis eu. In et pulvinar risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sodales metus nec orci auctor tincidunt.</p>
-                <p>Vestibulum tincidunt ex mi, feugiat suscipit risus molestie pretium. Cras dignissim massa vitae augue dictum luctus. Cras dignissim sem a lobortis fermentum. Proin ipsum urna, sodales venenatis pretium et, convallis nec nunc. Ut quis eros ut metus dignissim hendrerit porta ut purus. Donec sodales nisl in sapien tempus rhoncus. Sed at mi sed arcu posuere dapibus vel in eros. Donec placerat mauris sed urna dictum hendrerit. Proin ac lacinia magna. Etiam elit urna, ultricies pretium tempor eget, tincidunt eget tortor. Fusce ullamcorper aliquam augue sed dictum.</p>
-                <p>Integer rutrum iaculis est ac ultricies. Integer a vestibulum purus. Phasellus bibendum tempus purus. Morbi malesuada sodales velit sed ultrices. Phasellus efficitur massa in massa posuere, id aliquam magna gravida. Ut dolor ipsum, laoreet sed tortor at, hendrerit fringilla leo. Aliquam ornare efficitur massa ut congue. Cras bibendum est volutpat nibh interdum sollicitudin eget non lorem. Curabitur tortor magna, faucibus semper est nec, mollis ultricies leo. Sed rutrum, lectus eu semper finibus, est justo consectetur eros, a lobortis mi ex sit amet elit. In hac habitasse platea dictumst. Nulla porttitor eu enim et cursus. Nullam nulla neque, accumsan nec dui vel, maximus auctor tortor. Cras faucibus consequat turpis, at dapibus risus iaculis in. Maecenas eros tellus, placerat id tristique tristique, tempor et ex.</p>
-                <p>—Jordan Magnuson</p>
-            `
-    },
+    // {
+    //     title: "Forward",
+    //     typeOfPage: "text",
+    //     themeColor: "0000bf",
+    //     background: "background.png",
+    //     pageContent: `
+    //             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, ex id suscipit finibus, tortor libero commodo purus, quis tempor est mi non libero. Phasellus viverra ac nisi at interdum. Phasellus accumsan rhoncus felis. Mauris blandit commodo risus, lacinia sollicitudin ligula tincidunt id. Mauris rhoncus arcu in sapien pulvinar commodo. Quisque nec odio ac risus varius rutrum. Sed hendrerit auctor risus sit amet volutpat. Vivamus sed tortor nibh. Duis in iaculis velit. Proin sit amet auctor dui.</p>
+    //             <p>Pellentesque eu ornare nulla, a bibendum neque. Mauris pretium dolor et augue mollis tincidunt. Proin sem risus, semper in tellus eget, tincidunt semper risus. Ut quis lorem vel felis pretium dictum non in massa. Nullam vel porta velit. Sed varius sapien diam, vitae tincidunt magna fermentum a. Ut pulvinar quam ac neque vulputate, ac posuere nibh tempor. Quisque aliquam velit eget laoreet sagittis.</p>
+    //             <p>Vestibulum eu diam metus. In hac habitasse platea dictumst. Praesent consectetur metus nec augue vehicula, in accumsan ipsum aliquet. Aenean tristique consequat metus eget tincidunt. Curabitur ac egestas odio. Integer ut sollicitudin lectus. Etiam iaculis est libero, id bibendum ex rhoncus ac. Aliquam luctus enim at magna convallis vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam egestas, ante scelerisque volutpat luctus, augue dui ornare nunc, in lacinia quam justo eu libero. Pellentesque varius augue eget magna elementum rhoncus. Aenean aliquam lobortis augue, a tempus lacus lobortis eu. In et pulvinar risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sodales metus nec orci auctor tincidunt.</p>
+    //             <p>Vestibulum tincidunt ex mi, feugiat suscipit risus molestie pretium. Cras dignissim massa vitae augue dictum luctus. Cras dignissim sem a lobortis fermentum. Proin ipsum urna, sodales venenatis pretium et, convallis nec nunc. Ut quis eros ut metus dignissim hendrerit porta ut purus. Donec sodales nisl in sapien tempus rhoncus. Sed at mi sed arcu posuere dapibus vel in eros. Donec placerat mauris sed urna dictum hendrerit. Proin ac lacinia magna. Etiam elit urna, ultricies pretium tempor eget, tincidunt eget tortor. Fusce ullamcorper aliquam augue sed dictum.</p>
+    //             <p>Integer rutrum iaculis est ac ultricies. Integer a vestibulum purus. Phasellus bibendum tempus purus. Morbi malesuada sodales velit sed ultrices. Phasellus efficitur massa in massa posuere, id aliquam magna gravida. Ut dolor ipsum, laoreet sed tortor at, hendrerit fringilla leo. Aliquam ornare efficitur massa ut congue. Cras bibendum est volutpat nibh interdum sollicitudin eget non lorem. Curabitur tortor magna, faucibus semper est nec, mollis ultricies leo. Sed rutrum, lectus eu semper finibus, est justo consectetur eros, a lobortis mi ex sit amet elit. In hac habitasse platea dictumst. Nulla porttitor eu enim et cursus. Nullam nulla neque, accumsan nec dui vel, maximus auctor tortor. Cras faucibus consequat turpis, at dapibus risus iaculis in. Maecenas eros tellus, placerat id tristique tristique, tempor et ex.</p>
+    //             <p>—Jordan Magnuson</p>
+    //         `
+    // },
     {
         typeOfPage: "game",
         title: "Hesitation",
