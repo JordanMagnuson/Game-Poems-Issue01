@@ -31,7 +31,6 @@ const nextBtnEl = document.getElementById("nextBtn");
 const navTitleEl = document.getElementById("navTitle");
 const pageIndicatorEl = document.getElementById("pageIndicator");
 
-// NEW: landing cover references
 const landingCoverEl = document.getElementById("landingCover");
 const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
 
@@ -268,7 +267,7 @@ prevBtnEl.addEventListener("click", () => {
     }
 });
 
-// NEW: landing cover "Play"/"Enter" button
+// Landing cover "Play"/"Enter" button
 if (enterMagazineBtnEl) {
     enterMagazineBtnEl.addEventListener("click", () => {
         // Hide landing and show the first magazine page
@@ -285,6 +284,20 @@ if (enterMagazineBtnEl) {
 window.addEventListener("load", () => {
     preloadImages();
 });
+
+// Home button
+const homeBtnEl = document.getElementById("homeBtn");
+if (homeBtnEl) {
+    homeBtnEl.addEventListener("click", (e) => {
+        e.preventDefault(); // avoid navigation
+        showLanding();
+
+        // Clean the ?page param
+        const url = new URL(window.location);
+        url.searchParams.delete("page");
+        window.history.replaceState({}, "", url);
+    });
+}
 
 // --- Init --------------------------------------------------------------
 
