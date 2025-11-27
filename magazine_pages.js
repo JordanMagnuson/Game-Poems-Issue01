@@ -158,13 +158,13 @@ const pages = [
         src: "games/like-i-never/index.html",
         themeColor: "#0D0D19",
         madeWith: "Unity",
-        author: "Adam Pype",
-        location: "Seoul, South Korea",
+        author: "Adam Pype, Viktor Kraus",
+        location: "Seoul, South Korea & Ludwigshafen am Rhein, Germany",
         estimatedPlayTime: "Less than 5 minutes.",
         contentWarning: "Rotational movement that could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Use the left and right arrow keys to turn the diorama. It's recommended to read the poem by cycling with the right arrow, but the poem is written to work in both directions and even loops around, so you can't interact with it in a \"wrong\" way.",
         overWhen: "You reach the end of the poem (or not).",
-        statement: `<p>I wanted to make a short piece about my feelings around moving, having lived in different places and the weird disconnect I feel between them. I'm from Belgium, but I moved to South Korea a couple years ago, and I find myself drifting back and forth between the life I left behind and the new life I built for myself.</p><p>It's an attempt at trying to capture a very specific feeling of having only yourself to rely on as a home, when the places you cycle through are constantly fleeting and you can't process them all existing at once.</p>`
+        statement: `<p>I (Adam) wanted to make a short piece about my feelings around moving, having lived in different places and the weird disconnect I feel between them. I'm from Belgium, but I moved to South Korea a couple years ago, and I find myself drifting back and forth between the life I left behind and the new life I built for myself.</p><p>It's an attempt at trying to capture a very specific feeling of having only yourself to rely on as a home, when the places you cycle through are constantly fleeting and you can't process them all existing at once.</p>`
     },
     {
         typeOfPage: "game",
@@ -186,7 +186,6 @@ const pages = [
         slug: "lessons",
         src: "games/lessons/index.html",
         themeColor: "#000000",
-        cover: "games/lessons/cover.jpg",
         background: "games/lessons/background.jpg",
         madeWith: "Bitsy",
         author: "Kaitlin Bonfiglio",
