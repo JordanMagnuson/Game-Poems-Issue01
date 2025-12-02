@@ -539,8 +539,12 @@ main {
 }
 
 /* FORWARD PAGE */
-#textLayoutForward #textContent p {
+.page-Forward #textContent {
     text-align: justify;
+    font-size: 1.0rem;
+}
+
+.page-Forward #textContent p {
     margin-top: 0;
 }
 
