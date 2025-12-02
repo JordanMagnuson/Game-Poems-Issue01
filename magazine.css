@@ -505,22 +505,39 @@ main {
 
 /* CONTENTS PAGE: 4-column layout for table of contents */
 #textLayoutContents #textContent {
-    /* turn off auto-flow newspaper columns on this page */
     column-count: 1;
-
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 2rem;   /* horizontal gap between columns */
-    row-gap: 1rem;      /* vertical gap between rows */
+    column-gap: 2rem;
+    row-gap: 0;
 }
 
-/* Individual TOC items */
-#textLayoutContents .toc-item {
+/* Each child is one logical column: intro, games, games, final */
+#textLayoutContents .toc-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     break-inside: avoid;
-    padding: 0.25rem 0;
 }
 
-/* Responsive tweaks so it doesn't crush on narrow screens */
+/* Base TOC item box */
+#textLayoutContents .toc-item {
+    padding: 0.15rem 0;
+}
+
+/* Title line (for both games and text pages) */
+#textLayoutContents .toc-title {
+    font-weight: 600;
+}
+
+/* Author line (only used on game entries) */
+#textLayoutContents .toc-author {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin-top: 0.1rem;
+}
+
+/* Responsive tweaks */
 @media (max-width: 1200px) {
     #textLayoutContents #textContent {
         grid-template-columns: repeat(3, minmax(0, 1fr));

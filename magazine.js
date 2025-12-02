@@ -104,22 +104,108 @@ function applyThemeColor(page) {
 
 // --- CONTENTS PAGE helper ----------------------------------------------
 function buildContentsGrid() {
-    // We assume we're currently on the Contents page
     const container = textContentEl;
+    if (!container) return;
 
-    // Clear anything that might be there (including the placeholder comment)
+    // Clear any existing content (including placeholder HTML)
     container.innerHTML = "";
 
-    pages.forEach((p, index) => {
-        // Skip the Contents page itself (index 0)
-        if (index === 0) return;
+    // Create four column wrappers:
+    // 1) Intro text pages (About, Forward)
+    // 2) Games (left half)
+    // 3) Games (right half)
+    // 4) Final text pages (e.g., Credits & Colophon)
+    const introCol = document.createElement("div");
+    introCol.className = "toc-column toc-column-intro";
 
+    const gamesLeftCol = document.createElement("div");
+    gamesLeftCol.className = "toc-column toc-column-games toc-column-games-left";
+
+    const gamesRightCol = document.createElement("div");
+    gamesRightCol.className = "toc-column toc-column-games toc-column-games-right";
+
+    const finalCol = document.createElement("div");
+    finalCol.className = "toc-column toc-column-final";
+
+    const gamePages = [];
+    const introTextPages = [];
+    const finalTextPages = [];
+
+    pages.forEach((p) => {
+        if (!p || !p.title) return;
+
+        // Skip the Contents page itself
+        if (p.title === "Contents") return;
+
+        if (p.typeOfPage === "game") {
+            gamePages.push(p);
+        } else if (p.typeOfPage === "text") {
+            // Treat initial text pages specially
+            if (p.title === "About" || p.title === "Forward") {
+                introTextPages.push(p);
+            } else {
+                // Everything else text-y goes in the final column
+                finalTextPages.push(p);
+            }
+        }
+    });
+
+    // Intro column: About, Forward (in that order)
+    introTextPages.forEach((p) => {
         const item = document.createElement("div");
         item.className = "toc-item";
-        item.textContent = p.title || "(Untitled)";
-
-        container.appendChild(item);
+        item.textContent = p.title;
+        introCol.appendChild(item);
     });
+
+// Split game pages into two roughly equal halves
+    const mid = Math.ceil(gamePages.length / 2);
+    const leftGames = gamePages.slice(0, mid);
+    const rightGames = gamePages.slice(mid);
+
+// Helper to build a game TOC item (title + author)
+    function createGameTocItem(p) {
+        const item = document.createElement("div");
+        item.className = "toc-item toc-item-game";
+
+        const titleEl = document.createElement("div");
+        titleEl.className = "toc-title";
+        titleEl.textContent = p.title;
+        item.appendChild(titleEl);
+
+        if (p.author) {
+            const authorEl = document.createElement("div");
+            authorEl.className = "toc-author";
+            authorEl.textContent = p.author;
+            item.appendChild(authorEl);
+        }
+
+        return item;
+    }
+
+    leftGames.forEach((p) => {
+        const item = createGameTocItem(p);
+        gamesLeftCol.appendChild(item);
+    });
+
+    rightGames.forEach((p) => {
+        const item = createGameTocItem(p);
+        gamesRightCol.appendChild(item);
+    });
+
+    // Final column: closing text pages (e.g., Credits & Colophon)
+    finalTextPages.forEach((p) => {
+        const item = document.createElement("div");
+        item.className = "toc-item";
+        item.textContent = p.title;
+        finalCol.appendChild(item);
+    });
+
+    // Append columns to the container in order: intro, games, games, final
+    container.appendChild(introCol);
+    container.appendChild(gamesLeftCol);
+    container.appendChild(gamesRightCol);
+    container.appendChild(finalCol);
 }
 
 // --- Rendering functions ----------------------------------------------
