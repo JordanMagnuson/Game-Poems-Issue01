@@ -102,6 +102,26 @@ function applyThemeColor(page) {
     }
 }
 
+// --- CONTENTS PAGE helper ----------------------------------------------
+function buildContentsGrid() {
+    // We assume we're currently on the Contents page
+    const container = textContentEl;
+
+    // Clear anything that might be there (including the placeholder comment)
+    container.innerHTML = "";
+
+    pages.forEach((p, index) => {
+        // Skip the Contents page itself (index 0)
+        if (index === 0) return;
+
+        const item = document.createElement("div");
+        item.className = "toc-item";
+        item.textContent = p.title || "(Untitled)";
+
+        container.appendChild(item);
+    });
+}
+
 // --- Rendering functions ----------------------------------------------
 
 function updateNav() {
@@ -179,6 +199,10 @@ function showCover(index) {
         textTitleEl.textContent = page.title || "";
         textContentEl.innerHTML = page.pageContent || "";
 
+        // If this is the Contents page, populate the grid dynamically
+        if (page.title === "Contents") {
+            buildContentsGrid();
+        }
     } else {
         // Default to game layout
         textLayoutEl.classList.add("hidden");

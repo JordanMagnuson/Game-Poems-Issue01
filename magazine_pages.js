@@ -1,13 +1,13 @@
 const pages = [
-    // {
-    //     title: "Contents",
-    //     typeOfPage: "text",
-    //     background: "background.png",
-    //     themeColor: "0000bf",
-    //     pageContent: `
-    //             <p>[Table of Contents - coming soon!]</p>
-    //         `
-    // },
+    {
+        title: "Contents",
+        typeOfPage: "text",
+        background: "background.png",
+        themeColor: "0000bf",
+        pageContent: `
+            <!-- Table of contents items will be generated in magazine.js -->
+        `
+    },
     {
         title: "About",
         typeOfPage: "text",

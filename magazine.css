@@ -503,6 +503,42 @@ main {
     }
 }
 
+/* CONTENTS PAGE: 4-column layout for table of contents */
+#textLayoutContents #textContent {
+    /* turn off auto-flow newspaper columns on this page */
+    column-count: 1;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 2rem;   /* horizontal gap between columns */
+    row-gap: 1rem;      /* vertical gap between rows */
+}
+
+/* Individual TOC items */
+#textLayoutContents .toc-item {
+    break-inside: avoid;
+    padding: 0.25rem 0;
+}
+
+/* Responsive tweaks so it doesn't crush on narrow screens */
+@media (max-width: 1200px) {
+    #textLayoutContents #textContent {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    #textLayoutContents #textContent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #textLayoutContents #textContent {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Colophon PAGE: manual 4-column layout using CSS Grid */
 .page-CreditsColophon #textContent {
     /* turn off auto-flow columns on this page */
