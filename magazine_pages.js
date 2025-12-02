@@ -267,7 +267,7 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
-        statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><div class="section-title">Acknowledgments:</div><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in Self-Portrait in a Convex Mirror, Viking Press, 1975). Line art adapted from reference key to The Old Club by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p><p>Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Max Bradbury's "Pixsy", Sean S. LeBlanc's "dialog pause" hack, and David Mowatt's "bitsymuse" hack. </p>`
+        statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><div class="section-title">Acknowledgments:</div><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in <em>Self-Portrait in a Convex Mirror</em>, Viking Press, 1975). Line art adapted from reference key to <em>The Old Club</em> by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p><p>Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Max Bradbury's "Pixsy", Sean S. LeBlanc's "dialog pause" hack, and David Mowatt's "bitsymuse" hack. </p>`
     },
     {
         typeOfPage: "game",
@@ -289,7 +289,6 @@ const pages = [
         title: "The Ur Game",
         slug: "ur-game",
         src: "games/ur-game/index.html",
-        cover: "games/ur-game/cover.jpg",
         background: "games/ur-game/background.jpg",
         madeWith: "Godot",
         author: "Gregory Avery-Weir",
