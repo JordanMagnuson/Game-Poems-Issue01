@@ -110,6 +110,34 @@ function buildContentsGrid() {
     // Clear any existing content (including placeholder HTML)
     container.innerHTML = "";
 
+    // Helper: get 1-based page number from global pages[]
+    function getPageNumber(page) {
+        const idx = pages.indexOf(page);
+        return idx === -1 ? "" : (idx + 1);
+    }
+
+    // Helper: build "Title ..... 12" row
+    function createTitleWithPage(page) {
+        const row = document.createElement("div");
+        row.className = "toc-title";
+
+        const titleText = document.createElement("span");
+        titleText.className = "toc-title-text";
+        titleText.textContent = page.title;
+
+        const dots = document.createElement("span");
+        dots.className = "toc-dots";
+
+        const pageSpan = document.createElement("span");
+        pageSpan.className = "toc-page";
+        pageSpan.textContent = getPageNumber(page);
+
+        row.appendChild(titleText);
+        row.appendChild(dots);
+        row.appendChild(pageSpan);
+        return row;
+    }
+
     // Create four column wrappers:
     // 1) Intro text pages (About, Forward)
     // 2) Games (left half)
@@ -154,17 +182,16 @@ function buildContentsGrid() {
     introTextPages.forEach((p) => {
         const item = document.createElement("div");
         item.className = "toc-item";
-        item.textContent = p.title;
+        item.appendChild(createTitleWithPage(p));
         introCol.appendChild(item);
     });
 
-// Split game pages into two roughly equal halves
+    // Split game pages into two roughly equal halves
     const mid = Math.ceil(gamePages.length / 2);
     const leftGames = gamePages.slice(0, mid);
     const rightGames = gamePages.slice(mid);
 
-// Helper to build a game TOC item (title + author)
-// Helper to build a game TOC item (cover + title + author)
+    // Helper to build a game TOC item (cover + title + author)
     function createGameTocItem(p) {
         const item = document.createElement("div");
         item.className = "toc-item toc-item-game";
@@ -173,10 +200,9 @@ function buildContentsGrid() {
         const textWrapper = document.createElement("div");
         textWrapper.className = "toc-text";
 
-        const titleEl = document.createElement("div");
-        titleEl.className = "toc-title";
-        titleEl.textContent = p.title;
-        textWrapper.appendChild(titleEl);
+        // Title row with dotted leaders + page number
+        const titleRow = createTitleWithPage(p);
+        textWrapper.appendChild(titleRow);
 
         if (p.author) {
             const authorEl = document.createElement("div");
@@ -218,7 +244,7 @@ function buildContentsGrid() {
     finalTextPages.forEach((p) => {
         const item = document.createElement("div");
         item.className = "toc-item";
-        item.textContent = p.title;
+        item.appendChild(createTitleWithPage(p));
         finalCol.appendChild(item);
     });
 

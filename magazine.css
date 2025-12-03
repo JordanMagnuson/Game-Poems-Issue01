@@ -532,9 +532,34 @@ main {
     padding: 0.15rem 0;
 }
 
-/* Title line (for both games and text pages) */
+/* TOC title row with dotted leader + page number */
 #textLayoutContents .toc-title {
+    display: flex;
+    align-items: baseline;
     font-weight: 600;
+    gap: 0.25rem;
+    min-width: 0;          /* allow row to shrink within its grid column */
+}
+
+#textLayoutContents .toc-title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 1 auto;        /* allow the text to shrink */
+    min-width: 0;          /* required for ellipsis inside flex layouts */
+}
+
+#textLayoutContents .toc-dots {
+    flex: 1 1 auto;
+    border-bottom: 1px dotted rgba(50, 54, 84, 0.5);
+    margin-bottom: 0.15em; /* lines up with text baseline */
+}
+
+#textLayoutContents .toc-page {
+    flex: 0 0 auto;
+    font-size: 0.9em;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
 }
 
 /* Author line (only used on game entries) */
@@ -553,18 +578,20 @@ main {
 
 /* Small cover thumbnail */
 #textLayoutContents .toc-item-game .toc-cover {
-    width: 6rem;          /* tweak to taste */
+    width: 100px;          /* cover size */
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 2px;
-}
+}   
 
-/* Stack title + author vertically next to the image */
+/* Stack title + author vertically next to the image,
+   and let this block fill all space to the right of the cover */
 #textLayoutContents .toc-item-game .toc-text {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;          /* key: let this flex item shrink inside the column */
 }
-
 
 /* Responsive tweaks */
 @media (max-width: 1200px) {
