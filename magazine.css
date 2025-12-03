@@ -507,7 +507,14 @@ main {
 #textLayoutContents #textContent {
     column-count: 1;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    /* 4 columns: skinny, wide, wide, skinny */
+    grid-template-columns:
+        minmax(0, 0.7fr)   /* intro column (About + Forward)       */
+        minmax(0, 1.4fr)   /* games left column                    */
+        minmax(0, 1.4fr)   /* games right column                   */
+        minmax(0, 0.7fr);  /* final column (Credits & Colophon)    */
+
     column-gap: 2rem;
     row-gap: 0;
 }
