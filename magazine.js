@@ -164,20 +164,41 @@ function buildContentsGrid() {
     const rightGames = gamePages.slice(mid);
 
 // Helper to build a game TOC item (title + author)
+// Helper to build a game TOC item (cover + title + author)
     function createGameTocItem(p) {
         const item = document.createElement("div");
         item.className = "toc-item toc-item-game";
 
+        // Outer flex container for text (title + author)
+        const textWrapper = document.createElement("div");
+        textWrapper.className = "toc-text";
+
         const titleEl = document.createElement("div");
         titleEl.className = "toc-title";
         titleEl.textContent = p.title;
-        item.appendChild(titleEl);
+        textWrapper.appendChild(titleEl);
 
         if (p.author) {
             const authorEl = document.createElement("div");
             authorEl.className = "toc-author";
             authorEl.textContent = p.author;
-            item.appendChild(authorEl);
+            textWrapper.appendChild(authorEl);
+        }
+
+        // Cover image on the left
+        const coverSrc = getCoverSrc(p);
+        if (coverSrc) {
+            const img = document.createElement("img");
+            img.className = "toc-cover";
+            img.src = coverSrc;
+            img.alt = p.title ? `${p.title} cover` : "Game cover";
+
+            // Layout order: [image][text]
+            item.appendChild(img);
+            item.appendChild(textWrapper);
+        } else {
+            // Fallback: no image available, just text
+            item.appendChild(textWrapper);
         }
 
         return item;
