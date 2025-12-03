@@ -677,6 +677,7 @@ main {
 #landingCover {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;      /* ⬅ stack cover + warning vertically */
     align-items: center;
     justify-content: center;
     background: var(--bg-page);
@@ -702,6 +703,22 @@ main {
 .landing-cover-button:focus-visible .landing-cover-image {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
+}
+
+.fullscreen-warning {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #e100e6; /* bright pink */
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none; /* Does not interfere with clicking the cover */
+    z-index: 900;
+}
+
+#enterMagazineBtn:hover + #fullscreenWarning {
+    opacity: 1;
 }
 
 /* --- Responsive topbar adjustments --- */

@@ -68,6 +68,23 @@ function makeIdFromTitle(title) {
         .replace(/[^A-Za-z0-9_-]/g, ""); // strip other unsafe chars
 }
 
+// --- Helper to request fullscren ----------------------------------
+function requestFullscreen() {
+    const docEl = document.documentElement;
+
+    if (!document.fullscreenEnabled) {
+        return; // browser doesn't allow fullscreen; just fail silently
+    }
+
+    if (docEl.requestFullscreen) {
+        docEl.requestFullscreen();
+    } else if (docEl.webkitRequestFullscreen) { // Safari
+        docEl.webkitRequestFullscreen();
+    } else if (docEl.msRequestFullscreen) { // Old Edge/IE
+        docEl.msRequestFullscreen();
+    }
+}
+
 // --- Helpers for asset paths ------------------------------------------
 
 function getCoverSrc(page) {
@@ -427,6 +444,9 @@ prevBtnEl.addEventListener("click", () => {
 // Landing cover "Play"/"Enter" button
 if (enterMagazineBtnEl) {
     enterMagazineBtnEl.addEventListener("click", () => {
+        // Try to put the browser window into fullscreen
+        requestFullscreen();
+
         // Hide landing and show the first magazine page
         showCover(0);
 
