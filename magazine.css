@@ -582,7 +582,7 @@ main {
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 2px;
-}   
+}
 
 /* Stack title + author vertically next to the image,
    and let this block fill all space to the right of the cover */
@@ -702,4 +702,48 @@ main {
 .landing-cover-button:focus-visible .landing-cover-image {
     transform: translateY(-6px) scale(1.03);
     box-shadow: 0 28px 80px rgba(0,0,0,0.9);
+}
+
+/* --- Responsive topbar adjustments --- */
+
+/* Narrow screens:
+   - Hide magazine title (left)
+   - Hide page indicator (right)
+   - Keep page title + prev/next buttons
+   - Align Previous fully left and Next fully right
+*/
+@media (max-width: 1000px) {
+    header.topbar {
+        grid-template-columns: 1fr; /* only the center region */
+        padding-inline: 1rem;
+    }
+
+    .nav-left,
+    .nav-right {
+        display: none; /* hide magazine title + page number */
+    }
+
+    .nav-center {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* ← pushes prev left, next right */
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Arrows stop being absolutely positioned */
+    .nav-arrow {
+        position: static;
+        flex-shrink: 0;  /* prevents them from getting squished */
+    }
+
+    /* Page title stays centered unless arrows push it */
+    .nav-title {
+        flex: 1 1 auto;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 0 0.5rem;
+    }
 }
