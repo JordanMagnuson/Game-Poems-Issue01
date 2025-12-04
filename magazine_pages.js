@@ -111,7 +111,7 @@ const pages = [
             `
     },
     {
-        title: "Forward",
+        title: "Foreword",
         typeOfPage: "text",
         themeColor: "0000bf",
         background: "background.png",

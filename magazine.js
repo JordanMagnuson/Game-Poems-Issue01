@@ -186,7 +186,7 @@ function buildContentsGrid() {
             gamePages.push(p);
         } else if (p.typeOfPage === "text") {
             // Treat initial text pages specially
-            if (p.title === "About" || p.title === "Forward") {
+            if (p.title === "About" || p.title === "Foreword") {
                 introTextPages.push(p);
             } else {
                 // Everything else text-y goes in the final column

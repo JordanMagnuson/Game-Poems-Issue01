@@ -510,7 +510,7 @@ main {
 
     /* 4 columns: skinny, wide, wide, skinny */
     grid-template-columns:
-        minmax(0, 0.7fr)   /* intro column (About + Forward)       */
+        minmax(0, 0.7fr)   /* intro column (About + Foreword)       */
         minmax(0, 1.4fr)   /* games left column                    */
         minmax(0, 1.4fr)   /* games right column                   */
         minmax(0, 0.7fr);  /* final column (Credits & Colophon)    */
@@ -647,13 +647,13 @@ main {
     }
 }
 
-/* FORWARD PAGE */
-.page-Forward #textContent {
+/* FOREWORD PAGE */
+.page-Foreword #textContent {
     text-align: justify;
     font-size: 1.0rem;
 }
 
-.page-Forward #textContent p {
+.page-Foreword #textContent p {
     margin-top: 0;
 }
 
