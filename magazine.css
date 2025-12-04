@@ -238,6 +238,11 @@ header.topbar.playing .fullscreen-toggle-btn {
     justify-content: center;
 }
 
+/* Hide maximize button when already in fullscreen */
+:fullscreen header.topbar.playing .fullscreen-toggle-btn {
+    display: none !important;
+}
+
 .nav-title {
     font-weight: 600;
     text-align: center;
