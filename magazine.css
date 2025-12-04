@@ -157,6 +157,63 @@ header.topbar {
     font-weight: inherit;
 }
 
+/* ---------- Playing mode: simplify layout ---------- */
+
+/* When playing, switch the header from grid -> flex */
+header.topbar.playing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide magazine title + prev/next + page indicator */
+header.topbar.playing .nav-left,
+header.topbar.playing .nav-arrow,
+header.topbar.playing .page-indicator {
+    display: none;
+}
+
+/* Title area: take all available space, center the text */
+header.topbar.playing .nav-center {
+    flex: 1 1 auto;
+    min-width: 0;                 /* override the 600px min-width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right side: only the X button, pushed all the way right */
+header.topbar.playing .nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Close (X) button – hidden by default, shown in play mode */
+.close-play-btn {
+    display: none; /* default: hidden unless playing */
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0 0 0 0.75rem;
+    cursor: pointer;
+}
+
+.close-play-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* When playing, show the close button */
+header.topbar.playing .close-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-title {
     font-weight: 600;
     text-align: center;
@@ -728,34 +785,40 @@ main {
    - Hide page indicator (right)
    - Keep page title + prev/next buttons
    - Align Previous fully left and Next fully right
+   - Playing mode uses its own flex layout above.
 */
 @media (max-width: 1000px) {
     header.topbar {
-        grid-template-columns: 1fr; /* only the center region */
         padding-inline: 1rem;
     }
 
-    .nav-left,
-    .nav-right {
-        display: none; /* hide magazine title + page number */
+    /* Normal browsing mode (NOT playing a game) */
+    header.topbar:not(.playing) {
+        grid-template-columns: 1fr; /* only the center region */
     }
 
-    .nav-center {
+    header.topbar:not(.playing) .nav-left,
+    header.topbar:not(.playing) .nav-right {
+        display: none; /* hide magazine title + page number on small screens */
+    }
+
+    header.topbar:not(.playing) .nav-center {
         display: flex;
         align-items: center;
-        justify-content: space-between; /* ← pushes prev left, next right */
+        justify-content: space-between; /* prev left, next right */
         width: 100%;
+        max-width: none;
         min-width: 0;
+        margin: 0;
     }
 
-    /* Arrows stop being absolutely positioned */
-    .nav-arrow {
+    header.topbar:not(.playing) .nav-arrow {
         position: static;
         flex-shrink: 0;  /* prevents them from getting squished */
     }
 
     /* Page title stays centered unless arrows push it */
-    .nav-title {
+    header.topbar:not(.playing) .nav-title {
         flex: 1 1 auto;
         text-align: center;
         overflow: hidden;
@@ -763,4 +826,7 @@ main {
         text-overflow: ellipsis;
         padding: 0 0.5rem;
     }
+
+    /* No special rules needed for header.topbar.playing here:
+       it already uses flex layout that works at all widths. */
 }

@@ -30,6 +30,7 @@ const prevBtnEl = document.getElementById("prevBtn");
 const nextBtnEl = document.getElementById("nextBtn");
 const navTitleEl = document.getElementById("navTitle");
 const pageIndicatorEl = document.getElementById("pageIndicator");
+const closePlayBtnEl = document.getElementById("closePlayBtn");
 
 const landingCoverEl = document.getElementById("landingCover");
 const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
@@ -293,6 +294,7 @@ function showLanding() {
 
     // Hide top bar
     if (topbarEl) {
+        topbarEl.classList.remove("playing");
         topbarEl.classList.add("hidden");
     }
 
@@ -314,6 +316,7 @@ function showCover(index) {
 
     if (topbarEl) {
         topbarEl.classList.remove("hidden");
+        topbarEl.classList.remove("playing");
     }
 
     if (typeof index === "number") {
@@ -420,6 +423,12 @@ function showPlay() {
     gameFrameEl.src = page.src || "";
     coverViewEl.classList.add("hidden");
     playViewEl.classList.remove("hidden");
+
+    if (topbarEl) {
+        topbarEl.classList.add("playing");
+        topbarEl.classList.remove("hidden");
+    }
+
     updateNav();
 
     // Focus once iframe is rendered
@@ -440,6 +449,14 @@ prevBtnEl.addEventListener("click", () => {
         showCover(currentIndex - 1);
     }
 });
+
+// Close game (X in the top bar)
+if (closePlayBtnEl) {
+    closePlayBtnEl.addEventListener("click", () => {
+        // Return to this game's cover/about page
+        showCover(currentIndex);
+    });
+}
 
 // Landing cover "Play"/"Enter" button
 if (enterMagazineBtnEl) {
