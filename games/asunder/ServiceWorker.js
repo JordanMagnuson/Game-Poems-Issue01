@@ -1,9 +1,9 @@
-const cacheName = "DefaultCompany-Asunder v0.1-1.0";
+const cacheName = "University of Montana Game Design-Asunder-1.2";
 const contentToCache = [
-    "Build/BuildTest.loader.js",
-    "Build/BuildTest.framework.js.br",
-    "Build/BuildTest.data.br",
-    "Build/BuildTest.wasm.br",
+    "Build/FinalBuild.loader.js",
+    "Build/FinalBuild.framework.js.br",
+    "Build/FinalBuild.data.br",
+    "Build/FinalBuild.wasm.br",
     "TemplateData/style.css"
 
 ];
