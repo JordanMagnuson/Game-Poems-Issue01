@@ -480,7 +480,7 @@ main {
 
 .text-layout {
     /* same outer width as game layout */
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
     color: var(--ink-main);
 }
@@ -716,11 +716,20 @@ main {
 /* FOREWORD PAGE */
 .page-Foreword #textContent {
     text-align: justify;
-    font-size: 1.0rem;
 }
 
 .page-Foreword #textContent p {
-    margin-top: 0;
+    margin: 0;              /* no paragraph spacing */
+    text-indent: 1.5em;
+}
+
+.page-Foreword #textContent p:first-of-type {
+    text-indent: 0;
+}
+
+.page-Foreword #textContent p.no-indent {
+    text-indent: 0;
+    text-align: right;
 }
 
 /* ---------- Play view ---------- */
