@@ -30,6 +30,7 @@ const prevBtnEl = document.getElementById("prevBtn");
 const nextBtnEl = document.getElementById("nextBtn");
 const navTitleEl = document.getElementById("navTitle");
 const pageIndicatorEl = document.getElementById("pageIndicator");
+const fullscreenToggleBtnEl = document.getElementById("fullscreenToggleBtn");
 const closePlayBtnEl = document.getElementById("closePlayBtn");
 
 const landingCoverEl = document.getElementById("landingCover");
@@ -69,7 +70,7 @@ function makeIdFromTitle(title) {
         .replace(/[^A-Za-z0-9_-]/g, ""); // strip other unsafe chars
 }
 
-// --- Helper to request fullscren ----------------------------------
+// --- Fullscreen helpers ----------------------------
 function requestFullscreen() {
     const docEl = document.documentElement;
 
@@ -83,6 +84,44 @@ function requestFullscreen() {
         docEl.webkitRequestFullscreen();
     } else if (docEl.msRequestFullscreen) { // Old Edge/IE
         docEl.msRequestFullscreen();
+    }
+}
+
+function isFullscreen() {
+    return (
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement
+    );
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+}
+
+function toggleFullscreen() {
+    if (isFullscreen()) {
+        exitFullscreen();
+    } else {
+        requestFullscreen(); // reuse the existing helper (documentElement)
+    }
+}
+
+function updateFullscreenButton() {
+    if (!fullscreenToggleBtnEl) return;
+
+    if (isFullscreen()) {
+        fullscreenToggleBtnEl.textContent = "🗗"; // restore icon
+        fullscreenToggleBtnEl.setAttribute("aria-label", "Exit fullscreen");
+    } else {
+        fullscreenToggleBtnEl.textContent = "⛶"; // maximize icon
+        fullscreenToggleBtnEl.setAttribute("aria-label", "Enter fullscreen");
     }
 }
 
@@ -449,6 +488,27 @@ prevBtnEl.addEventListener("click", () => {
         showCover(currentIndex - 1);
     }
 });
+
+// Fullscreen toggle (maximize button in the top bar)
+if (fullscreenToggleBtnEl) {
+    fullscreenToggleBtnEl.addEventListener("click", () => {
+        toggleFullscreen();
+        // update icon/label after the request (in case of instant change)
+        updateFullscreenButton();
+    });
+}
+
+// Keep the button icon in sync with actual fullscreen state
+["fullscreenchange", "webkitfullscreenchange", "msfullscreenchange"].forEach(
+    (evtName) => {
+        document.addEventListener(evtName, () => {
+            updateFullscreenButton();
+        });
+    }
+);
+
+// Initialize button icon/label on load
+updateFullscreenButton();
 
 // Close game (X in the top bar)
 if (closePlayBtnEl) {

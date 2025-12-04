@@ -214,6 +214,30 @@ header.topbar.playing .close-play-btn {
     justify-content: center;
 }
 
+/* Fullscreen (maximize) button – hidden by default, shown in play mode */
+.fullscreen-toggle-btn {
+    display: none; /* default: hidden unless playing */
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0 0.5rem 0 0.75rem; /* some space before the X */
+    cursor: pointer;
+}
+
+.fullscreen-toggle-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* When playing, show the fullscreen button too */
+header.topbar.playing .fullscreen-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-title {
     font-weight: 600;
     text-align: center;
