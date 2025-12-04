@@ -64,7 +64,6 @@ const pages = [
                         <li>Gary Chadwick</li>
                         <li>Eva Chang</li>
                         <li>Wei Ting Chia</li>
-                        <li>Drice Ducongé Dos Santos</li>
                         <li>Kavi Duvvoori</li>
                         <li>Anna Eyler</li>
                         <li>Rafael Fajardo</li>
@@ -77,12 +76,12 @@ const pages = [
                         <li>Aren Guralp</li>
                         <li>Haochen Han</li>
                         <li>Farfama Hargaaya</li>
+                        <li>Anna Kucerova</li>                        
                     </ul>
                 </div>
                 <div class="column">
                     <h2 style="visibility:hidden">First Readers</h2>
                     <ul>
-                        <li>Anna Kucerova</li>
                         <li>Zihan Liu</li>
                         <li>Shanel Locke</li>
                         <li>Christoffer Lundberg</li>
@@ -97,8 +96,9 @@ const pages = [
                         <li>Óscar A. Montiel</li>
                         <li>Devinne Moses</li>
                         <li>Ignacio Puccini</li>
-                        <li>Yvens Rebouças Serpa</li>
                         <li>Tim Samoff</li>
+                        <li>Drice Ducongé Dos Santos</li>
+                        <li>Yvens Rebouças Serpa</li>
                         <li>Zhang Sicheng</li>
                         <li>Dawn Sueoka</li>
                         <li>Alexander Swords</li>
