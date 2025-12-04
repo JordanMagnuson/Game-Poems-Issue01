@@ -117,10 +117,10 @@ const pages = [
         background: "background.png",
         pageContent: `
                 <p>Welcome to the first issue of <em>Game Poems</em>, a new literary magazine dedicated to exploring the artistic and poetic potential of short-form videogames. Aside from this introduction, you won't find a huge amount of text within these pages. While future issues may include more written content, the distinguishing feature of this magazine is that it is <em>playable</em>: a publication grounded in creative practice, inviting and presenting new short-form games in a format you can engage with directly.</p>
-                <p>What exactly is a "game poem"? That's one of the questions we're here to explore. I've always had an interest in bringing unusual lenses and inputs to my game making process, and poetry has long struck me as a particularly intriguing point of reference—precisely because of the historical gap that exists between games and poems. Videogames can sometimes feel like a sort of "anti-poetry," deeply entangled as they are with industrialism, capitalism, and militarism. They often fixate on hyperreal depictions of external objects, and often revolve around building things, collecting things, or blowing things up. Poetry, in this context, offers a challenge and a call towards those things we have historically struggled to make games about: subjective experiences, interior realities, complex relationships, the everyday mundane, and the loose ends of life. It also represents a radically different approach to creative practice and material engagement: where videogame production often involves a "bigger is better" logic, poets strive for impact through smallness, constraint, and careful attention to form.</p>
-                <p>Poets have been debating the nature of poetic intervention in the context of words and language for thousands of years, and even a newer medium like film has seen discussion around concepts such as "film poems" and "poem films." But what about "game poems" and "poem games"? What happens when poets and artists are asked to craft a poem that is firstly a game? What happens when game makers are asked to think of their medium as a poetic material? What happens when people from non-technical backgrounds are invited to sit down with an accessible tool and make a tiny game in the same way that they might jot down a haiku? What sorts of videogames might emerge, about what sorts of human experiences?</p>
+                <p>What exactly is a "game poem"? That's one of the questions we're here to explore. I've always had an interest in bringing unusual lenses and inputs to my game making process, and poetry has long struck me as a particularly intriguing point of reference—precisely because of the historical gap that exists between videogames and poems. Videogames can sometimes feel like a sort of "anti-poetry," deeply entangled as they are with industrialism, capitalism, and militarism. They often fixate on hyperreal depictions of external objects, and often revolve around building things, collecting things, or blowing things up. Poetry, in this context, offers a challenge and a call towards those things we have historically struggled to make games about: subjective experiences, interior realities, complex relationships, the everyday mundane, and the loose ends of life. It also represents a radically different approach to creative practice and material engagement: where videogame production often involves a "bigger is better" logic, poets strive for impact through smallness, constraint, and careful attention to form.</p>
+                <p>Poets have been debating the nature of poetic intervention in the context of words and language for thousands of years, and even a newer medium like cinema has seen discussion around concepts such as "film poems" and "poem films." But what about "game poems" and "poem games"? What happens when poets and artists are asked to craft a poem that is firstly a game? What happens when game makers are asked to think of their medium as a poetic material? What happens when people from non-technical backgrounds are invited to sit down with an accessible tool and make a tiny game in the same way that they might jot down a haiku? What sorts of videogames might emerge, about what sorts of human experiences?</p>
                 <p>In the following pages you will find game poems made by artists, poets, scholar-makers, students, indie developers, and lead designers at AAA studios—each exploring different perspectives on what a game poem might be, in conversation with this issue's theme of "First Moves." Some pieces are gentle and approachable; others are conceptually knotty, formally experimental, or deliberately difficult. Some are richly produced; others embrace stark simplicity. Some come from individuals who have been making games for years; others from creators who have only just gotten started. Their aesthetics range from cozy to grotesque, contemplative to chaotic. All are deeply personal short-form creations that reflect in one way or another on what it might mean for a game to be a poem—whether through material play, embrace of constraints, reliance on ambiguity and metaphor, positioning as riddle, integration of poetic text, or simply by following in the lyric tradition of short-form personal expression. Importantly, all maintain a connecting thread to <em>videogames</em>, whether via classic game references, specific platform constraints, familiar interaction patterns, traditional iconography, recognizable aesthetics, or just enough "game feel" to evoke videogame expectations before subverting them.</p>
-                <p>I hope there will be something here for anyone interested in the expressive and human potential of videogames. More than that, I hope you'll find creative inspiration in these pages. I firmly believe that anyone can make a game poem, and my dream is to see game poems being made by every type of person about every type of human experience. If you've never made a videogame before, consider this an invitation: head to gamepoems.com, click "Resources", and you can get started this very afternoon.</p>
+                <p>I hope there will be something here for anyone interested in the expressive and human potential of videogames. More than that, I hope you'll find creative inspiration in these pages. I firmly believe that anyone can make a game poem, and my dream is to see game poems being made by every type of person about every type of human experience. If you've never made a videogame before, consider this an invitation: head to gamepoems.com, click on "Resources", and you can get started this very afternoon.</p>
                 <p>Thanks for reading, and thanks for playing. If something in these pages moves you, surprises you, or sparks an idea, please share the magazine with your fellow (artists) (poets) (students) (scholars) (colleagues) (makers).</p>
                 <p>—Jordan Magnuson</p>
             `
@@ -193,7 +193,7 @@ const pages = [
         invited: true,
         location: "Los Angeles, USA",
         estimatedPlayTime: "Less than 5 minutes.",
-        contentWarning: "Mentions of blood, especially pain with sex, medical gaslighting. No graphic visual content.",
+        contentWarning: "Mentions of blood, pain with sex, medical gaslighting. No graphic visual content.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
         statement: `<p>We are constantly rethinking and renegotiating and relearning and reexploring our bodies. I thought about the first time I had sex, and the first time I had sex that was pleasurable to me. Both were first moves that, though tentative, influenced the trajectory of my life. As someone with chronic pelvic pain, pain and pleasure have always danced too close for comfort in my own sexual journey. I can't seem to have one without the other. I wanted to explore that intersection, or bond, or duality. It was a challenge to represent — especially in the constrained environment of Bitsy as a game-making tool. I loved how much it reminded me of writing poetry, capturing a deep emotional moment in just a handful of words & lines. Each decision demanded thoughtfulness and care. This is not unlike the process of negotiating consent and pleasure in intimacy.</p>`
@@ -223,9 +223,9 @@ const pages = [
         madeWith: "Unity",
         author: "Ash Rezvani, Brittany Westlund, Kate Lloyd",
         location: "Missoula & Kalispell, USA",
-        estimatedPlayTime: "5-6 minutes",
+        estimatedPlayTime: "Less than 5 minutes.",
         contentWarning: "Soundscape may be triggering for those who struggle with auditory hallucinations.",
-        instructions: "Use the mouse to interact.",
+        instructions: "Click and drag items with the mouse to interact. Note: requires landscape orientation.",
         overWhen: "You escape the chaos. (At least for a time.)",
         statement: `<p>We think chaos can be beautiful and generative, but sometimes, internal chaos feels like a spreading wound. The hardest part of healing is taking the first step, making the first move, starting the process of calming the mind.</p><p>It's a daily, Sisyphean task: clearing your head so that you can enjoy the music life has to offer.</p>`
     },
@@ -253,7 +253,7 @@ const pages = [
         author: "Caitlin DeRosa",
         location: "West Islip, USA",
         estimatedPlayTime: "Less than 5 minutes.",
-        instructions: "It's a Game Boy game, so on a computer the controls indicated on screen are different than what they will be on the keyboard (for example, the game will say \"Press Start Button\"). All controls are mapped to Z for interaction and the arrow keys to move.",
+        instructions: "This is a Game Boy game, run via emulation. As such, the controls indicated on screen (for example, \"Press Start\") do not match what you will find on a computer keyboard. All controls are mapped to Z for interaction and the arrow keys to move.",
         overWhen: "You reach the end screen.",
         statement: `<p>My intent with Gambit was to create an experience that reflects the feeling of being trapped in what you are doing. I wanted to parallel my own experiences of working "on autopilot" by emphasizing repetition and retrieval of trivial items in the gameplay.</p><p>I am doing labor that is unfulfilling due to its repetitive nature, but I find it stable and familiar for those same reasons, which makes it hard to justify leaving.</p>`
     },
@@ -268,7 +268,7 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
-        statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><div class="section-title">Acknowledgments:</div><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in <em>Self-Portrait in a Convex Mirror</em>, Viking Press, 1975). Line art adapted from reference key to <em>The Old Club</em> by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p><p>Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Max Bradbury's "Pixsy", Sean S. LeBlanc's "dialog pause" hack, and David Mowatt's "bitsymuse" hack. </p>`
+        statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in <em>Self-Portrait in a Convex Mirror</em>, Viking Press, 1975). Line art adapted from reference key to <em>The Old Club</em> by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p>`
     },
     {
         typeOfPage: "game",
@@ -280,7 +280,7 @@ const pages = [
         author: "Roman Gvozdev",
         location: "Nizhni Novgorod, Russia",
         estimatedPlayTime: "10-20 minutes.",
-        contentWarning: "Intense visual landscape that could be uncomfortable for players sensitive to motion sickness.",
+        contentWarning: "Intense visual landscape; could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Move your mouse to drag. Press space to pause or leave the game.",
         overWhen: "The game fades to black.",
         statement: `<p>This game poem is a reflection of my own aging, excitement about the past, about life, the world around me, my anxiety about how I've been living my life, and if I ever was a master of my own being or always have been dragged by somebody or something.</p>`
@@ -295,7 +295,7 @@ const pages = [
         author: "Gregory Avery-Weir",
         editor: true,
         location: "Charlotte, USA",
-        estimatedPlayTime: "10-20 minutes. Note: when loading, the game may appear stuck on the '...' loading screen, but will usually load within a minute or two.",
+        estimatedPlayTime: "10-20 minutes. Note: when loading, the game may appear stuck on the '...' screen, but will usually load within a minute or two.",
         instructions: "Click to interact. The game is a riddle, but there is an ending.",
         overWhen: "The game fades to white.",
         statement: `<p>Ursula K. Le Guin said that the power of capitalism "seems inescapable; so did the divine right of kings." When you internalize the supposed rules of a game, it's hard to remember that we made up those rules. At any moment, we can stop playing the game... but what could life possibly look like afterward?</p><p>We can't manifest a world without cruelty, oppression, and poverty if we play by the rules of our current game. The rules cannot imagine a just world, because the rich and powerful who maintain those rules want to prevent that world from being born. Our current world is imprisoned by unjust rules, and transforming it into a nurturing one will require an act of magic.</p><p>You know why it's so hard to beat a magician at cards? They cheat.</p>`
@@ -330,7 +330,7 @@ const pages = [
                     <h2>Type</h2>
                     <p><em>Casual Encounter</em> font by Anna Anthropy. <em>04</em> font by Yuji Oshimoto. <em>Inter</em> font by Rasmus Andersson.</p>
                     <h2>Honoraria</h2>
-                    <p>Honoraria are offered with support from Winchester School of Art, University of Southampton.</p>
+                    <p>Honoraria are offered with support from the Games Design & Art Programme at Winchester School of Art, University of Southampton.</p>
                </div>
                <div class="column">
                     <h2>Accessibility</h2>
