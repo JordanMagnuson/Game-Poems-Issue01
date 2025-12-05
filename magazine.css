@@ -782,8 +782,8 @@ main {
 
 .fullscreen-warning {
     text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 300;
     color: #e100e6; /* bright pink */
     margin-top: 2rem;
     opacity: 0;

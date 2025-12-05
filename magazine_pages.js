@@ -64,6 +64,7 @@ const pages = [
                         <li>Gary Chadwick</li>
                         <li>Eva Chang</li>
                         <li>Wei Ting Chia</li>
+                        <li>Angeliki Chrysanthi</li>
                         <li>Kavi Duvvoori</li>
                         <li>Anna Eyler</li>
                         <li>Rafael Fajardo</li>
@@ -75,13 +76,13 @@ const pages = [
                         <li>Matt Griffin</li>
                         <li>Aren Guralp</li>
                         <li>Haochen Han</li>
-                        <li>Farfama Hargaaya</li>
-                        <li>Anna Kucerova</li>                        
+                        <li>Farfama Hargaaya</li>                     
                     </ul>
                 </div>
                 <div class="column">
                     <h2 style="visibility:hidden">First Readers</h2>
                     <ul>
+                        <li>Anna Kucerova</li>                       
                         <li>Zihan Liu</li>
                         <li>Shanel Locke</li>
                         <li>Christoffer Lundberg</li>
@@ -97,13 +98,13 @@ const pages = [
                         <li>Devinne Moses</li>
                         <li>Ignacio Puccini</li>
                         <li>Tim Samoff</li>
-                        <li>Drice Ducongé Dos Santos</li>
+                        <li>Drice Ducongé dos Santos</li>
                         <li>Yvens Rebouças Serpa</li>
                         <li>Zhang Sicheng</li>
                         <li>Dawn Sueoka</li>
                         <li>Alexander Swords</li>
                         <li>Semkan Uragan</li>
-                        <li>Yohanna Waliya</li>
+                        <li>Yohanna Joseph Waliya</li>
                         <li>Afra Willems</li>
                         <li>Khalil Zeigler</li>
                     </ul>
@@ -122,7 +123,7 @@ const pages = [
                 <p>In the following pages you will find game poems made by artists, poets, scholars, students, indie developers, and lead designers at AAA studios—each exploring different perspectives on what a game poem might be, in conversation with this issue's theme of "First Moves." Some pieces are gentle and approachable; others are conceptually knotty, formally experimental, or deliberately difficult. Some are richly produced; others embrace stark simplicity. Some come from individuals who have been making games for many years; others from creators who have only just gotten started. Their aesthetics range from cozy to grotesque, contemplative to chaotic. All are deeply personal short-form creations that reflect in one way or another on what it might mean for a game to be a poem—whether through material play, embrace of constraints, reliance on ambiguity and metaphor, positioning as riddle, conversation with poetic texts, or simply following in the lyric tradition of short-form personal expression. Importantly, all maintain a connecting thread to <em>videogames</em>, whether via classic game references, specific platform constraints, familiar interaction patterns, traditional iconography, recognizable aesthetics, or just enough "game feel" to evoke videogame expectations before subverting them.</p>
                 <p>I hope there will be something here for anyone interested in the expressive and human potential of videogames. More than that, I hope you'll find creative inspiration in these pages. I firmly believe that anyone can make a game poem, and my dream is to see game poems being made by every type of person about every type of human experience. If you've never made a videogame before, consider this an invitation: head to gamepoems.com, click on "Resources", and you can get started this very afternoon.</p>
                 <p>Thanks for reading, and thanks for playing. If something in these pages moves you, surprises you, or sparks an idea, please share the magazine with your fellow (artists) (poets) (students) (scholars) (colleagues) (makers).</p>
-                <p class="no-indent"><br/>—Jordan Magnuson, Founding Editor</p>
+                <p class="no-indent"><br/>—Jordan Magnuson</p>
             `
     },
     {
@@ -282,7 +283,7 @@ const pages = [
         estimatedPlayTime: "10-20 minutes.",
         contentWarning: "Intense visual landscape; could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Move your mouse to drag. Press space to pause or leave the game.",
-        overWhen: "The game fades to black.",
+        overWhen: "The text \"goodbye\" appears on screen.",
         statement: `<p>This game poem is a reflection of my own aging, excitement about the past, about life, the world around me, my anxiety about how I've been living my life, and if I ever was a master of my own being or always have been dragged by somebody or something.</p>`
     },
     {
