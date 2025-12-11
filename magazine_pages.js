@@ -317,6 +317,104 @@ const pages = [
                         <p>More than his absence, I think what had a bigger impact on me as a child was his sudden, unannounced and unceremonious departure.</p>`
     },
     {
+        title: "Notes",
+        typeOfPage: "text",
+        themeColor: "0000bf",
+        background: "background.png",
+        pageContent: `
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>
+                
+                <div class="game">
+                    <h2>A look of glass stops you.</h2>
+                    <p><strong>About the author:</strong> Brendan Allen (he/him) is a PhD student at the University of Toronto, where he studies how independent videogame makers—especially those working within literary hybrid forms—navigate systems of material constraints, rhetorical genres, and social publication. You can find Brendan at https://brendan-allen.com/</p>
+                    <p><strong>About the process:</strong> Built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Sean S. Leblanc's "dialog pause" hack, and Max Bradbury's "Pixsy."</p>
+                    <p><strong>Paragame acknowledgements:</strong> Line art adapted from reference key to the painting, "The Old Club" by J.E. Sampson, as found on the wall of the Arts & Letters Club of Toronto. Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat" (from which I've borrowed a few lines).</p>
+                </div>               
+            `
+    },
+    {
         title: "Credits & Colophon",
         typeOfPage: "text",
         background: "background.png",
