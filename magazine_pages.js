@@ -52,15 +52,15 @@ const pages = [
                 <div class="column">
                     <h2>First Readers</h2>
                     <ul>
+                        <li>Alex Adams</li>
                         <li>June Audirac</li>
                         <li>Tex Barnes</li>
                         <li>Art Baum</li>
-                        <li>Stanley Baxton</li>
+                        <li>Stanley W. Baxton</li>
                         <li>Torien Cafferata</li>
                         <li>Alex Calderwood</li>
                         <li>Pedro Cardoso</li>
                         <li>Jerram Carr</li>
-                        <li>Vania Castagnino</li>
                         <li>Gary Chadwick</li>
                         <li>Eva Chang</li>
                         <li>Wei Ting Chia</li>
@@ -76,13 +76,13 @@ const pages = [
                         <li>Matt Griffin</li>
                         <li>Aren Guralp</li>
                         <li>Haochen Han</li>
-                        <li>Farfama Hargaaya</li>                     
+                        <li>Farfama Hargaaya</li>   
+                        <li>Anna Kucerova</li>                                               
                     </ul>
                 </div>
                 <div class="column">
                     <h2 style="visibility:hidden">First Readers</h2>
-                    <ul>
-                        <li>Anna Kucerova</li>                       
+                    <ul>                  
                         <li>Zihan Liu</li>
                         <li>Shanel Locke</li>
                         <li>Christoffer Lundberg</li>
@@ -103,6 +103,7 @@ const pages = [
                         <li>Zhang Sicheng</li>
                         <li>Dawn Sueoka</li>
                         <li>Alexander Swords</li>
+                        <li>Vania Castagnino Ugolotti</li>                        
                         <li>Semkan Uragan</li>
                         <li>Yohanna Joseph Waliya</li>
                         <li>Afra Willems</li>
@@ -239,7 +240,7 @@ const pages = [
         author: "Pippin Barr",
         invited: true,
         location: "Montréal, Canada",
-        estimatedPlayTime: "Less than 5 minutes.",
+        estimatedPlayTime: "Less than 5 minutes... or longer.",
         instructions: "Use the arrow keys to interact.",
         overWhen: "You choose to depart.",
         statement: `<p>Agroterrorism! Snakisms! Escapism! Snakisms! Monotheism! Idealism! Snakisms! Snakisms! It's all Snake to me!</p><p>SNAKISMS 2: Snakes We Live By, Volume 1: A-M is a sequel to SNAKISMS based on the observation that some "ism" words describe the basic game of Snake (or its player, or its designer) accurately or interestingly from different philosophical, political, social, or other positions.</p>`
@@ -254,7 +255,7 @@ const pages = [
         author: "Caitlin DeRosa",
         location: "West Islip, USA",
         estimatedPlayTime: "Less than 5 minutes.",
-        instructions: "This is a Game Boy game, run via emulation. As such, the controls indicated on screen (for example, \"Press Start\") do not match what you will find on a computer keyboard. All controls are mapped to Z for interaction and the arrow keys to move.",
+        instructions: "Press Z to start and interact. Arrow keys to move. (This is a Game Boy game, run via emulation. As such, the controls indicated on screen--for example, \"Press Start\"--do not match what you will find on a computer keyboard.) ",
         overWhen: "You reach the end screen.",
         statement: `<p>My intent with Gambit was to create an experience that reflects the feeling of being trapped in what you are doing. I wanted to parallel my own experiences of working "on autopilot" by emphasizing repetition and retrieval of trivial items in the gameplay.</p><p>I am doing labor that is unfulfilling due to its repetitive nature, but I find it stable and familiar for those same reasons, which makes it hard to justify leaving.</p>`
     },
@@ -309,7 +310,7 @@ const pages = [
         madeWith: "Unity",
         author: "Isaque Sanches",
         location: "Lisbon, Portugal",
-        estimatedPlayTime: "Less than 5 minutes.",
+        estimatedPlayTime: "5 minutes... or forever.",
         instructions: "Use the arrow keys to interact.",
         overWhen: "",
         statement: `<p>I had the idea of making "começar coisas terminadas" (trans. "to start ended things") when I was driving my car through a long road in Portugal in the summer of 2020. The global pandemic lockdown had just started, and I was extremely vulnerable at the moment.</p>
