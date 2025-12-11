@@ -721,6 +721,8 @@ main {
 /* FOREWORD PAGE */
 .page-Foreword #textContent {
     text-align: justify;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .page-Foreword #textContent p {
