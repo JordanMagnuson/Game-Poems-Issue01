@@ -425,12 +425,14 @@ const pages = [
                     <img src="magazine_cover.png" alt="Magazine cover image"/>
                 </div>
                 <div class="column">
+                    <h2>Publication Date</h2>
+                    <p>January 2026</p>                
                     <h2>Cover</h2>
-                    <p>Cover art by Yifan Yuan.</p>
+                    <p>Cover art by Yifan Yuan</p>
                     <h2>Type</h2>
-                    <p><em>Casual Encounter</em> font by Anna Anthropy. <em>04</em> font by Yuji Oshimoto. <em>Inter</em> font by Rasmus Andersson.</p>
+                    <p><em>Casual Encounter</em> by Anna Anthropy<br/><em>04</em> by Yuji Oshimoto<br/><em>Inter</em> by Rasmus Andersson</p>
                     <h2>Honoraria</h2>
-                    <p>Honoraria are offered with support from the Games Design & Art Programme at Winchester School of Art, University of Southampton.</p>
+                    <p>Honoraria for Issue #1 are offered with support from the Games Design & Art Programme at Winchester School of Art, University of Southampton.</p>
                </div>
                <div class="column">
                     <h2>Accessibility</h2>
