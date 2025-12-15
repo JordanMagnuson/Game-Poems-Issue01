@@ -138,6 +138,9 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the mouse to interact. Hold to pluck petals or buds. Keep still to wait for the wind.",
         overWhen: "You pluck the last petal.",
+        aboutAuthor: "Yuan Yifan is an independent game researcher and designer interested in using games to explore poetic and ethical themes.",
+        aboutProcess: `<p>This game was developed in Godot using GDScript. It was my first time working with a full-featured engine, so I spent about two months learning programming, often with help from an AI coding tool to get through steps that felt too difficult alone. I originally prototyped a game about "pity" in PICO-8, but those experiments made me notice the structure of "hesitation" within pity, which gradually became the real focus of this work.</p>`,
+        acknowledgements: "Thanks to my family and friends for their support and playtesting, and to the Game Poems editors for their feedback and the opportunity to share this work.",
         statement: `<p>This brief game poem wants you to play with your hesitation, savoring those moments when decisions are difficult to make.</p>`
     },
     {
@@ -152,6 +155,8 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Click or press spacebar to interact.",
         overWhen: "You see the restart screen.",
+        aboutAuthor: "Tereza Kotěšovcová is a game designer and programmer, currently working at Charles Games on games with social impact. Her eco-themed game Planetka was a finalist at the Independent Games Festival.",
+        aboutProcess: "I used Unity, Procreate, GarageBand and my tendency to make things simple, to express feelings and ideas without the use of words and to focus on and observe one little detail of life for a ridiculous amount of time.",
         statement: `<p>This is a tiny game about reaching out and everything that gets in the way.</p><p>You hesitate. You imagine the worst. Miss your moment, and the world will stutter: a coffee spills, a sun is eclipsed, a temple crumbles.</p><p>You start again.</p>`
     },
     {
@@ -167,6 +172,8 @@ const pages = [
         contentWarning: "Rotational movement that could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Use the left and right arrow keys to turn the diorama. It's recommended to read the poem by cycling with the right arrow, but the poem is written to work in both directions and even loops around, so you can't interact with it in a \"wrong\" way.",
         overWhen: "You reach the end of the poem (or not).",
+        aboutAuthor: "Adam Pype is belgian multi-disciplinary artist and game developer based in south korea and belgium primarily working on short-form experimental work through a horror lens.",
+        aboutProcess: "The work was developed in the unity game engine using pictures taken during the artist's travels, loosely projected onto simple 3d models made with 3dsmax. Using a shader that mimicks early 3d vertex float point imprecision, the corruption effect of the environment is achieved by increasing the vertex effect when cycling between areas.",
         statement: `<p>I (Adam) wanted to make a short piece about my feelings around moving, having lived in different places and the weird disconnect I feel between them. I'm from Belgium, but I moved to South Korea a couple years ago, and I find myself drifting back and forth between the life I left behind and the new life I built for myself.</p><p>It's an attempt at trying to capture a very specific feeling of having only yourself to rely on as a home, when the places you cycle through are constantly fleeting and you can't process them all existing at once.</p>`
     },
     {
@@ -181,6 +188,9 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the mouse to interact. Press any key to pause or leave the game.",
         overWhen: "You see the end screen.",
+        aboutAuthor: "Geoffrey Mugford is a London-based game developer and educator creating small, minimalist works that explore emotion and meaning through systems and interaction.",
+        aboutProcess: "Firsts was made in Unity with intentionally minimalist art to let players project their own experiences. The concept was shaped mentally over time, exploring many vignette ideas before settling on a three-part haiku structure for stronger pacing. Once defined, the piece was built quickly and refined through testing to ensure movement and interaction carried the intended feeling.",
+        acknowledgements: `<p>The visual language draws on Sophie Tauber-Arp's "Vertical-Horizontal Composition" and László Moholy-Nagy's "K VII," which helped shape the abstract tone of the game.</p>`,
         statement: `<p>Firsts is a quiet exploration of what it feels like to begin — each gesture a small act of discovery, each scene a different kind of first step. It's rooted in a moment many of us know: leaving home, being reshaped by the world, and returning in a form our loved ones might still recognise — whether or not we meant to change.</p>`
     },
     {
@@ -198,6 +208,9 @@ const pages = [
         contentWarning: "Mentions of blood, pain with sex, medical gaslighting. No graphic visual content.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
+        aboutArtist: "KB is a writer, designer, and teacher. She works at the intersection of community health and games, creating art for liberatory and comprehensive sex education.",
+        aboutProcess: `<p>I used bitsy to create the game poem, and beepbox to compose the background music. I knew I wanted to make something about exploring or traversing a "space", and I guess I can't get vulvas out of my head. As for the music, I wanted to play with the concept of "First steps"—stumbling, confusing, but everything new. I experimented with different instruments, but within the constraints of Bitsy, triangle + square waves felt most appropriate. Kind of a faux simplicity.</p>`,
+        acknowledgements: `<p>Two shoutouts: One, I was able to add audio to Bitsy using this tool developed by candle: https://candle.Itch.Io/bitsy-audio. Two, I don't know if I would have the courage to make works like this about vulvovaginal pain without the support, love, and light from my friends and organizers at Tight Lipped: https://tightlipped.org.</p>`,
         statement: `<p>We are constantly rethinking and renegotiating and relearning and reexploring our bodies. I thought about the first time I had sex, and the first time I had sex that was pleasurable to me. Both were first moves that, though tentative, influenced the trajectory of my life. As someone with chronic pelvic pain, pain and pleasure have always danced too close for comfort in my own sexual journey. I can't seem to have one without the other. I wanted to explore that intersection, or bond, or duality. It was a challenge to represent — especially in the constrained environment of Bitsy as a game-making tool. I loved how much it reminded me of writing poetry, capturing a deep emotional moment in just a handful of words & lines. Each decision demanded thoughtfulness and care. This is not unlike the process of negotiating consent and pleasure in intimacy.</p>`
     },
     {
@@ -243,6 +256,9 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes... or longer.",
         instructions: "Use the arrow keys to interact.",
         overWhen: "You choose to depart.",
+        aboutAuthor: "Pippin Barr is an experimental game designer and Associate Professor of Computation Arts at Concordia University.",
+        aboutProcess: "SNAKISMS 2 was made in Phaser 3 on top of the same basic implementation of Snake I'd used for SNAKISMS, Sibilant Snakelikes, and SNAKISTS. Reusing the same base code (and design) for something new is like a gift from the heavens and I recommend it.",
+        acknowledgements: "Thanks to the countless versions of Snake out there, and especially to Taneli Armanto for his iconic implementation that showed up on my Nokia phone in the late 90s. Thanks, too, to dictionaries, which are full of game designs and poetry.",
         statement: `<p>Agroterrorism! Snakisms! Escapism! Snakisms! Monotheism! Idealism! Snakisms! Snakisms! It's all Snake to me!</p><p>SNAKISMS 2: Snakes We Live By, Volume 1: A-M is a sequel to SNAKISMS based on the observation that some "ism" words describe the basic game of Snake (or its player, or its designer) accurately or interestingly from different philosophical, political, social, or other positions.</p>`
     },
     {
@@ -257,6 +273,8 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Press Z to start and interact. Arrow keys to move. (This is a Game Boy game, run via emulation. As such, the controls indicated on screen--for example, \"Press Start\"--do not match what you will find on a computer keyboard.) ",
         overWhen: "You reach the end screen.",
+        aboutAuthor: "Caitlin DeRosa is a creative technologist and student who develops tiny autobiographical games as a meditative/self-reflective practice.",
+        aboutProcess: `<p><em>Gambit</em> was developed in GB Studio, and all the art was made in LibreSprite. I started by storyboarding the game on paper before building the scenes in-engine, which led to some issues with the Game Boy's strict hardware limitations. Many scenes needed to be visually simplified and reworked in order to stay under the Game Boy's unique tile count limit. Gambit took ~2-3 weeks to create, with the majority of development taking place at my local café on my days off.</p>`,
         statement: `<p>My intent with Gambit was to create an experience that reflects the feeling of being trapped in what you are doing. I wanted to parallel my own experiences of working "on autopilot" by emphasizing repetition and retrieval of trivial items in the gameplay.</p><p>I am doing labor that is unfulfilling due to its repetitive nature, but I find it stable and familiar for those same reasons, which makes it hard to justify leaving.</p>`
     },
     {
@@ -270,6 +288,9 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
+        aboutAuthor: "Brendan Allen is a PhD student in Toronto, where he studies how literary videogame makers navigate systems of constraint, genre, and social production.",
+        aboutProcess: "As a proudly novice game maker, anything I make is also an exercise in learning to do the thing itself. This is my second Bitsy piece, and the first in which I challenged myself to incorporate several of the Bitsy hacks that I've marveled at in others' games. The premise was intimidating in concept and rewarding in practice, and once again, it reminded me that all art is collaborative—everything we make owes much to the footsteps and signposts left by our predecessors.",
+        acknowledgements: `<p><em>A look of glass stops you.</em> is built in Bitsy (engine by Adam Le Doux). Supplemented further by Rob Duarte's "Old Bitsy" archive of Bitsy 7.12, Max Bradbury's "Pixsy", Sean S. LeBlanc's "dialog pause" hack, and David Mowatt's "bitsymuse" hack. Audio adapted from free-use sounds uploaded by Pixabay users: IanM_56, u_3ij921f61l, Garuda1982, j1987, niclarosa, MikhailSound, and TheStoryRug. Special thanks to J Hughes and Chance Herrington for their playtesting and generous feedback.</p>`
         statement: `<p>Meeting strangers is hard.<br/>Recognizing them is harder.<br/>Try, and try again.</p><p>Made with immense love for John Ashbery's poem, "As One Put Drunk Into the Packet-Boat," from which I've borrowed the text of this piece (published in <em>Self-Portrait in a Convex Mirror</em>, Viking Press, 1975). Line art adapted from reference key to <em>The Old Club</em> by J.E. Sampson (1916), as found on the wall of the Arts & Letters Club of Toronto.</p>`
     },
     {
