@@ -159,7 +159,50 @@ function applyThemeColor(page) {
     }
 }
 
-// --- CONTENTS PAGE helper ----------------------------------------------
+// --- Helpers to build dynamic pages (Contents, Notes) -----------------
+function buildNotesPage() {
+    const container = textContentEl;
+    if (!container) return;
+
+    // Clear any placeholder HTML
+    container.innerHTML = "";
+
+    // Helper: add a labeled paragraph/section only if value exists
+    function addNotesSection(parentEl, label, value) {
+        if (!value) return;
+
+        const p = document.createElement("p");
+
+        // Allow value to contain HTML OR plain text (both are strings)
+        // We render via innerHTML so contributors can include <p>, <em>, links, etc.
+        p.innerHTML = `<strong>${label}</strong> ${value}`;
+
+        parentEl.appendChild(p);
+    }
+
+    pages.forEach((page) => {
+        if (!page || page.typeOfPage !== "game") return;
+
+        const gameBlock = document.createElement("div");
+        gameBlock.className = "game";
+
+        const titleEl = document.createElement("h2");
+        titleEl.textContent = page.title || "Untitled";
+        gameBlock.appendChild(titleEl);
+
+        addNotesSection(gameBlock, "About the author:", page.aboutAuthor);
+        addNotesSection(gameBlock, "About the process:", page.aboutProcess);
+        addNotesSection(gameBlock, "Paragame acknowledgements:", page.acknowledgements);
+
+        // If a game has none of the notes fields, don't include it at all
+        const hasAnyNotes =
+            page.aboutAuthor || page.aboutProcess || page.acknowledgements;
+
+        if (hasAnyNotes) {
+            container.appendChild(gameBlock);
+        }
+    });
+}
 function buildContentsGrid() {
     const container = textContentEl;
     if (!container) return;
@@ -391,9 +434,12 @@ function showCover(index) {
         textTitleEl.textContent = page.title || "";
         textContentEl.innerHTML = page.pageContent || "";
 
-        // If this is the Contents page, populate the grid dynamically
+        // If this is a dynamic page, populate the contents dynamically
         if (page.title === "Contents") {
             buildContentsGrid();
+        }
+        if (page.title === "Notes") {
+            buildNotesPage();
         }
     } else {
         // Default to game layout
