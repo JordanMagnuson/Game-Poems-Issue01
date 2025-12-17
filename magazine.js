@@ -164,10 +164,15 @@ function buildNotesPage() {
     const container = textContentEl;
     if (!container) return;
 
-    // Clear any placeholder HTML
     container.innerHTML = "";
 
-    // Helper: add a labeled paragraph/section only if value exists
+    function getAuthorLabel(page) {
+        if (!page.author) return "About the author:";
+        return page.author.includes(",")
+            ? "About the authors:"
+            : "About the author:";
+    }
+
     function addNotesSection(parentEl, label, value) {
         if (!value) return;
 
@@ -176,33 +181,35 @@ function buildNotesPage() {
         // Allow value to contain HTML OR plain text (both are strings)
         // We render via innerHTML so contributors can include <p>, <em>, links, etc.
         p.innerHTML = `<strong>${label}</strong> ${value}`;
-
         parentEl.appendChild(p);
     }
 
     pages.forEach((page) => {
-        if (!page || page.typeOfPage !== "game") return;
+        if (page.typeOfPage !== "game") return;
+
+        const hasAnyNotes =
+            page.aboutAuthor || page.aboutProcess || page.acknowledgements;
+        if (!hasAnyNotes) return;
 
         const gameBlock = document.createElement("div");
         gameBlock.className = "game";
 
         const titleEl = document.createElement("h2");
-        titleEl.textContent = page.title || "Untitled";
+        titleEl.textContent = page.title;
         gameBlock.appendChild(titleEl);
 
-        addNotesSection(gameBlock, "About the author:", page.aboutAuthor);
+        addNotesSection(
+            gameBlock,
+            getAuthorLabel(page),
+            page.aboutAuthor
+        );
         addNotesSection(gameBlock, "About the process:", page.aboutProcess);
         addNotesSection(gameBlock, "Paragame acknowledgements:", page.acknowledgements);
 
-        // If a game has none of the notes fields, don't include it at all
-        const hasAnyNotes =
-            page.aboutAuthor || page.aboutProcess || page.acknowledgements;
-
-        if (hasAnyNotes) {
-            container.appendChild(gameBlock);
-        }
+        container.appendChild(gameBlock);
     });
 }
+
 function buildContentsGrid() {
     const container = textContentEl;
     if (!container) return;

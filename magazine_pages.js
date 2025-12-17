@@ -140,7 +140,7 @@ const pages = [
         overWhen: "You pluck the last petal.",
         aboutAuthor: "Yuan Yifan is an independent game researcher and designer interested in using games to explore poetic and ethical themes.",
         aboutProcess: `This game was developed in Godot using GDScript. It was my first time working with a full-featured engine, so I spent about two months learning programming, often with help from an AI coding tool to get through steps that felt too difficult alone. I originally prototyped a game about "pity" in PICO-8, but those experiments made me notice the structure of "hesitation" within pity, which gradually became the real focus of this work.`,
-        acknowledgements: "Thanks to my family and friends for their support and playtesting, and to the Game Poems editors for their feedback and the opportunity to share this work.",
+        acknowledgements: "Thanks to my family and friends for their support and playtesting.",
         statement: `<p>This brief game poem wants you to play with your hesitation, savoring those moments when decisions are difficult to make.</p>`
     },
     {
@@ -155,7 +155,7 @@ const pages = [
         estimatedPlayTime: "Less than 5 minutes.",
         instructions: "Click or press spacebar to interact.",
         overWhen: "You see the restart screen.",
-        aboutAuthor: `Tereza Kotěšovcová is a game designer and programmer, currently working at Charles Games on games with social impact. She previously created the eco-themed game, <em>Planetka</em>.`,
+        aboutAuthor: `Tereza Kotěšovcová is a game designer and programmer, currently working at Charles Games on games with social impact. She is also the creator of the eco-themed game, <em>Planetka</em>.`,
         aboutProcess: "I used Unity, Procreate, GarageBand and my tendency to make things simple, to express feelings and ideas without the use of words and to focus on and observe one little detail of life for a ridiculous amount of time.",
         statement: `<p>This is a tiny game about reaching out and everything that gets in the way.</p><p>You hesitate. You imagine the worst. Miss your moment, and the world will stutter: a coffee spills, a sun is eclipsed, a temple crumbles.</p><p>You start again.</p>`
     },
@@ -242,7 +242,11 @@ const pages = [
         contentWarning: "Soundscape may be triggering for those who struggle with auditory hallucinations.",
         instructions: "Click and drag items with the mouse to interact. Note: requires landscape orientation.",
         overWhen: "You escape the chaos. (At least for a time.)",
-        aboutAuthor: `Ash Rezvani is game designer and game studies scholar. After ten years working as a serious game designer, she joined the faculty at the University of Montana as an assistant professor of game design.</p><p>Brittany Westlund is the director of Charmlab, a studio focused on compassionate, nonviolent game design. She examines harmful conventions in games and works to create more inclusive experiences.`,
+        aboutAuthor: `Ash Rezvani is game designer and game studies scholar. After ten years working as a serious game designer, she joined the faculty at the University of Montana as an assistant professor of game design.
+                      Brittany Westlund is the director of Charmlab, a studio focused on compassionate, nonviolent game design. She examines harmful conventions in games and works to create more inclusive experiences.
+                      Kate Lloyd (aka voxysounds) is a sound designer/composer who convinces ordinary sounds to behave extraordinarily, crafting inclusive, musically-driven sonic worlds across games and beyond.`,
+        aboutProcess: `We began our ideation process as a group, identifying certain emotions we wanted to explore and what feelings we wanted to evoke in players. We created a list of verbs and emotions and then each wrote a poem; the common threads within our writing formed the basis of our game mechanics. Ash filled in the rest of the design and figured out the necessary interactions to make our game come alive; we used Unity for development and Trello as a project management tool. Brittany developed Asunder's visual language in Procreate using an isometric grid. Working in this format felt like dressing a tiny digital stage, using simple stagecraft techniques like blocking, clear staging, and a bit of forced perspective. She used Photoshop for polish and Unity's Sprite Editor for slicing assets. Kate used Logic Pro for recording/mixing sounds, Reaper for mastering/batch editing, and Unity for implementation. She enjoys building sonic ecosystems that feel emotionally relatable—even when sourced from the unexpected, like crinkling paper for plants.`,
+        acknowledgements: `Brittany wishes to thank her mentors at the University of Montana, whose guidance helped shape her creative path. She's grateful for the chance to collaborate with underrepresented voices in games and for the people who paved the way for thoughtful, nonviolent design. She also thanks her grandparents, whose steady love, creative support, and playful nature make my work possible. Those hours of playing games together became an early foundation that continues to inspire her. Ash and Kate wish to thank their family and friends for their support and playtesting.`,
         statement: `<p>We think chaos can be beautiful and generative, but sometimes, internal chaos feels like a spreading wound. The hardest part of healing is taking the first step, making the first move, starting the process of calming the mind.</p><p>It's a daily, Sisyphean task: clearing your head so that you can enjoy the music life has to offer.</p>`
     },
     {
@@ -307,6 +311,9 @@ const pages = [
         contentWarning: "Intense visual landscape; could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Move your mouse to drag. Press space to pause or leave the game.",
         overWhen: "The text \"goodbye\" appears on screen.",
+        aboutAuthor: "Roman has been a programmer for most of his life. He's been making small, personal free games since 2021 in his spare time, mostly at night.",
+        aboutProcess: "The game's graphics are mostly photo collages. All the pictures were taken by me in the places where I live. It was a process of hunting for the interesting in the mundane, of capturing the texture of the surrounding reality in a mosaic of disparate fragments. Beauty and truth emerge from beneath the spring snow as cigarette ends, last year's empty fifths of vodka, dead pigeons, and children's obscene drawings. Some images are from the old scientific magazines, which I read so often as a child.",
+        acknowledgements: `Music is the core of the entire game. It sets the rhythm and tone. In a sense, the game is a music video. The song is "Dia" by my good friends band Kernherbst. https://kernherbst.bandcamp.com`,
         statement: `<p>This game poem is a reflection of my own aging, excitement about the past, about life, the world around me, my anxiety about how I've been living my life, and if I ever was a master of my own being or always have been dragged by somebody or something.</p>`
     },
     {
