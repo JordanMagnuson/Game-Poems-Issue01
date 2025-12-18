@@ -250,12 +250,22 @@ header.topbar.playing .fullscreen-toggle-btn {
     font-weight: 400;
 }
 
+/* hide caret in play mode */
+header.topbar.playing .nav-title-btn::after {
+    content: "";
+}
+
 /* Focus style for keyboard users */
 .nav-title-btn:focus-visible {
     outline: 2px solid rgba(255,255,255,0.7);
     outline-offset: 3px;
     border-radius: 6px;
 }
+
+/*.nav-title-btn[aria-expanded="true"] {*/
+/*    text-decoration: underline;*/
+/*    text-underline-offset: 0.25em;*/
+/*}*/
 
 /* Disable the dropdown trigger in play mode */
 header.topbar.playing .nav-title-btn {
@@ -269,16 +279,16 @@ header.topbar.playing .nav-title-btn {
     left: 50%;
     transform: translateX(-50%);
     width: min(520px, 90vw);
-    max-height: 60vh;
+    max-height: 100vh;
     overflow: auto;
 
-    background: rgba(255,255,255,0.95);
-    color: var(--ink-main);
-    border: 1px solid rgba(0,0,0,0.18);
+    background: #000; /* match top bar */
+    color: var(--ink-on-dark);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 10px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 18px 48px rgba(0,0,0,0.65);
     padding: 0.35rem;
-    z-index: 500; /* above cover content */
+    z-index: 500;
 }
 
 .jump-menu-item {
@@ -290,7 +300,7 @@ header.topbar.playing .nav-title-btn {
     background: transparent;
     text-align: left;
     font: inherit;
-    color: inherit;
+    color: var(--ink-on-dark);
 
     padding: 0.55rem 0.65rem;
     border-radius: 8px;
@@ -298,16 +308,19 @@ header.topbar.playing .nav-title-btn {
 }
 
 .jump-menu-item:hover {
-    background: rgba(30,27,75,0.10);
+    background: rgba(255,255,255,0.10);
 }
 
 .jump-menu-item:focus-visible {
-    outline: 2px solid rgba(30,27,75,0.35);
+    outline: 2px solid rgba(255,255,255,0.4);
     outline-offset: 2px;
 }
 
 .jump-menu-item .jump-num {
-    opacity: 0.7;
+    width: 2.2rem;              /* fixed number column */
+    text-align: right;          /* numbers align on the right edge */
+    opacity: 0.55;
+
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1;
     flex: 0 0 auto;
@@ -322,7 +335,7 @@ header.topbar.playing .nav-title-btn {
 }
 
 .jump-menu-item.current {
-    background: rgba(30,27,75,0.12);
+    background: rgba(255,255,255,0.16);
 }
 
 .page-indicator {
