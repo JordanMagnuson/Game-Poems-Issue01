@@ -376,18 +376,22 @@ const pages = [
                     <p><em>Casual Encounter</em> by Anna Anthropy<br/><em>04</em> by Yuji Oshimoto<br/><em>Inter</em> by Rasmus Andersson</p>
                     <h2>Honoraria</h2>
                     <p>Honoraria for Issue #1 are offered with support from the Games Design & Art Programme at Winchester School of Art, University of Southampton.</p>
+                    <h2>Institutional Acknowledgements</h2>
+                    <p><em>Game Poems</em> was partially conceived and developed during a Fulbright fellowship at the University of Bergen, where the founding editor was an affiliate researcher at the Center for Digital Narrative.</p>
                </div>
                <div class="column">
                     <h2>Accessibility</h2>
                     <p>We use WAVE and other standard HTML5 accessibility tools to test for accessibility issues. If you have any concerns or suggestions, please contact us.</p>
                     <h2>Independence</h2>
                     <p><em>Game Poems</em> is an independent publication.</p>
+                    <h2>Editorial Note</h2>
+                    <p><em>Game Poems</em> is an international publication. We support artists as individuals, not as representatives of the governments under which they live. We oppose the Russian invasion of Ukraine and stand in solidarity with those affected by war and state violence.</p>
                     <h2>Contact</h2>
                     <p>Web: GamePoems.com<br/>Email: info@gamepoems.com</p>
                 </div>
                 <div class="column">
                     <h2>License</h2>
-                    <p><em>Game Poems</em> is an open access publication, distributed under a CC&nbsp;BY&nbsp;4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found at creativecommons.org/licenses/by/4.0/.</p>
+                    <p><em>Game Poems</em> is an open access publication, distributed under a CC&nbsp;BY&nbsp;4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found at creativecommons.org/licenses/by/4.0/. If you show or exhibit any of the games published here, we kindly request that you let us know, as this helps us document and promote the magazine.</p>
                 </div>
             `
     }
