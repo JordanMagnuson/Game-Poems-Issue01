@@ -76,13 +76,13 @@ const pages = [
                         <li>Matt Griffin</li>
                         <li>Aren Guralp</li>
                         <li>Haochen Han</li>
-                        <li>Farfama Hargaaya</li>   
-                        <li>Anna Kucerova</li>                                               
+                        <li>Farfama Hargaaya</li>                                             
                     </ul>
                 </div>
                 <div class="column">
-                    <h2 style="visibility:hidden">First Readers</h2>
-                    <ul>                  
+<!--                    <h2 style="visibility:hidden">First Readers</h2>-->
+                    <ul>          
+                        <li>Anna Kucerova</li>                                 
                         <li>Zihan Liu</li>
                         <li>Shanel Locke</li>
                         <li>Christoffer Lundberg</li>
