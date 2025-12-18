@@ -1,6 +1,6 @@
 <!--
-Game Poems is an online literary magazine dedicated to exploring the artistic and poetic potential of short-form videogames.
-Game Poems is an open access publication, distributed under a CC BY 4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found at Full license details can be found at https://creativecommons.org/licenses/by/4.0/.
+Game Poems is an interactive magazine dedicated to exploring the artistic and poetic potential of short-form videogames by publishing new work directly in a playable format. The magazine foregrounds the convergences that exist between videogames and poetry, highlights "born-videogame" poetics, and champions videogame creation as a legitimate (and accessible) form of poetic practice.
+Game Poems is an open access publication, distributed under a CC BY 4.0 license. You are free to copy and redistribute the magazine and the games published within it as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. Full license details can be found at https://creativecommons.org/licenses/by/4.0/.
 The magazine launcher was designed and implemented by Jordan Magnuson, with reference to community resources such as Stack Overflow, and assistance from JetBrains tools for boilerplate code and accessibility testing.
 -->
 
@@ -9,9 +9,48 @@ The magazine launcher was designed and implemented by Jordan Magnuson, with refe
 <head>
     <meta charset="utf-8">
     <title>Game Poems #1</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Game Poems is an online literary magazine that publishes short-form videogames directly in a playable format. Issue #1 features interactive works by international artists and game designers.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+
+    <!-- Canonical (set this once we know the final public URL) -->
+    <!-- Example: <link rel="canonical" href="https://issue01.gamepoems.com/"> -->
+
+    <!-- Social sharing (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Game Poems #1">
+    <meta property="og:description" content="An online literary magazine publishing short-form videogames directly in a playable format. Issue #1 features interactive works by international artists and game designers.">
+    <meta property="og:image" content="https://issue01.gamepoems.com/magazine_cover.png">
+    <!-- <meta property="og:url" content="https://issue01.gamepoems.com/"> -->
+
+    <!-- Social sharing (Twitter/X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Game Poems #1">
+    <meta name="twitter:description" content="An online literary magazine publishing short-form videogames directly in a playable format. Issue #1 features interactive works by international artists and game designers.">
+    <meta name="twitter:image" content="https://issue01.gamepoems.com/magazine_cover.png">
+
     <link rel="stylesheet" href="magazine.css">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Periodical",
+            "name": "Game Poems",
+            "description": "An online literary magazine publishing short-form videogames directly in a playable format.",
+            "isPartOf": {
+                "@type": "CreativeWorkSeries",
+                "name": "Game Poems"
+            },
+            "image": "magazine_cover.png"
+        }
+    </script>
+
 </head>
+
 <body>
 
 <header class="topbar hidden">
@@ -38,6 +77,25 @@ The magazine launcher was designed and implemented by Jordan Magnuson, with refe
 </header>
 
 <main>
+    <!-- Noscript for accessibility and SEO -->
+    <noscript>
+        <section aria-label="Game Poems Issue #1 (text-only summary)">
+            <h1>Game Poems #1</h1>
+            <p>
+                Game Poems is an online literary magazine dedicated to exploring the artistic and poetic potential
+                of short-form videogames by publishing new work directly in a playable format.
+            </p>
+            <p>
+                This issue includes works such as <em>Hesitation</em> (Yifan Yuan), <em>On Second Thought</em> (Tereza Kotěšovcová),
+                <em>Like I Never Moved at All</em> (Adam Pype &amp; Viktor Kraus), <em>SNAKISMS 2</em> (Pippin Barr),
+                and <em>Tropic of Dinosaur</em> (Roman Gvozdev), among others.
+            </p>
+            <p>
+                To experience the magazine, please enable JavaScript.
+            </p>
+        </section>
+    </noscript>
+
     <!-- Landing cover view -->
     <section id="landingCover" class="hidden" aria-label="Magazine cover">
         <button id="enterMagazineBtn" class="landing-cover-button">
