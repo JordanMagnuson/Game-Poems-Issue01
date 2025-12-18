@@ -594,7 +594,7 @@ main {
 #textLayoutContents .toc-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
     break-inside: avoid;
     min-width: 0;
 }
@@ -606,11 +606,12 @@ main {
 
 #textLayoutContents .toc-item.toc-clickable {
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 #textLayoutContents .toc-item.toc-clickable:hover {
     background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.25); /* fake extra padding without layout shift */
 }
 
 #textLayoutContents .toc-item.toc-clickable:focus-visible {
@@ -664,7 +665,8 @@ main {
 }
 
 #textLayoutContents .toc-item-text {
-    height: 70px;   // Half the height of a game entry.
+    height: 62px;   /* We want two text TOC items to exactly match the height of one game item. */
+                    /* So half the height of a game entry (140px) - half of #textLayoutContents .toc-column gap (which is 1rem = 16px). So 140px/2 - 8px = 62px */
 }
 
 /* Small cover thumbnail */
