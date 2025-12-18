@@ -172,7 +172,8 @@ const pages = [
         contentWarning: "Rotational movement that could be uncomfortable for players sensitive to motion sickness.",
         instructions: "Use the left and right arrow keys to turn the diorama. It's recommended to read the poem by cycling with the right arrow, but the poem is written to work in both directions and even loops around, so you can't interact with it in a \"wrong\" way.",
         overWhen: "You reach the end of the poem (or not).",
-        aboutAuthor: "Adam Pype is belgian multi-disciplinary artist and game developer based in south korea and belgium primarily working on short-form experimental work through a horror lens.",
+        aboutAuthor: "Adam Pype is Belgian multi-disciplinary artist and game developer based in South Korea and Belgium primarily working on short-form experimental work through a horror lens. " +
+                     "Viktor Kraus is a German audio designer and composer. He worked on the audio for this game, and has also worked on audio for <em>No Players Online</em>, <em>Spookware</em>, <em>Everdeep Aurora</em>, and many other video games.",
         aboutProcess: "The work was developed in the unity game engine using pictures taken during the artist's travels, loosely projected onto simple 3d models made with 3dsmax. Using a shader that mimicks early 3d vertex float point imprecision, the corruption effect of the environment is achieved by increasing the vertex effect when cycling between areas.",
         statement: `<p>I (Adam) wanted to make a short piece about my feelings around moving, having lived in different places and the weird disconnect I feel between them. I'm from Belgium, but I moved to South Korea a couple years ago, and I find myself drifting back and forth between the life I left behind and the new life I built for myself.</p><p>It's an attempt at trying to capture a very specific feeling of having only yourself to rely on as a home, when the places you cycle through are constantly fleeting and you can't process them all existing at once.</p>`
     },
@@ -313,7 +314,7 @@ const pages = [
         overWhen: "The text \"goodbye\" appears on screen.",
         aboutAuthor: "Roman has been a programmer for most of his life. He's been making small, personal free games since 2021 in his spare time, mostly at night.",
         aboutProcess: "The game's graphics are mostly photo collages. All the pictures were taken by me in the places where I live. It was a process of hunting for the interesting in the mundane, of capturing the texture of the surrounding reality in a mosaic of disparate fragments. Beauty and truth emerge from beneath the spring snow as cigarette ends, last year's empty fifths of vodka, dead pigeons, and children's obscene drawings. Some images are from the old scientific magazines, which I read so often as a child.",
-        acknowledgements: `Music is the core of the entire game. It sets the rhythm and tone. In a sense, the game is a music video. The song is "Dia" by my good friends band Kernherbst. https://kernherbst.bandcamp.com`,
+        acknowledgements: `Music is the core of the entire game. It sets the rhythm and tone. In a sense, the game is a music video. The song is "Dia" by my good friend's band, "Kernherbst." https://kernherbst.bandcamp.com`,
         statement: `<p>This game poem is a reflection of my own aging, excitement about the past, about life, the world around me, my anxiety about how I've been living my life, and if I ever was a master of my own being or always have been dragged by somebody or something.</p>`
     },
     {
@@ -329,6 +330,8 @@ const pages = [
         estimatedPlayTime: "10-20 minutes. Note: when loading, the game may appear stuck on the '...' screen, but will usually load within a minute or two.",
         instructions: "Click to interact. The game is a riddle, but there is an ending.",
         overWhen: "The game fades to white.",
+        aboutAuthor: "Gregory Avery-Weir is a writer and game developer who creates productive dissonance in the minds of players by providing surreal images and challenging them to empathize with the unfamiliar.",
+        aboutProcess: "<em>The Ur Game</em> was made in Godot.",
         statement: `<p>Ursula K. Le Guin said that the power of capitalism "seems inescapable; so did the divine right of kings." When you internalize the supposed rules of a game, it's hard to remember that we made up those rules. At any moment, we can stop playing the game... but what could life possibly look like afterward?</p><p>We can't manifest a world without cruelty, oppression, and poverty if we play by the rules of our current game. The rules cannot imagine a just world, because the rich and powerful who maintain those rules want to prevent that world from being born. Our current world is imprisoned by unjust rules, and transforming it into a nurturing one will require an act of magic.</p><p>You know why it's so hard to beat a magician at cards? They cheat.</p>`
     },
     {
@@ -342,6 +345,8 @@ const pages = [
         estimatedPlayTime: "5 minutes... or forever.",
         instructions: "Use the arrow keys to interact.",
         overWhen: "",
+        aboutAuthor: "Interaction artist and designer Isaque Sanches explores the idea of systems as a poetic medium. His work reveals the emergent beauty born from the interplay between rules and audience participation.",
+        aboutProcess: "Built with Unity; hand-drawn visuals made with Procreate; audio mixed with Audacity.",
         statement: `<p>I had the idea of making "começar coisas terminadas" (trans. "to start ended things") when I was driving my car through a long road in Portugal in the summer of 2020. The global pandemic lockdown had just started, and I was extremely vulnerable at the moment.</p>
                         <p>My father died when I was 12, in a car crash; in a road that was quite similar to the one I was in, and not too far from where I was now either, almost two decades later. He died an instant death.</p>
                         <p>More than his absence, I think what had a bigger impact on me as a child was his sudden, unannounced and unceremonious departure.</p>`
