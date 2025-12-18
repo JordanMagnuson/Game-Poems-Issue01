@@ -578,14 +578,7 @@ main {
 #textLayoutContents #textContent {
     column-count: 1;
     display: grid;
-
-    /* 4 columns: skinny, wide, wide, skinny */
-    grid-template-columns:
-        minmax(0, 0.7fr)   /* intro column (About + Foreword)       */
-        minmax(0, 1.4fr)   /* games left column                    */
-        minmax(0, 1.4fr)   /* games right column                   */
-        minmax(0, 0.7fr);  /* final column (Credits & Colophon)    */
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 2rem;
     row-gap: 0;
 }
@@ -594,7 +587,7 @@ main {
 #textLayoutContents .toc-column {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
     break-inside: avoid;
 }
 
@@ -607,6 +600,7 @@ main {
 #textLayoutContents .toc-title {
     display: flex;
     align-items: baseline;
+    font-size: 1.5rem;
     font-weight: 600;
     gap: 0.25rem;
     min-width: 0;          /* allow row to shrink within its grid column */
@@ -635,7 +629,7 @@ main {
 
 /* Author line (only used on game entries) */
 #textLayoutContents .toc-author {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     color: var(--ink-muted);
     margin-top: 0.1rem;
 }
@@ -644,15 +638,20 @@ main {
 #textLayoutContents .toc-item-game {
     display: flex;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 1rem;
+}
+
+#textLayoutContents .toc-item-text {
+    height: 70px;   // Half the height of a game entry.
 }
 
 /* Small cover thumbnail */
 #textLayoutContents .toc-item-game .toc-cover {
-    width: 100px;          /* cover size */
+    width: 140px;          /* cover size */
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 2px;
+    border: 1px solid black;
 }
 
 /* Stack title + author vertically next to the image,
@@ -665,12 +664,6 @@ main {
 }
 
 /* Responsive tweaks */
-@media (max-width: 1200px) {
-    #textLayoutContents #textContent {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
 @media (max-width: 900px) {
     #textLayoutContents #textContent {
         grid-template-columns: repeat(2, minmax(0, 1fr));

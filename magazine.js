@@ -245,59 +245,6 @@ function buildContentsGrid() {
         return row;
     }
 
-    // Create four column wrappers:
-    // 1) Intro text pages (About, Forward)
-    // 2) Games (left half)
-    // 3) Games (right half)
-    // 4) Final text pages (e.g., Credits & Colophon)
-    const introCol = document.createElement("div");
-    introCol.className = "toc-column toc-column-intro";
-
-    const gamesLeftCol = document.createElement("div");
-    gamesLeftCol.className = "toc-column toc-column-games toc-column-games-left";
-
-    const gamesRightCol = document.createElement("div");
-    gamesRightCol.className = "toc-column toc-column-games toc-column-games-right";
-
-    const finalCol = document.createElement("div");
-    finalCol.className = "toc-column toc-column-final";
-
-    const gamePages = [];
-    const introTextPages = [];
-    const finalTextPages = [];
-
-    pages.forEach((p) => {
-        if (!p || !p.title) return;
-
-        // Skip the Contents page itself
-        if (p.title === "Contents") return;
-
-        if (p.typeOfPage === "game") {
-            gamePages.push(p);
-        } else if (p.typeOfPage === "text") {
-            // Treat initial text pages specially
-            if (p.title === "About" || p.title === "Foreword") {
-                introTextPages.push(p);
-            } else {
-                // Everything else text-y goes in the final column
-                finalTextPages.push(p);
-            }
-        }
-    });
-
-    // Intro column: About, Forward (in that order)
-    introTextPages.forEach((p) => {
-        const item = document.createElement("div");
-        item.className = "toc-item";
-        item.appendChild(createTitleWithPage(p));
-        introCol.appendChild(item);
-    });
-
-    // Split game pages into two roughly equal halves
-    const mid = Math.ceil(gamePages.length / 2);
-    const leftGames = gamePages.slice(0, mid);
-    const rightGames = gamePages.slice(mid);
-
     // Helper to build a game TOC item (cover + title + author)
     function createGameTocItem(p) {
         const item = document.createElement("div");
@@ -337,29 +284,67 @@ function buildContentsGrid() {
         return item;
     }
 
-    leftGames.forEach((p) => {
-        const item = createGameTocItem(p);
-        gamesLeftCol.appendChild(item);
-    });
+    // Helper: build a TOC item for any page type
+    function createTocItem(p) {
+        if (p.typeOfPage === "game") {
+            return createGameTocItem(p);
+        }
 
-    rightGames.forEach((p) => {
-        const item = createGameTocItem(p);
-        gamesRightCol.appendChild(item);
-    });
-
-    // Final column: closing text pages (e.g., Credits & Colophon)
-    finalTextPages.forEach((p) => {
+        // Text pages: reserve the same "cover slot" area as game entries
         const item = document.createElement("div");
-        item.className = "toc-item";
-        item.appendChild(createTitleWithPage(p));
-        finalCol.appendChild(item);
-    });
+        item.className = "toc-item toc-item-text";
 
-    // Append columns to the container in order: intro, games, games, final
-    container.appendChild(introCol);
-    container.appendChild(gamesLeftCol);
-    container.appendChild(gamesRightCol);
-    container.appendChild(finalCol);
+        const placeholder = document.createElement("div");
+        placeholder.className = "toc-cover-placeholder";
+
+        const textWrapper = document.createElement("div");
+        textWrapper.className = "toc-text";
+        textWrapper.appendChild(createTitleWithPage(p));
+
+        // Layout order: [placeholder][text]
+        item.appendChild(placeholder);
+        item.appendChild(textWrapper);
+
+        return item;
+    }
+
+    // Create three equal columns
+    const colA = document.createElement("div");
+    colA.className = "toc-column toc-column-a";
+
+    const colB = document.createElement("div");
+    colB.className = "toc-column toc-column-b";
+
+    const colC = document.createElement("div");
+    colC.className = "toc-column toc-column-c";
+
+    // Build a single ordered list of TOC pages:
+    // - keep the order from pages[]
+    // - skip the Contents page itself
+    const tocPages = pages.filter((p) => p && p.title && p.title !== "Contents");
+
+    // --- Manual TOC column sizing (tweak these numbers) ---
+    const COL1_COUNT = 6; // number of items in column 1
+    const COL2_COUNT = 5; // number of items in column 2
+    // column 3 will contain the rest
+
+    // (Optional safety) clamp counts so weird values can't break slicing
+    const safeCol1 = Math.max(0, Math.min(COL1_COUNT, tocPages.length));
+    const safeCol2 = Math.max(0, Math.min(COL2_COUNT, tocPages.length - safeCol1));
+
+    // Split into three consecutive chunks (column-major reading order)
+    const chunkA = tocPages.slice(0, safeCol1);
+    const chunkB = tocPages.slice(safeCol1, safeCol1 + safeCol2);
+    const chunkC = tocPages.slice(safeCol1 + safeCol2);
+
+    chunkA.forEach((p) => colA.appendChild(createTocItem(p)));
+    chunkB.forEach((p) => colB.appendChild(createTocItem(p)));
+    chunkC.forEach((p) => colC.appendChild(createTocItem(p)));
+
+    // Append the three columns
+    container.appendChild(colA);
+    container.appendChild(colB);
+    container.appendChild(colC);
 }
 
 // --- Rendering functions ----------------------------------------------
