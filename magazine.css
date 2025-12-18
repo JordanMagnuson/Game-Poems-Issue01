@@ -604,6 +604,20 @@ main {
     padding: 0.15rem 0;
 }
 
+#textLayoutContents .toc-item.toc-clickable {
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+#textLayoutContents .toc-item.toc-clickable:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+#textLayoutContents .toc-item.toc-clickable:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.35);
+    outline-offset: 3px;
+}
+
 /* TOC title row with dotted leader + page number */
 #textLayoutContents .toc-title {
     display: flex;

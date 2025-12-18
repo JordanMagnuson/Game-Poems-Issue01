@@ -211,140 +211,126 @@ function buildNotesPage() {
 }
 
 function buildContentsGrid() {
-    const container = textContentEl;
-    if (!container) return;
+    const textContent = document.getElementById("textContent");
+    if (!textContent) return;
 
-    // Clear any existing content (including placeholder HTML)
-    container.innerHTML = "";
+    textContent.innerHTML = "";
 
-    // Helper: get 1-based page number from global pages[]
+    // Everything except the Contents page itself
+    const tocPages = pages.filter(p => p.title && p.title !== "Contents");
+
+    // ---- tweak these to control column breaks ----
+    const COL1_COUNT = 6;
+    const COL2_COUNT = 5;
+
+    const col1Pages = tocPages.slice(0, COL1_COUNT);
+    const col2Pages = tocPages.slice(COL1_COUNT, COL1_COUNT + COL2_COUNT);
+    const col3Pages = tocPages.slice(COL1_COUNT + COL2_COUNT);
+
+    const col1 = document.createElement("div");
+    const col2 = document.createElement("div");
+    const col3 = document.createElement("div");
+
+    col1.className = "toc-column";
+    col2.className = "toc-column";
+    col3.className = "toc-column";
+
     function getPageNumber(page) {
-        const idx = pages.indexOf(page);
-        return idx === -1 ? "" : (idx + 1);
+        return pages.indexOf(page) + 1;
     }
 
-    // Helper: build "Title ..... 12" row
-    function createTitleWithPage(page) {
+    function makeTocItemClickable(itemEl, page) {
+        const targetIndex = pages.indexOf(page);
+        if (targetIndex < 0) return;
+
+        itemEl.classList.add("toc-clickable");
+        itemEl.tabIndex = 0;
+        itemEl.setAttribute("role", "link");
+        itemEl.setAttribute("aria-label", `Go to page ${targetIndex + 1}: ${page.title}`);
+
+        itemEl.addEventListener("click", () => showCover(targetIndex));
+
+        itemEl.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                showCover(targetIndex);
+            }
+        });
+    }
+
+    function createTitleRow(p) {
+        // IMPORTANT: This matches your CSS:
+        // .toc-title contains .toc-title-text + .toc-dots + .toc-page
         const row = document.createElement("div");
         row.className = "toc-title";
 
         const titleText = document.createElement("span");
         titleText.className = "toc-title-text";
-        titleText.textContent = page.title;
+        titleText.textContent = p.title;
 
         const dots = document.createElement("span");
         dots.className = "toc-dots";
 
-        const pageSpan = document.createElement("span");
-        pageSpan.className = "toc-page";
-        pageSpan.textContent = getPageNumber(page);
+        const pageNum = document.createElement("span");
+        pageNum.className = "toc-page";
+        pageNum.textContent = getPageNumber(p);
 
         row.appendChild(titleText);
         row.appendChild(dots);
-        row.appendChild(pageSpan);
+        row.appendChild(pageNum);
+
         return row;
     }
 
-    // Helper to build a game TOC item (cover + title + author)
     function createGameTocItem(p) {
         const item = document.createElement("div");
         item.className = "toc-item toc-item-game";
 
-        // Outer flex container for text (title + author)
+        const img = document.createElement("img");
+        img.src = getCoverSrc(p);
+        img.className = "toc-cover";
+        img.alt = p.title ? `${p.title} cover` : "Game cover";
+
         const textWrapper = document.createElement("div");
         textWrapper.className = "toc-text";
 
-        // Title row with dotted leaders + page number
-        const titleRow = createTitleWithPage(p);
-        textWrapper.appendChild(titleRow);
+        textWrapper.appendChild(createTitleRow(p));
 
         if (p.author) {
-            const authorEl = document.createElement("div");
-            authorEl.className = "toc-author";
-            authorEl.textContent = p.author;
-            textWrapper.appendChild(authorEl);
+            const author = document.createElement("div");
+            author.className = "toc-author";
+            author.textContent = p.author;
+            textWrapper.appendChild(author);
         }
 
-        // Cover image on the left
-        const coverSrc = getCoverSrc(p);
-        if (coverSrc) {
-            const img = document.createElement("img");
-            img.className = "toc-cover";
-            img.src = coverSrc;
-            img.alt = p.title ? `${p.title} cover` : "Game cover";
+        item.appendChild(img);
+        item.appendChild(textWrapper);
 
-            // Layout order: [image][text]
-            item.appendChild(img);
-            item.appendChild(textWrapper);
-        } else {
-            // Fallback: no image available, just text
-            item.appendChild(textWrapper);
-        }
-
+        makeTocItemClickable(item, p);
         return item;
     }
 
-    // Helper: build a TOC item for any page type
-    function createTocItem(p) {
-        if (p.typeOfPage === "game") {
-            return createGameTocItem(p);
-        }
-
-        // Text pages: reserve the same "cover slot" area as game entries
+    function createTextTocItem(p) {
         const item = document.createElement("div");
         item.className = "toc-item toc-item-text";
 
-        const placeholder = document.createElement("div");
-        placeholder.className = "toc-cover-placeholder";
+        item.appendChild(createTitleRow(p));
 
-        const textWrapper = document.createElement("div");
-        textWrapper.className = "toc-text";
-        textWrapper.appendChild(createTitleWithPage(p));
-
-        // Layout order: [placeholder][text]
-        item.appendChild(placeholder);
-        item.appendChild(textWrapper);
-
+        makeTocItemClickable(item, p);
         return item;
     }
 
-    // Create three equal columns
-    const colA = document.createElement("div");
-    colA.className = "toc-column toc-column-a";
+    function createTocItem(p) {
+        return (p.typeOfPage === "game") ? createGameTocItem(p) : createTextTocItem(p);
+    }
 
-    const colB = document.createElement("div");
-    colB.className = "toc-column toc-column-b";
+    col1Pages.forEach(p => col1.appendChild(createTocItem(p)));
+    col2Pages.forEach(p => col2.appendChild(createTocItem(p)));
+    col3Pages.forEach(p => col3.appendChild(createTocItem(p)));
 
-    const colC = document.createElement("div");
-    colC.className = "toc-column toc-column-c";
-
-    // Build a single ordered list of TOC pages:
-    // - keep the order from pages[]
-    // - skip the Contents page itself
-    const tocPages = pages.filter((p) => p && p.title && p.title !== "Contents");
-
-    // --- Manual TOC column sizing (tweak these numbers) ---
-    const COL1_COUNT = 6; // number of items in column 1
-    const COL2_COUNT = 5; // number of items in column 2
-    // column 3 will contain the rest
-
-    // (Optional safety) clamp counts so weird values can't break slicing
-    const safeCol1 = Math.max(0, Math.min(COL1_COUNT, tocPages.length));
-    const safeCol2 = Math.max(0, Math.min(COL2_COUNT, tocPages.length - safeCol1));
-
-    // Split into three consecutive chunks (column-major reading order)
-    const chunkA = tocPages.slice(0, safeCol1);
-    const chunkB = tocPages.slice(safeCol1, safeCol1 + safeCol2);
-    const chunkC = tocPages.slice(safeCol1 + safeCol2);
-
-    chunkA.forEach((p) => colA.appendChild(createTocItem(p)));
-    chunkB.forEach((p) => colB.appendChild(createTocItem(p)));
-    chunkC.forEach((p) => colC.appendChild(createTocItem(p)));
-
-    // Append the three columns
-    container.appendChild(colA);
-    container.appendChild(colB);
-    container.appendChild(colC);
+    textContent.appendChild(col1);
+    textContent.appendChild(col2);
+    textContent.appendChild(col3);
 }
 
 // --- Rendering functions ----------------------------------------------
