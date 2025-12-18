@@ -28,7 +28,8 @@ const gameFrameEl = document.getElementById("gameFrame");
 
 const prevBtnEl = document.getElementById("prevBtn");
 const nextBtnEl = document.getElementById("nextBtn");
-const navTitleEl = document.getElementById("navTitle");
+const navTitleBtnEl = document.getElementById("navTitleBtn");
+const jumpMenuEl = document.getElementById("jumpMenu");
 const pageIndicatorEl = document.getElementById("pageIndicator");
 const fullscreenToggleBtnEl = document.getElementById("fullscreenToggleBtn");
 const closePlayBtnEl = document.getElementById("closePlayBtn");
@@ -333,16 +334,107 @@ function buildContentsGrid() {
     textContent.appendChild(col3);
 }
 
+// --- Jump menu (dropdown TOC) ------------------------------------------
+
+function isBrowseMode() {
+    return !(topbarEl && topbarEl.classList.contains("playing"));
+}
+
+function buildJumpMenu() {
+    if (!jumpMenuEl) return;
+
+    jumpMenuEl.innerHTML = "";
+
+    pages.forEach((p, idx) => {
+        // Only include real titled pages
+        if (!p || !p.title) return;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "jump-menu-item";
+        btn.setAttribute("role", "option");
+        btn.dataset.index = String(idx);
+
+        const num = document.createElement("span");
+        num.className = "jump-num";
+        num.textContent = `${idx + 1}.`;
+
+        const title = document.createElement("span");
+        title.className = "jump-title";
+        title.textContent = p.title;
+
+        btn.appendChild(num);
+        btn.appendChild(title);
+
+        btn.addEventListener("click", () => {
+            closeJumpMenu();
+            showCover(idx);
+        });
+
+        jumpMenuEl.appendChild(btn);
+    });
+
+    refreshJumpMenuSelection();
+}
+
+function refreshJumpMenuSelection() {
+    if (!jumpMenuEl) return;
+
+    const items = jumpMenuEl.querySelectorAll(".jump-menu-item");
+    items.forEach((el) => {
+        const idx = parseInt(el.dataset.index, 10);
+        const isCurrent = idx === currentIndex;
+        el.classList.toggle("current", isCurrent);
+        el.setAttribute("aria-selected", isCurrent ? "true" : "false");
+    });
+}
+
+function openJumpMenu() {
+    if (!jumpMenuEl || !navTitleBtnEl) return;
+    if (!isBrowseMode()) return;
+
+    jumpMenuEl.classList.remove("hidden");
+    navTitleBtnEl.setAttribute("aria-expanded", "true");
+    refreshJumpMenuSelection();
+}
+
+function closeJumpMenu() {
+    if (!jumpMenuEl || !navTitleBtnEl) return;
+
+    jumpMenuEl.classList.add("hidden");
+    navTitleBtnEl.setAttribute("aria-expanded", "false");
+}
+
+function toggleJumpMenu() {
+    if (!jumpMenuEl) return;
+    if (!isBrowseMode()) return;
+
+    const isOpen = !jumpMenuEl.classList.contains("hidden");
+    if (isOpen) closeJumpMenu();
+    else openJumpMenu();
+}
+
 // --- Rendering functions ----------------------------------------------
 
 function updateNav() {
     const page = pages[currentIndex];
     const atFirstPage = currentIndex === 0;
-    navTitleEl.textContent = page.title || "Page";
+
+    if (navTitleBtnEl) {
+        navTitleBtnEl.textContent = page.title || "Page";
+    }
+
     pageIndicatorEl.textContent = `Page ${currentIndex + 1} of ${pages.length}`;
     prevBtnEl.disabled = atFirstPage && !landingCoverEl;
     nextBtnEl.disabled = currentIndex === pages.length - 1;
+
+    // keep dropdown selection in sync, and auto-close if needed
+    refreshJumpMenuSelection();
+    if (!isBrowseMode()) {
+        closeJumpMenu();
+    }
 }
+
 
 function showLanding() {
     if (!landingCoverEl) return;
@@ -378,6 +470,8 @@ function showCover(index) {
         topbarEl.classList.remove("hidden");
         topbarEl.classList.remove("playing");
     }
+
+    closeJumpMenu();
 
     if (typeof index === "number") {
         currentIndex = Math.max(0, Math.min(index, pages.length - 1));
@@ -492,6 +586,8 @@ function showPlay() {
         topbarEl.classList.remove("hidden");
     }
 
+    closeJumpMenu();
+
     updateNav();
 
     // Focus once iframe is rendered
@@ -511,6 +607,27 @@ prevBtnEl.addEventListener("click", () => {
     } else {
         showCover(currentIndex - 1);
     }
+});
+
+// Jump menu: toggle on title click (browse mode only)
+if (navTitleBtnEl) {
+    navTitleBtnEl.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleJumpMenu();
+    });
+}
+
+// Close jump menu when clicking outside
+document.addEventListener("click", (e) => {
+    if (!jumpMenuEl || !navTitleBtnEl) return;
+    const clickedInside =
+        jumpMenuEl.contains(e.target) || navTitleBtnEl.contains(e.target);
+    if (!clickedInside) closeJumpMenu();
+});
+
+// Close jump menu on Escape
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeJumpMenu();
 });
 
 // Fullscreen toggle (maximize button in the top bar)
@@ -533,6 +650,9 @@ if (fullscreenToggleBtnEl) {
 
 // Initialize button icon/label on load
 updateFullscreenButton();
+
+// Build the jump menu dropdown
+buildJumpMenu();
 
 // Close game (X in the top bar)
 if (closePlayBtnEl) {

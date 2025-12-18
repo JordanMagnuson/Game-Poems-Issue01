@@ -233,6 +233,98 @@ header.topbar.playing .fullscreen-toggle-btn {
     padding: 0 1rem; /* Padding at edges for Prev/Next arrows */
 }
 
+/* Make the center title behave like a button (without changing its look) */
+.nav-title-btn {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0 1rem; /* keep your existing nav-title padding feel */
+}
+
+/* subtle caret */
+.nav-title-btn::after {
+    content: " ▾";
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+/* Focus style for keyboard users */
+.nav-title-btn:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.7);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* Disable the dropdown trigger in play mode */
+header.topbar.playing .nav-title-btn {
+    cursor: default;
+    pointer-events: none;
+}
+
+.jump-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(520px, 90vw);
+    max-height: 60vh;
+    overflow: auto;
+
+    background: rgba(255,255,255,0.95);
+    color: var(--ink-main);
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 10px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    padding: 0.35rem;
+    z-index: 500; /* above cover content */
+}
+
+.jump-menu-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+
+    padding: 0.55rem 0.65rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.jump-menu-item:hover {
+    background: rgba(30,27,75,0.10);
+}
+
+.jump-menu-item:focus-visible {
+    outline: 2px solid rgba(30,27,75,0.35);
+    outline-offset: 2px;
+}
+
+.jump-menu-item .jump-num {
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    flex: 0 0 auto;
+}
+
+.jump-menu-item .jump-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.jump-menu-item.current {
+    background: rgba(30,27,75,0.12);
+}
+
 .page-indicator {
     opacity: 0.85;
 }
