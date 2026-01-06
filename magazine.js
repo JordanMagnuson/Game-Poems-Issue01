@@ -174,6 +174,32 @@ function buildNotesPage() {
             : "About the author:";
     }
 
+    // Normalize a single website string (strip protocol/www/trailing slash)
+    function normalizeWebsite(site) {
+        if (!site) return "";
+        return String(site)
+            .trim()
+            .replace(/^https?:\/\//i, "")
+            .replace(/^www\./i, "")
+            .replace(/\/+$/, "");
+    }
+
+    // Build the "Website(s): ..." suffix from page.authorWebsite
+    function getWebsiteSuffix(page) {
+        if (!page.authorWebsite) return "";
+
+        // Allow either a single site or a comma-separated list
+        const sites = String(page.authorWebsite)
+            .split(",")
+            .map(s => normalizeWebsite(s))
+            .filter(Boolean);
+
+        if (sites.length === 0) return "";
+
+        const label = sites.length === 1 ? "Website:" : "Websites:";
+        return ` ${label} ${sites.join(", ")}.`;
+    }
+
     function addNotesSection(parentEl, label, value) {
         if (!value) return;
 
@@ -199,10 +225,15 @@ function buildNotesPage() {
         titleEl.textContent = page.title;
         gameBlock.appendChild(titleEl);
 
+        // Append website(s) to the About the author(s) section
+        const aboutAuthorWithWebsite = page.aboutAuthor
+            ? (page.aboutAuthor + getWebsiteSuffix(page))
+            : page.aboutAuthor;
+
         addNotesSection(
             gameBlock,
             getAuthorLabel(page),
-            page.aboutAuthor
+            aboutAuthorWithWebsite
         );
         addNotesSection(gameBlock, "About the process:", page.aboutProcess);
         addNotesSection(gameBlock, "Paragame acknowledgements:", page.acknowledgements);
