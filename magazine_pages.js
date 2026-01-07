@@ -286,7 +286,7 @@ const pages = [
         authorWebsite: "https://cdertrees.itch.io",
         location: "West Islip, USA",
         estimatedPlayTime: "Less than 5 minutes.",
-        instructions: "Press Z to start and interact. Arrow keys to move. (This is a Game Boy game, run via emulation. As such, the controls indicated on screen—for example, \"Press Start\"—do not match what you will find on a computer keyboard.) ",
+        instructions: `Press Z to start and interact. Arrow keys to move. (This is a Game Boy game, run via emulation. As such, the controls indicated on screen—for example, "Press Start"—do not match what you will find on a computer keyboard.)`,
         overWhen: "You reach the end screen.",
         aboutAuthor: "Caitlin DeRosa is a creative technologist and student who develops tiny autobiographical games as a meditative/self-reflective practice.",
         aboutProcess: `<em>Gambit</em> was developed in GB Studio, and all the art was made in LibreSprite. I started by storyboarding the game on paper before building the scenes in-engine, which led to some issues with the Game Boy's strict hardware limitations. Many scenes needed to be visually simplified and reworked in order to stay under the Game Boy's unique tile count limit. Gambit took ~2-3 weeks to create, with the majority of development taking place at my local café on my days off.`,

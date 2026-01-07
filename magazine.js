@@ -592,6 +592,11 @@ function showCover(index) {
     // Stop any running game
     gameFrameEl.src = "about:blank";
 
+    // Apply smart quotes after injecting page content (covers text nodes too)
+    if (window.smartquotes) {
+        smartquotes(coverViewEl);
+    }
+
     updateNav();
 
     // Keep ?page=<1-based> in the URL without adding history entries
@@ -684,6 +689,11 @@ updateFullscreenButton();
 
 // Build the jump menu dropdown
 buildJumpMenu();
+
+// Smart quotes (curly quotes) using https://smartquotes.js.org/
+if (window.smartquotes) {
+    smartquotes().listen();
+}
 
 // Close game (X in the top bar)
 if (closePlayBtnEl) {
