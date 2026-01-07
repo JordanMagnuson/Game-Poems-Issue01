@@ -159,11 +159,7 @@ header.topbar {
 
 /* ---------- Playing mode: simplify layout ---------- */
 
-/* Hide magazine title + prev/next + page indicator */
-/* Hide magazine title + prev/next + page indicator */
-header.topbar.playing .nav-left {
-    visibility: hidden; /* keep the left column width, but hide the text */
-}
+/* Hide prev/next + page indicator */
 
 header.topbar.playing .nav-arrow,
 header.topbar.playing .page-indicator {
