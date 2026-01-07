@@ -866,12 +866,17 @@ main {
     break-inside: avoid;
 }
 
+.page-Notes #textContent h2 {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
 .page-Notes #textContent h3 {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 .page-Notes #textContent p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 
