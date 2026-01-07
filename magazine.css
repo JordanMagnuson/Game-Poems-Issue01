@@ -172,9 +172,10 @@ header.topbar.playing .page-indicator {
     border: none;
     background: transparent;
     color: inherit;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
+    font-weight: 400;
     line-height: 1;
-    padding: 0 0 0 0.75rem;
+    padding: 0 0.5rem 0 0.75rem; /* some space before the X */
     cursor: pointer;
 }
 
@@ -197,9 +198,11 @@ header.topbar.playing .close-play-btn {
     background: transparent;
     color: inherit;
     font-size: 1.2rem;
+    font-weight: 900;
     line-height: 1;
     padding: 0 0.5rem 0 0.75rem; /* some space before the X */
     cursor: pointer;
+    transform: translateY(-4px); /* Line up with close button */
 }
 
 .fullscreen-toggle-btn:focus-visible {
@@ -1044,6 +1047,10 @@ main {
     header.topbar.playing .fullscreen-toggle-btn,
     header.topbar.playing .close-play-btn {
         flex-shrink: 0; /* prevent squish */
+    }
+
+    header.topbar.playing .fullscreen-toggle-btn {
+        transform: translateY(-1px); /* Line up with close button */
     }
 }
 
