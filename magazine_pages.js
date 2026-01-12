@@ -272,7 +272,7 @@ const pages = [
         overWhen: "You choose to depart.",
         aboutAuthor: "Pippin Barr is an experimental game designer and Associate Professor of Computation Arts at Concordia University.",
         aboutProcess: "<em>SNAKISMS 2</em> was made in Phaser 3 on top of the same basic implementation of Snake I'd used for <em>SNAKISMS</em>, <em>Sibilant Snakelikes</em>, and <em>SNAKISTS</em>. Reusing the same base code (and design) for something new is like a gift from the heavens and I recommend it.",
-        acknowledgements: "Thanks to the countless versions of Snake out there, and especially to Taneli Armanto for his iconic implementation that showed up on my Nokia phone in the late 90s. Thanks, too, to dictionaries, which are full of game designs and poetry.",
+        acknowledgements: "Thanks to the countless versions of <em>Snake</em> out there, and especially to Taneli Armanto for his iconic implementation that showed up on my Nokia phone in the late 90s. Thanks, too, to dictionaries, which are full of game designs and poetry.",
         statement: `<p>Agroterrorism! Snakisms! Escapism! Snakisms! Monotheism! Idealism! Snakisms! Snakisms! It's all <em>Snake</em> to me!</p><p><em>SNAKISMS 2: Snakes We Live By, Volume 1: A-M</em> is a sequel to <em>SNAKISMS</em> based on the observation that some "ism" words describe the basic game of Snake (or its player, or its designer) accurately or interestingly from different philosophical, political, social, or other positions.</p>`
     },
     {
