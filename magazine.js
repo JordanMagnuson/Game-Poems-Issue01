@@ -1,4 +1,4 @@
-// --- DOM references ----------------------------------------------------\
+// --- DOM references ----------------------------------------------------
 const topbarEl = document.querySelector("header.topbar");
 
 const coverViewEl = document.getElementById("coverView");
@@ -510,6 +510,7 @@ function showCover(index) {
 
     const page = pages[currentIndex];
 
+    // For now we've disabled changing topbar color and play button per game.
     // Apply theme color (topbar + primary button)
     // applyThemeColor(page);
 
