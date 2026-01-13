@@ -394,7 +394,7 @@ const pages = [
                </div>
                <div class="column">
                     <h2>Accessibility</h2>
-                    <p>We use WAVE and other standard HTML5 accessibility tools to test for accessibility issues. If you have any concerns or suggestions, please contact us.</p>
+                    <p>We use standard HTML5 accessibility tools to test for accessibility issues. If you have any concerns or suggestions, please contact us.</p>
                     <h2>Independence</h2>
                     <p><em>Game Poems</em> is an independent publication.</p>
                     <h2>Editorial Note</h2>

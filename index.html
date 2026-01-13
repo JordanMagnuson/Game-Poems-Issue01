@@ -56,16 +56,16 @@ Smartquotes.js library by Kelly Martin, MIT License.
 
 <header class="topbar hidden">
     <div class="nav-left">
-        <a id="homeBtn" class="brand" style="text-decoration:none; color:inherit; cursor:pointer;">
+        <button id="homeBtn" class="brand" type="button">
             Game Poems #1
-        </a>
+        </button>
     </div>
     <div class="nav-center">
         <button id="prevBtn" class="nav-arrow">
             ← Previous
         </button>
-        <button id="navTitleBtn" class="nav-title nav-title-btn" type="button" aria-haspopup="listbox" aria-expanded="false">Game Title</button>
-        <div id="jumpMenu" class="jump-menu hidden" role="listbox" aria-label="Jump to page"></div>
+        <button id="navTitleBtn" class="nav-title nav-title-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="jumpMenu">Game Title</button>
+        <div id="jumpMenu" class="jump-menu hidden" role="menu" aria-label="Jump to page"></div>
         <button id="nextBtn" class="nav-arrow">
             Next →
         </button>
@@ -99,7 +99,7 @@ Smartquotes.js library by Kelly Martin, MIT License.
 
     <!-- Landing cover view -->
     <section id="landingCover" class="hidden" aria-label="Magazine cover">
-        <button id="enterMagazineBtn" class="landing-cover-button">
+        <button id="enterMagazineBtn" class="landing-cover-button" type="button">
             <img src="magazine_cover.png"
                  alt="Game Poems, Issue 1 cover"
                  class="landing-cover-image">
@@ -172,7 +172,8 @@ Smartquotes.js library by Kelly Martin, MIT License.
 
     <!-- Play view -->
     <section id="playView" class="hidden" aria-label="Game play area">
-        <iframe id="gameFrame"
+        <iframe title="Game"
+                id="gameFrame"
                 tabindex="0"
                 src=""
                 allow="autoplay; fullscreen; gamepad; xr-spatial-tracking; cross-origin-isolated">

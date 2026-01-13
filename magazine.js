@@ -383,7 +383,7 @@ function buildJumpMenu() {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "jump-menu-item";
-        btn.setAttribute("role", "option");
+        btn.setAttribute("role", "menuitem");
         btn.dataset.index = String(idx);
 
         const num = document.createElement("span");
@@ -415,8 +415,16 @@ function refreshJumpMenuSelection() {
     items.forEach((el) => {
         const idx = parseInt(el.dataset.index, 10);
         const isCurrent = idx === currentIndex;
+
+        // Visual state
         el.classList.toggle("current", isCurrent);
-        el.setAttribute("aria-selected", isCurrent ? "true" : "false");
+
+        // ARIA: indicate the current page in a navigation menu
+        if (isCurrent) {
+            el.setAttribute("aria-current", "page");
+        } else {
+            el.removeAttribute("aria-current");
+        }
     });
 }
 
