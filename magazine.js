@@ -733,16 +733,18 @@ window.addEventListener("load", () => {
     preloadImages();
 });
 
-// Home button
+// Home button → go to Contents
 const homeBtnEl = document.getElementById("homeBtn");
 if (homeBtnEl) {
     homeBtnEl.addEventListener("click", (e) => {
-        e.preventDefault(); // avoid navigation
-        showLanding();
+        e.preventDefault();
 
-        // Clean the ?page param
+        // Contents is page index 0
+        showCover(0);
+
+        // Ensure URL reflects the page
         const url = new URL(window.location);
-        url.searchParams.delete("page");
+        url.searchParams.set("page", "1");
         window.history.replaceState({}, "", url);
     });
 }
