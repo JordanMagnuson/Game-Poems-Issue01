@@ -40,7 +40,7 @@ const pages = [
                     <ul>
                         <li>Andrew Baillie</li>
                         <li>Hannah Brooks-Motl</li>
-                        <li>Kavi Duvoori</li>
+                        <li>Kavi Duvvoori</li>
                         <li>Noah Wardrip-Fruin</li>
                         <li>Shelby Wilson</li>
                     </ul>
