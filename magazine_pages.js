@@ -47,6 +47,7 @@ const pages = [
                     <h2>Special Thanks</h2>
                     <ul>
                         <li>Nick Montfort</li>
+                        <li>Paolo Pedercini</li>
                     </ul>
                 </div>
                 <div class="column">
