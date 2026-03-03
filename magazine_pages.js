@@ -34,7 +34,6 @@ const pages = [
                     <ul>
                         <li>John Domenico Calvelli</li>
                         <li>Matt Griffin</li>
-                        <li>Jordan Magnuson</li>
                     </ul>
                     <h2>Advisory Board</h2>
                     <ul>
