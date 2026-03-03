@@ -19,7 +19,7 @@ const pages = [
                     <p><em>Game Poems</em> is an interactive magazine dedicated to exploring the artistic and poetic potential of short-form videogames by publishing new work directly in a playable format. The magazine foregrounds the convergences that exist between videogames and poetry, highlights "born-videogame" poetics, and champions videogame creation as a legitimate (and accessible) form of poetic practice.</p>
                 </div>
                 <div class="column">
-                    <h2>Founding Editor & Publisher</h2>
+                    <h2>Founding & Managing Editor</h2>
                     <ul><li>Jordan Magnuson</li></ul>
                     <h2>Editorial Collective</h2>
                     <ul>
@@ -34,6 +34,7 @@ const pages = [
                     <ul>
                         <li>John Domenico Calvelli</li>
                         <li>Matt Griffin</li>
+                        <li>Jordan Magnuson</li>
                     </ul>
                     <h2>Advisory Board</h2>
                     <ul>
@@ -215,7 +216,7 @@ const pages = [
         instructions: "Use the arrow keys to move and interact.",
         overWhen: "The game restarts.",
         aboutAuthor: "KB is a writer, designer, and teacher. She works at the intersection of community health and games, creating art for liberatory and comprehensive sex education.",
-        aboutProcess: `I used bitsy to create the game poem, and beepbox to compose the background music. I knew I wanted to make something about exploring or traversing a "space," and I guess I can't get vulvas out of my head. As for the music, I wanted to play with the concept of "First steps"—stumbling, confusing, but everything new. I experimented with different instruments, but within the constraints of Bitsy, triangle + square waves felt most appropriate. Kind of a faux simplicity.`,
+        aboutProcess: `I used Bitsy to create the game poem, and Beepbox to compose the background music. I knew I wanted to make something about exploring or traversing a "space," and I guess I can't get vulvas out of my head. As for the music, I wanted to play with the concept of "First steps"—stumbling, confusing, but everything new. I experimented with different instruments, but within the constraints of Bitsy, triangle + square waves felt most appropriate. Kind of a faux simplicity.`,
         acknowledgements: `Two shoutouts: One, I was able to add audio to Bitsy using this tool developed by Candle: candle.Itch.Io/bitsy-audio. Two, I don't know if I would have the courage to make works like this about vulvovaginal pain without the support, love, and light from my friends and organizers at Tight Lipped: tightlipped.org.`,
         statement: `<p>We are constantly rethinking and renegotiating and relearning and reexploring our bodies. I thought about the first time I had sex, and the first time I had sex that was pleasurable to me. Both were first moves that, though tentative, influenced the trajectory of my life. As someone with chronic pelvic pain, pain and pleasure have always danced too close for comfort in my own sexual journey. I can't seem to have one without the other. I wanted to explore that intersection, or bond, or duality. It was a challenge to represent—especially in the constrained environment of Bitsy as a game-making tool. I loved how much it reminded me of writing poetry, capturing a deep emotional moment in just a handful of words & lines. Each decision demanded thoughtfulness and care. This is not unlike the process of negotiating consent and pleasure in intimacy.</p>`
     },
@@ -382,9 +383,9 @@ const pages = [
                 </div>
                 <div class="column">
                     <h2>Publication Date</h2>
-                    <p>January 2026</p>                
-                    <h2>Cover</h2>
-                    <p>Cover art by Yifan Yuan</p>
+                    <p>January 2026</p>                                  
+                    <h2>Art & Design</h2>
+                    <p>Cover art by Yifan Yuan<br/>Magazine design by Jordan Magnuson</p>       
                     <h2>Type</h2>
                     <p><em>Casual Encounter</em> by Anna Anthropy<br/><em>04</em> by Yuji Oshimoto<br/><em>Inter</em> by Rasmus Andersson</p>
                     <h2>Honoraria</h2>
