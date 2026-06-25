@@ -716,7 +716,7 @@ if (closePlayBtnEl) {
 if (enterMagazineBtnEl) {
     enterMagazineBtnEl.addEventListener("click", () => {
         // Try to put the browser window into fullscreen
-        requestFullscreen();
+        // requestFullscreen();
 
         // Hide landing and show the first magazine page
         showCover(0);
