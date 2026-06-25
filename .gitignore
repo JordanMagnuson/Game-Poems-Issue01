@@ -1,5 +1,6 @@
-# Ignore /working directory.
+# Ignore working and build directories
 /working/
+/build/
 
 # PHP Storm IDE stuff.
 .idea
