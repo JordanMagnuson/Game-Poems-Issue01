@@ -36,6 +36,8 @@ const closePlayBtnEl = document.getElementById("closePlayBtn");
 
 const landingCoverEl = document.getElementById("landingCover");
 const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
+const inactivityWarningEl = document.getElementById("inactivityWarning");
+const inactivityWarningTextEl = document.getElementById("inactivityWarningText");
 
 // --- Preload cover + background images for all pages ---------------------
 
@@ -60,6 +62,104 @@ function preloadImages() {
 // --- State -------------------------------------------------------------
 
 let currentIndex = 0;
+
+const ENABLE_INACTIVITY_TIMER = true;
+const INACTIVITY_WARNING_SECONDS = 60;
+const INACTIVITY_RESET_AFTER_WARNING_SECONDS = 10;
+const INACTIVITY_WARNING_MS = INACTIVITY_WARNING_SECONDS * 1000;
+const INACTIVITY_RESET_MS =
+    (INACTIVITY_WARNING_SECONDS + INACTIVITY_RESET_AFTER_WARNING_SECONDS) * 1000;
+const ACTIVITY_EVENTS = [
+    "keydown",
+    "mousedown",
+    "mousemove",
+    "pointerdown",
+    "touchstart",
+    "wheel"
+];
+
+let inactivityWarningTimer = null;
+let inactivityResetTimer = null;
+
+function clearInactivityTimers() {
+    window.clearTimeout(inactivityWarningTimer);
+    window.clearTimeout(inactivityResetTimer);
+    inactivityWarningTimer = null;
+    inactivityResetTimer = null;
+}
+
+function hideInactivityWarning() {
+    if (inactivityWarningEl) {
+        inactivityWarningEl.classList.add("hidden");
+    }
+}
+
+function showInactivityWarning() {
+    const secondsRemaining = Math.max(1, INACTIVITY_RESET_AFTER_WARNING_SECONDS);
+    const unit = secondsRemaining === 1 ? "second" : "seconds";
+
+    if (inactivityWarningTextEl) {
+        inactivityWarningTextEl.textContent =
+            `The magazine will return to the cover in ${secondsRemaining} ${unit}. ` +
+            "Touch, click, move the mouse, or press a key to continue.";
+    }
+
+    if (inactivityWarningEl) {
+        inactivityWarningEl.classList.remove("hidden");
+    }
+}
+
+function returnToExhibitionCover() {
+    if (landingCoverEl) {
+        showLanding();
+    } else {
+        showCover(0);
+    }
+}
+
+function resetInactivityTimers() {
+    clearInactivityTimers();
+    hideInactivityWarning();
+
+    if (!ENABLE_INACTIVITY_TIMER) {
+        return;
+    }
+
+    if (landingCoverEl && !landingCoverEl.classList.contains("hidden")) {
+        return;
+    }
+
+    inactivityWarningTimer = window.setTimeout(
+        showInactivityWarning,
+        INACTIVITY_WARNING_MS
+    );
+    inactivityResetTimer = window.setTimeout(
+        returnToExhibitionCover,
+        INACTIVITY_RESET_MS
+    );
+}
+
+function listenForActivity(target) {
+    if (!target || target.exhibitionActivityListenersAttached) return;
+
+    ACTIVITY_EVENTS.forEach((eventName) => {
+        target.addEventListener(eventName, resetInactivityTimers, {
+            capture: true,
+            passive: true
+        });
+    });
+    target.exhibitionActivityListenersAttached = true;
+}
+
+function listenForFrameActivity() {
+    if (!gameFrameEl) return;
+
+    try {
+        listenForActivity(gameFrameEl.contentDocument);
+    } catch (error) {
+        console.warn("Could not monitor game-frame activity:", error);
+    }
+}
 
 // --- Helper to build ids from titles ----------------------------------
 
@@ -478,6 +578,9 @@ function updateNav() {
 function showLanding() {
     if (!landingCoverEl) return;
 
+    clearInactivityTimers();
+    hideInactivityWarning();
+
     document.body.classList.add("landing-active");
     landingCoverEl.classList.remove("hidden");
     coverViewEl.classList.add("hidden");
@@ -614,6 +717,7 @@ function showCover(index) {
     window.history.replaceState({}, "", url);
 
     window.scrollTo({ top: 0, behavior: "instant" });
+    resetInactivityTimers();
 }
 
 function showPlay() {
@@ -638,7 +742,10 @@ function showPlay() {
     // Focus once iframe is rendered
     setTimeout(() => {
         gameFrameEl.focus();
+        listenForFrameActivity();
     }, 50);
+
+    resetInactivityTimers();
 }
 
 // --- Event wiring ------------------------------------------------------
@@ -710,6 +817,11 @@ if (closePlayBtnEl) {
         // Return to this game's cover/about page
         showCover(currentIndex);
     });
+}
+
+listenForActivity(document);
+if (gameFrameEl) {
+    gameFrameEl.addEventListener("load", listenForFrameActivity);
 }
 
 // Landing cover "Play"/"Enter" button
