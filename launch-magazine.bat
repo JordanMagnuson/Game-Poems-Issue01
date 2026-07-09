@@ -4,6 +4,7 @@ setlocal
 set "PORT=8000"
 set "ROOT_DIR=%~dp0"
 set "CADDY_EXE=%ROOT_DIR%caddy-server\caddy_windows_amd64.exe"
+set "CADDYFILE=%ROOT_DIR%caddy-server\Caddyfile"
 set "LAUNCH_URL=http://127.0.0.1:%PORT%/index.html"
 
 if not exist "%CADDY_EXE%" (
@@ -14,7 +15,15 @@ if not exist "%CADDY_EXE%" (
     exit /b 1
 )
 
-start "Game Poems Issue 1 Local Server" /D "%ROOT_DIR%" cmd /k ""%CADDY_EXE%" file-server -r . -l 127.0.0.1:%PORT%"
+if not exist "%CADDYFILE%" (
+    echo Could not find Caddy config at:
+    echo "%CADDYFILE%"
+    echo.
+    pause
+    exit /b 1
+)
+
+start "Game Poems Issue 1 Local Server" /D "%ROOT_DIR%" cmd /k ""%CADDY_EXE%" run --config "%CADDYFILE%" --adapter caddyfile"
 timeout /t 3 /nobreak >nul
 
 where msedge.exe >nul 2>nul

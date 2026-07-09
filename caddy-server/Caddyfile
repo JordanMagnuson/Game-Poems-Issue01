@@ -1,0 +1,29 @@
+http://127.0.0.1:8000 {
+	root * .
+
+	@brotli path *.br
+	header @brotli Content-Encoding br
+
+	@gzip path *.gz
+	header @gzip Content-Encoding gzip
+
+	@wasm_brotli path *.wasm.br
+	header @wasm_brotli Content-Type application/wasm
+
+	@wasm_gzip path *.wasm.gz
+	header @wasm_gzip Content-Type application/wasm
+
+	@javascript_brotli path *.js.br
+	header @javascript_brotli Content-Type application/javascript
+
+	@javascript_gzip path *.js.gz
+	header @javascript_gzip Content-Type application/javascript
+
+	@data_brotli path *.data.br
+	header @data_brotli Content-Type application/octet-stream
+
+	@data_gzip path *.data.gz
+	header @data_gzip Content-Type application/octet-stream
+
+	file_server
+}
