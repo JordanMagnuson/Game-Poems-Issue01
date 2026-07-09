@@ -63,6 +63,7 @@ function preloadImages() {
 
 let currentIndex = 0;
 
+const REQUEST_FULLSCREEN_ON_COVER_CLICK = true;
 const ENABLE_INACTIVITY_TIMER = true;
 const INACTIVITY_WARNING_SECONDS = 10;
 const INACTIVITY_RESET_AFTER_WARNING_SECONDS = 5;
@@ -828,7 +829,9 @@ if (gameFrameEl) {
 if (enterMagazineBtnEl) {
     enterMagazineBtnEl.addEventListener("click", () => {
         // Try to put the browser window into fullscreen
-        // requestFullscreen();
+        if (REQUEST_FULLSCREEN_ON_COVER_CLICK) {
+            requestFullscreen();
+        }
 
         // Hide landing and show the first magazine page
         showCover(0);
