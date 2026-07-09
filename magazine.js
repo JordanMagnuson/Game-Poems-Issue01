@@ -38,6 +38,7 @@ const landingCoverEl = document.getElementById("landingCover");
 const enterMagazineBtnEl = document.getElementById("enterMagazineBtn");
 const inactivityWarningEl = document.getElementById("inactivityWarning");
 const inactivityWarningTextEl = document.getElementById("inactivityWarningText");
+const attractFadeOverlayEl = document.getElementById("attractFadeOverlay");
 
 // --- Preload cover + background images for all pages ---------------------
 
@@ -65,11 +66,19 @@ let currentIndex = 0;
 
 const REQUEST_FULLSCREEN_ON_COVER_CLICK = true;
 const ENABLE_INACTIVITY_TIMER = true;
-const INACTIVITY_WARNING_SECONDS = 10;
-const INACTIVITY_RESET_AFTER_WARNING_SECONDS = 5;
+const INACTIVITY_WARNING_SECONDS = 60;
+const INACTIVITY_RESET_AFTER_WARNING_SECONDS = 10;
+const ENABLE_ATTRACT_MODE = true;
+const ATTRACT_MODE_IDLE_SECONDS = 30;
+const ATTRACT_MODE_PAGE_COUNT = 5;
+const ATTRACT_MODE_PAGE_SECONDS = 5;
+const ATTRACT_MODE_FADE_SECONDS = 2;
 const INACTIVITY_WARNING_MS = INACTIVITY_WARNING_SECONDS * 1000;
 const INACTIVITY_RESET_MS =
     (INACTIVITY_WARNING_SECONDS + INACTIVITY_RESET_AFTER_WARNING_SECONDS) * 1000;
+const ATTRACT_MODE_IDLE_MS = ATTRACT_MODE_IDLE_SECONDS * 1000;
+const ATTRACT_MODE_PAGE_MS = ATTRACT_MODE_PAGE_SECONDS * 1000;
+const ATTRACT_MODE_FADE_MS = ATTRACT_MODE_FADE_SECONDS * 1000;
 const ACTIVITY_EVENTS = [
     "keydown",
     "mousedown",
@@ -81,12 +90,39 @@ const ACTIVITY_EVENTS = [
 
 let inactivityWarningTimer = null;
 let inactivityResetTimer = null;
+let attractIdleTimer = null;
+let attractStepTimer = null;
+let attractFadeTimer = null;
+let isAttractModeActive = false;
+let attractPagesShown = 0;
+let attractPageQueue = [];
 
 function clearInactivityTimers() {
     window.clearTimeout(inactivityWarningTimer);
     window.clearTimeout(inactivityResetTimer);
     inactivityWarningTimer = null;
     inactivityResetTimer = null;
+}
+
+function clearAttractTimers() {
+    window.clearTimeout(attractIdleTimer);
+    window.clearTimeout(attractStepTimer);
+    window.clearTimeout(attractFadeTimer);
+    attractIdleTimer = null;
+    attractStepTimer = null;
+    attractFadeTimer = null;
+}
+
+function isLandingVisible() {
+    return landingCoverEl && !landingCoverEl.classList.contains("hidden");
+}
+
+function setAttractFadeVisible(isVisible) {
+    if (!attractFadeOverlayEl) return;
+
+    attractFadeOverlayEl.style.transitionDuration =
+        `${ATTRACT_MODE_FADE_SECONDS}s`;
+    attractFadeOverlayEl.classList.toggle("visible", isVisible);
 }
 
 function hideInactivityWarning() {
@@ -118,11 +154,142 @@ function returnToExhibitionCover() {
     }
 }
 
+function getAttractGamePageIndices() {
+    if (!Array.isArray(pages)) return [];
+
+    return pages
+        .map((page, index) => ({ page, index }))
+        .filter(({ page }) => page && page.typeOfPage === "game")
+        .map(({ index }) => index);
+}
+
+function shuffleArray(items) {
+    const shuffled = items.slice();
+
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+}
+
+function getNextAttractPageIndex() {
+    if (attractPageQueue.length === 0) {
+        attractPageQueue = shuffleArray(getAttractGamePageIndices());
+    }
+
+    return attractPageQueue.shift();
+}
+
+function scheduleAttractMode() {
+    window.clearTimeout(attractIdleTimer);
+    attractIdleTimer = null;
+
+    if (!ENABLE_ATTRACT_MODE || isAttractModeActive || !isLandingVisible()) {
+        return;
+    }
+
+    if (getAttractGamePageIndices().length === 0) {
+        return;
+    }
+
+    attractIdleTimer = window.setTimeout(
+        startAttractMode,
+        ATTRACT_MODE_IDLE_MS
+    );
+}
+
+function scheduleNextAttractPage() {
+    window.clearTimeout(attractStepTimer);
+    attractStepTimer = window.setTimeout(
+        showNextAttractPage,
+        ATTRACT_MODE_PAGE_MS + ATTRACT_MODE_FADE_MS
+    );
+}
+
+function showNextAttractPage() {
+    if (!isAttractModeActive) return;
+
+    if (attractPagesShown >= ATTRACT_MODE_PAGE_COUNT) {
+        finishAttractMode();
+        return;
+    }
+
+    const nextIndex = getNextAttractPageIndex();
+    if (typeof nextIndex !== "number") {
+        finishAttractMode();
+        return;
+    }
+
+    setAttractFadeVisible(true);
+    attractFadeTimer = window.setTimeout(() => {
+        if (!isAttractModeActive) return;
+
+        showCover(nextIndex);
+        attractPagesShown += 1;
+
+        window.requestAnimationFrame(() => {
+            setAttractFadeVisible(false);
+        });
+        scheduleNextAttractPage();
+    }, ATTRACT_MODE_FADE_MS);
+}
+
+function startAttractMode() {
+    if (!ENABLE_ATTRACT_MODE || isAttractModeActive || !isLandingVisible()) {
+        return;
+    }
+
+    clearAttractTimers();
+    clearInactivityTimers();
+    hideInactivityWarning();
+
+    isAttractModeActive = true;
+    attractPagesShown = 0;
+    attractPageQueue = shuffleArray(getAttractGamePageIndices());
+
+    showNextAttractPage();
+}
+
+function finishAttractMode() {
+    if (!isAttractModeActive) return;
+
+    window.clearTimeout(attractStepTimer);
+    setAttractFadeVisible(true);
+
+    attractFadeTimer = window.setTimeout(() => {
+        showLanding();
+
+        isAttractModeActive = false;
+        attractPagesShown = 0;
+        attractPageQueue = [];
+
+        window.requestAnimationFrame(() => {
+            setAttractFadeVisible(false);
+        });
+        window.setTimeout(scheduleAttractMode, ATTRACT_MODE_FADE_MS);
+    }, ATTRACT_MODE_FADE_MS);
+}
+
+function stopAttractMode() {
+    if (!isAttractModeActive) return;
+
+    clearAttractTimers();
+    setAttractFadeVisible(false);
+
+    isAttractModeActive = false;
+    attractPagesShown = 0;
+    attractPageQueue = [];
+
+    showLanding();
+}
+
 function resetInactivityTimers() {
     clearInactivityTimers();
     hideInactivityWarning();
 
-    if (!ENABLE_INACTIVITY_TIMER) {
+    if (!ENABLE_INACTIVITY_TIMER || isAttractModeActive) {
         return;
     }
 
@@ -140,13 +307,37 @@ function resetInactivityTimers() {
     );
 }
 
+function handleUserActivity(event) {
+    if (isAttractModeActive) {
+        if (event) {
+            if (event.cancelable) {
+                event.preventDefault();
+            }
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+        }
+
+        stopAttractMode();
+        return;
+    }
+
+    resetInactivityTimers();
+
+    if (isLandingVisible()) {
+        scheduleAttractMode();
+    } else {
+        window.clearTimeout(attractIdleTimer);
+        attractIdleTimer = null;
+    }
+}
+
 function listenForActivity(target) {
     if (!target || target.exhibitionActivityListenersAttached) return;
 
     ACTIVITY_EVENTS.forEach((eventName) => {
-        target.addEventListener(eventName, resetInactivityTimers, {
+        target.addEventListener(eventName, handleUserActivity, {
             capture: true,
-            passive: true
+            passive: false
         });
     });
     target.exhibitionActivityListenersAttached = true;
@@ -600,9 +791,18 @@ function showLanding() {
     const url = new URL(window.location);
     url.searchParams.delete("page");
     window.history.replaceState({}, "", url);
+
+    if (!isAttractModeActive) {
+        scheduleAttractMode();
+    }
 }
 
 function showCover(index) {
+    if (!isAttractModeActive) {
+        window.clearTimeout(attractIdleTimer);
+        attractIdleTimer = null;
+    }
+
     // hide landing and clear landing state whenever we show an interior page
     if (landingCoverEl) {
         landingCoverEl.classList.add("hidden");
@@ -726,6 +926,8 @@ function showPlay() {
 
     // Only makes sense for game pages; text pages won't show the button
     if (page.typeOfPage !== "game") return;
+
+    clearAttractTimers();
 
     gameFrameEl.src = page.src || "";
     coverViewEl.classList.add("hidden");
